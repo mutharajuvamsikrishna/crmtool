@@ -26,7 +26,7 @@ const AdminLogin = () => {
         } else {
           console.log(response.data);
           console.log("Response data type:", typeof response.data);
-          navigate("/invalidcredits"); // Use navigate to change the route
+          alert("Invalid Credits")
         }
       })
       .catch((error) => {

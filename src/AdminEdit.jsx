@@ -84,11 +84,13 @@ const data={
       email: email,
       
     };
-    navigate("/profile", { state: { data: data } });
+    navigate("/adminprofile", { state: { data: data } });
   }
   
   return (
-    <div className="id1">
+    <div className="id1">git remote add origin https://github.com/mutharajuvamsikrishna/crmtoolchanges.git
+    git branch -M main
+    git push -u origin main
        <div
       style={{
         position: "absolute",

@@ -35,6 +35,7 @@ import Piechart from './PieChart';
 import Regsucess1 from './Regsucess1';
 import UserEdit from './UserEdit';
 import Profile from './Profile';
+import AdminProfile from './AdminProfile';
 function App() {
   return (
     <div className="maincontainer">
@@ -46,7 +47,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/otp" element={<Otp />} />
           <Route path="/regsucess" element={<Regsucess />} />
-          <Route path="//success1" element={<Regsucess1/>}/>
+          <Route path="/regsucess1" element={<Regsucess1/>}/>
           <Route path="/regsavesucess" element={<Registersave />} />
           <Route path="/invalidotp" element={<Invalidotp />} />
           <Route path="/regfail" element={<Regfail />} />
@@ -74,6 +75,7 @@ function App() {
           <Route path="/piechart" element={<Piechart/>} />
           <Route path="/useredit" element={<UserEdit/>} />
           <Route path="/profile" element={<Profile/>} />
+          <Route path="/adminprofile" element={<AdminProfile/>} />
         </Routes>
       </Router>
     </div>

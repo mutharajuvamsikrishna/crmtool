@@ -3,7 +3,7 @@ import axios from "axios";
 import { useLocation ,Link} from "react-router-dom";
 import "./ViweAll.css";
 import { SlLogout } from "react-icons/Sl";
-const Profile = () => {
+const AdminProfile = () => {
   const [employee, setEmployee] = useState(null); // Change to single employee object
   const location = useLocation();
   const email = location.state.data.email;
@@ -48,7 +48,7 @@ const Profile = () => {
             </p>
           
          <br/>
-         <Link to="/login"> <SlLogout
+         <Link to="/adminlogin"> <SlLogout
                         style={{
                           height: "30px",
                           width: "30px",
@@ -72,4 +72,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default AdminProfile;

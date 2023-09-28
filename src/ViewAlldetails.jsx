@@ -54,7 +54,7 @@ const ListEmployee = () => {
       email: email,
     };
 
-    navigate("/profile", { state: { data: data } });
+    navigate("/adminprofile", { state: { data: data } });
   };
   const confirmDelete = (id) => {
     if (window.confirm("Are you sure you want to delete?")) {
