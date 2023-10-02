@@ -36,54 +36,31 @@ const AdminLogin = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "lightyellow", height: "100vh" }}>
+    <div style={{backgroundColor:"lightyellow",minHeight:"99vh"}}>
       <center>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+        <br /><br /><br /><br /><br /><br />
+        <div>
         <h2>Login With ONiE Soft</h2>
+        <br/>  <br/>
         <form onSubmit={handleSubmit}>
-          <table>
-            <tbody>
-              <tr>
-                <td>Email</td>
-                <td>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    autoComplete="email"
-                    required
-                  />
-                </td>
-              </tr>
-
-              <tr>
-                <td>Password</td>
-                <td>
-                  <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    autoComplete="new-password"
-                    required
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+         
+                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete='email' placeholder='Enter Your Email'required />
+               
+            <br/>   <br/>
+               
+                
+                  <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete='new-password'placeholder='Enter Your Password' required />
+             
+                  <br/>  
           <br />
-          <input type="submit" value="Login" style={{ color: "green" }} />
+          <input type="submit" value="Login" style={{ color: 'green' }} />
         </form>
-        <br />
-        <br />
-        <Link to="/adminforgetpassword">ChangePassword/ForgetPassword</Link>
-        <br />
-        <br />
-        <a href="/admin1">Go Back</a>
+       
+        <br/><br/>
+       <Link to="/forgetpassword">ChangePassword/ForgetPassword</Link>
+       </div>
+        <br /><br />
+        <a href="/reg">Go Back</a>
       </center>
     </div>
   );

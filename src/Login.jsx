@@ -36,10 +36,10 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div style={{backgroundColor:"lightyellow",minHeight:"99vh"}}>
       <center>
         <br /><br /><br /><br /><br /><br />
-        <div style={{ backgroundColor: 'lightyellow' }}>
+        <div>
         <h2>Login With ONiE Soft</h2>
         <br/>  <br/>
         <form onSubmit={handleSubmit}>
@@ -51,7 +51,7 @@ const Login = () => {
                 
                   <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete='new-password'placeholder='Enter Your Password' required />
              
-                  <br/>  <br/>
+                  <br/>  
           <br />
           <input type="submit" value="Login" style={{ color: 'green' }} />
         </form>
