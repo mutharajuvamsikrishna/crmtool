@@ -88,9 +88,8 @@ const data={
   }
   
   return (
-    <div className="id1">git remote add origin https://github.com/mutharajuvamsikrishna/crmtoolchanges.git
-    git branch -M main
-    git push -u origin main
+    <div className="id1">
+  
        <div
       style={{
         position: "absolute",
@@ -378,7 +377,7 @@ const data={
 </th>
                   <td>
                   <input
-                      type="text"
+                      type="time"
                       name="time"
                       value={formData.time || ""}
                       onChange={handleInputChange} 
@@ -745,9 +744,9 @@ Second Contact Person Details
                   <th>IST Time</th>
                   <td>
                   <input
-                      type="text"
-                      name="isttmime"
-                      value={formData.isttime || ""}
+                      type="time"
+                      name="isttime"
+                      value={formData.isttime|| ""}
                       onChange={handleInputChange} 
                     />
                   </td>
@@ -814,8 +813,8 @@ Second Contact Person Details
                   <th>IST Time</th>
                   <td>
                   <input
-                      type="text"
-                      name="isttmime1"
+                      type="time"
+                      name="isttime1"
                       value={formData.isttime1 || ""}
                       onChange={handleInputChange} 
                     />
@@ -877,8 +876,8 @@ Second Contact Person Details
                   <th>IST Time</th>
                   <td>
                   <input
-                      type="text"
-                      name="isttmime2"
+                      type="time"
+                      name="isttime2"
                       value={formData.isttime2 || ""}
                       onChange={handleInputChange} 
                     />
