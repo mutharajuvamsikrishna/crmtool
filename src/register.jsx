@@ -69,54 +69,87 @@ navigate("/otp", { state: { data: data } }); // Use navigate to change the route
     return <div><br/><br/><br></br><br/><br/><center><h1>Loading.....</h1></center></div>;
   }
   return (
-    <div style={{ backgroundColor: 'lightgreen', height: '100vh' }}>
-      
+    <div style={{backgroundColor:'lightgray', minHeight:"99vh"}}>
       <center>
         <br /><br /><br /><br /><br /><br />
-      
-        <h2>Register With ONiE Soft</h2>
-        <form onSubmit={handleSubmit}>
-          <table>
-            <tbody>
-              <tr>
-                <td>Email</td>
-                <td>
-                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete='email' required />
-                </td>
-              </tr>
-              <tr>
-                <td>Name</td>
-                <td>
-                  <input type="text" value={ename} onChange={(e) => setEname(e.target.value)} autoComplete='name' required />
-                </td>
-              </tr>
-              <tr>
-                <td>Mobile Number</td>
-                <td>
-                  <input type="text" value={mob} onChange={(e) => setMob(e.target.value)} autoComplete='tel' required />
-                </td>
-              </tr>
-              <tr>
-                <td>Password</td>
-                <td>
-                  <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete='new-password' required />
-                </td>
-              </tr>
-              <tr>
-                <td>Confirm Password</td>
-                <td>
-                  <input type="password" value={cnpassword} onChange={(e) => setCnPassword(e.target.value)} autoComplete='new-password' required />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div style={{backgroundColor:"whitesmoke",minHeight:"50vh",width:"40%"}}>
+        <h2 style={{color:'green'}}>Register With ONiE Soft</h2>
+        <br />
+        <form onSubmit={handleSubmit} style={{ maxWidth: '400px' }}>
+          <div className="form-group">
+          
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              autoComplete="email"
+              placeholder='Enter Email'
+              required
+            />
+          </div>
+          <div className="form-group">
+          <br/>
+            <input
+              type="text"
+              className="form-control"
+              id="name"
+              value={ename}
+              onChange={(e) => setEname(e.target.value)}
+              placeholder='Enter Name'
+              autoComplete="name"
+              required
+            />
+          </div>
+          <div className="form-group">
+           <br/>
+            <input
+              type="text"
+              className="form-control"
+              id="mob"
+              value={mob}
+              onChange={(e) => setMob(e.target.value)}
+              autoComplete="tel"
+              placeholder='Enter Mobile Number'
+              required
+            />
+          </div>
+          <div className="form-group">
+           <br/>
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder='Enter Password'
+              autoComplete="off"
+              required
+            />
+          </div>
+          <div className="form-group">
+           <br/>
+            <input
+              type="password"
+              className="form-control"
+              id="cnpassword"
+              value={cnpassword}
+              onChange={(e) => setCnPassword(e.target.value)}
+              placeholder='Enter Confirm Password'
+              autoComplete="off"
+              required
+            />
+          </div>
           <br />
-          <input type="submit" value="Register" style={{ color: 'green' }} />
+          <button type="submit" className="btn btn-primary">
+            Register
+          </button>
         </form>
+        </div>
         <br /><br />
         <a href="/reg">Go Back</a>
       </center>
-    
     </div>
   );
 };
