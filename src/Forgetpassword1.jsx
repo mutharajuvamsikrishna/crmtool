@@ -22,6 +22,11 @@ const Forgetpassword1 = () => {
 
     var v1=data.password;
     var v2= data.cnpassword;
+    var v = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[*&@#]).{6,}/; 
+    if(!data.password.match(v)){
+      alert("Password Should Minimum 6 Digits,Should have at least one uppercase,One Numeric And Special Symbols Like @,&,*,#")
+      return false;
+    }
     if(v1!=v2){
         alert("Password doesn't Match To Confirm Password")
         return false;
@@ -59,13 +64,13 @@ const Forgetpassword1 = () => {
               <tr>
                 <td>Password</td>
                 <td>
-                  <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete='new-password' required />
+                  <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete='new-password' required />
                 </td>
               </tr>
               <tr>
                 <td>ConfirmPassword</td>
                 <td>
-                  <input type="text" value={cnpassword} onChange={(e) => setCnpassword(e.target.value)} autoComplete='new-password' required />
+                  <input type="password" value={cnpassword} onChange={(e) => setCnpassword(e.target.value)} autoComplete='new-password' required />
                 </td>
               </tr>
             </tbody>

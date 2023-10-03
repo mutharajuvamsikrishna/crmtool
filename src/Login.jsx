@@ -15,7 +15,11 @@ const Login = () => {
       email: email,
       password: password,
     };
-
+    var v = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[*&@#]).{6,}/; 
+    if(!data.password.match(v)){
+      alert("Password Should Minimum 6 Digits,Should have at least one uppercase,One Numeric And Special Symbols Like @,&,*,#")
+      return false;
+    }
     axios
       .post('http://localhost:1279/loginform', data)
       .then((response) => {

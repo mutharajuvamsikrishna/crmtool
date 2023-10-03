@@ -22,11 +22,17 @@ const AdminPasswordChange = () => {
 
     var v1 = data.password;
     var v2 = data.cnpassword;
+    var v = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[*&@#]).{6,}/; 
+    if(!data.password.match(v)){
+      alert("Password Should Minimum 6 Digits,Should have at least one uppercase,One Numeric And Special Symbols Like @,&,*,#")
+      return false;
+    }
     if (v1 != v2) {
       alert("Password doesn't Match To Confirm Password");
       return false;
     }
-
+   
+   
     axios
       .put("http://localhost:1279/adminchangepassword1", data)
       .then((response) => {
@@ -65,7 +71,7 @@ const AdminPasswordChange = () => {
                 <td>Password</td>
                 <td>
                   <input
-                    type="text"
+                    type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     autoComplete="new-password"
@@ -77,7 +83,7 @@ const AdminPasswordChange = () => {
                 <td>ConfirmPassword</td>
                 <td>
                   <input
-                    type="text"
+                    type="password"
                     value={cnpassword}
                     onChange={(e) => setCnpassword(e.target.value)}
                     autoComplete="new-password"

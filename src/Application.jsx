@@ -8,7 +8,9 @@ import { CgProfile } from 'react-icons/cg';
 const Application = () => {
   const location =useLocation();
    const email=location.state.data.email
-  
+  const data={
+    email:email
+  }
   const [formData, setFormData] = useState({
 bdmname:"",
    firstres:"",
@@ -131,13 +133,11 @@ call3:"",
 if (type==="profile"){
   navigate("/profile", { state: { data: data } });
 }
-else{
-    navigate("/loginsucess", { state: { data: data } }); // Use navigate to change the rout
-}
+
   }
   return (
   
-    <div className="" style={{ minHeight: "100vh", background: "skyblue" }}>
+    <div className="" style={{ minHeight: "100vh", backgroundColor:"skyblue" }}>
       <div
       style={{
         position: "absolute",
@@ -155,6 +155,7 @@ else{
           color:"blue"
         }} />
     </div>
+    
       <div className="row justify-content-center">
         <div className="col-md-6 mt-5">
           <h2 className="text-center mb-4" style={{ color: "blue" }}>
@@ -1322,11 +1323,12 @@ Date
           </form>
           <br /> <br />
           <div className="text-center">
-          <button className='btn btn-primary' onClick={handleSubmit2}>Go Back</button>
+         <Link to="/loginsucess" state={{data:data}} style={{color:"bluegit"}}>Go Back</Link>
           </div>
         </div>
+        </div>
       </div>
-    </div>
+   
   );
 };
 

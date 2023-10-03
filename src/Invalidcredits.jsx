@@ -7,9 +7,9 @@ export default function Invalidcredits() {
 
 <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
       <center>
-        <h1 style={{ color: 'red' }}>Invalid Credits</h1>
+        <h1 style={{ color: 'red' }}>Invalid credentials</h1>
         <br /> <br /> <br />
-        <Link to="/login">Go Back</Link>
+        <a href="javascript:history.go(-1)">Go Back</a>
       </center>
 
 

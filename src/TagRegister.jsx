@@ -23,6 +23,8 @@ const TagRegister = () => {
       password: password,
       cnpassword: cnpassword,
     };
+    var v = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[*&@#]).{6,}/; 
+    var v46= /^\d{10}$/;
     var v45 = /^[a-zA-Z\s]*$/;
     var v1 = data.password;
     var v2 = data.cnpassword;
@@ -31,9 +33,17 @@ const TagRegister = () => {
 
       return false;
     }
+    if(!data.mob.match(v46)){
+      alert("Mobile Number Digits Only")
+      return false;
+    }
 
     if (data.mob.length != 10) {
       alert("Mobile Number is 10 Digits only");
+      return false;
+    }
+    if(!data.password.match(v)){
+      alert("Password Should Minimum 6 Digits,Should have at least one uppercase,One Numeric And Special Symbols Like @,&,*,#")
       return false;
     }
     if (v1 != v2) {
@@ -52,7 +62,7 @@ const TagRegister = () => {
         } else {
           console.log(response.data);
           console.log("Response data type:", typeof response.data);
-          navigate("/regfail");
+          navigate("/adminregfail");
         }
       })
       .catch((error) => {

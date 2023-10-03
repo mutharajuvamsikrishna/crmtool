@@ -36,6 +36,7 @@ import Regsucess1 from './Regsucess1';
 import UserEdit from './UserEdit';
 import Profile from './Profile';
 import AdminProfile from './AdminProfile';
+import AdminRegfail from './AdminRegfail';
 function App() {
   return (
     <div className="maincontainer">
@@ -76,6 +77,7 @@ function App() {
           <Route path="/useredit" element={<UserEdit/>} />
           <Route path="/profile" element={<Profile/>} />
           <Route path="/adminprofile" element={<AdminProfile/>} />
+          <Route path="/adminregfail" element={<AdminRegfail/>} />
         </Routes>
       </Router>
     </div>

@@ -86,7 +86,7 @@ const [loading,setLoading]=useState(false)
         </form>
         <br />
         <br />
-        <Link to="/reg">Go Back</Link>
+        <Link to="/admin1">Go Back</Link>
       </center>
     </div>
   );
