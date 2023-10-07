@@ -9,7 +9,7 @@ export default function AdminRegfail() {
        <br/><br/>
        <Link to="/adminlogin">Login</Link>
        <br/><br/>
-       <Link to="/admin">Go Back</Link>
+       <a href="javascript:history.go(-1)">Go Back</a>
       </center>
 
 

@@ -16,10 +16,10 @@ const WelcomePage = () => {
   };
 const handleNavigate=(type)=>{
   if(type==="applicants"){
-navigate("/reg")
+navigate("/login")
   }
   else{
-    navigate("/admin1")
+    navigate("/adminlogin")
   }
 }
   return (

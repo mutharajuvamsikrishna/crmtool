@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 const TagRegister = () => {
   const [id, setId] = useState("");
@@ -23,8 +23,6 @@ const TagRegister = () => {
       password: password,
       cnpassword: cnpassword,
     };
-    var v = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[*&@#]).{6,}/; 
-    var v46= /^\d{10}$/;
     var v45 = /^[a-zA-Z\s]*$/;
     var v1 = data.password;
     var v2 = data.cnpassword;
@@ -33,17 +31,9 @@ const TagRegister = () => {
 
       return false;
     }
-    if(!data.mob.match(v46)){
-      alert("Mobile Number Digits Only")
-      return false;
-    }
 
     if (data.mob.length != 10) {
       alert("Mobile Number is 10 Digits only");
-      return false;
-    }
-    if(!data.password.match(v)){
-      alert("Password Should Minimum 6 Digits,Should have at least one uppercase,One Numeric And Special Symbols Like @,&,*,#")
       return false;
     }
     if (v1 != v2) {
@@ -76,26 +66,28 @@ const TagRegister = () => {
   return (
     <div style={{backgroundColor:'lightgray', minHeight:"99vh"}}>
       <center>
-        <br /><br /><br /><br /><br /><br />
+        <br /><br />
         <div style={{backgroundColor:"whitesmoke",minHeight:"50vh",width:"40%"}}>
         <h2 style={{color:'green'}}>Register With ONiE Soft</h2>
         <br />
         <form onSubmit={handleSubmit} style={{ maxWidth: '400px' }}>
         <div className="form-group">
-          
-          <input
-            type="text"
-            className="form-control"
-            id="id"
-            value={id}
-            onChange={(e) => setId(e.target.value)}
-            autoComplete="id"
-            placeholder='Enter ID'
-            required
-          />
-        </div>
+          <br/>
+          <label>ID</label>
+            <input
+              type="text"
+              className="form-control"
+              id="ID"
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+              autoComplete="ID"
+              placeholder='Enter Your ID'
+              required
+            />
+          </div>
           <div className="form-group">
           <br/>
+          <label>Email</label>
             <input
               type="email"
               className="form-control"
@@ -109,6 +101,7 @@ const TagRegister = () => {
           </div>
           <div className="form-group">
           <br/>
+          <label>Name</label>
             <input
               type="text"
               className="form-control"
@@ -122,6 +115,7 @@ const TagRegister = () => {
           </div>
           <div className="form-group">
            <br/>
+           <label>Mobile Number</label>
             <input
               type="text"
               className="form-control"
@@ -135,6 +129,7 @@ const TagRegister = () => {
           </div>
           <div className="form-group">
            <br/>
+           <label>Password</label>
             <input
               type="password"
               className="form-control"
@@ -148,6 +143,7 @@ const TagRegister = () => {
           </div>
           <div className="form-group">
            <br/>
+           <label>Confirm Password</label>
             <input
               type="password"
               className="form-control"
@@ -164,12 +160,16 @@ const TagRegister = () => {
             Register
           </button>
         </form>
+        <div>
+        <br/>
+        <Link to="/adminlogin" style={{color:"blue"}}>Already have an account?</Link>
+      </div>
         </div>
-        <br /><br />
-        <a href="/admin1">Go Back</a>
+     
       </center>
     </div>
   );
+  
 };
 
 export default TagRegister;

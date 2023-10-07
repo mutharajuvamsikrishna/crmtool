@@ -5,7 +5,7 @@ import Onielogo from './onielogo';
 import WelcomePage from './home1';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Register from './Register';
-import Reg1 from './registerhome1';
+
 import Otp from './Otp';
 import Regsucess from './Regsucess';
 import Registersave from './Registersave';
@@ -23,7 +23,7 @@ import ViewProApplication from './ViewProApplication';
 import TagRegister from './TagRegister';
 import AdminOtp from './AdminOtp';
 import AdminRegistersave from './AdminRegistersave';
-import AdminregisterHome from './AdminregisterHome';
+
 import AdminLogin from './AdminLogin';
 import AdminForgetPassword from './AdminForgetPassword';
 import AdminForgetPasswordOtp from './AdminChangeOtp';
@@ -44,7 +44,7 @@ function App() {
         <Onielogo />
         <Routes>
           <Route path="/" element={<WelcomePage />} />
-          <Route path="/reg" element={<Reg1 />} />
+         
           <Route path="/register" element={<Register />} />
           <Route path="/otp" element={<Otp />} />
           <Route path="/regsucess" element={<Regsucess />} />
@@ -65,7 +65,7 @@ function App() {
           <Route path="/admin" element={<TagRegister/>} />
           <Route path="/adminotp" element={<AdminOtp/>} />
           <Route path="/adminregsucess" element={<AdminRegistersave/>} />
-          <Route path="/admin1" element={<AdminregisterHome/>} />
+          
           <Route path="/adminlogin" element={<AdminLogin/>} />
           <Route path="/adminforgetpassword" element={<AdminForgetPassword/>} />
           <Route path="/adminchangepassword" element={<AdminForgetPasswordOtp/>} />

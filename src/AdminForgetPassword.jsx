@@ -42,14 +42,9 @@ const [loading,setLoading]=useState(false)
     return <div><br/><br/><br></br><br/><br/><center><h1>Loading.....</h1></center></div>;
   }
   return (
-    <div style={{ backgroundColor: "lightyellow", height: "100vh" }}>
+    <div style={{ backgroundColor: 'lightyellow', height: '99vh' }}>
       <center>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+        <br /><br /><br /><br /><br /><br />
         <h2>Forget Password</h2>
         <form onSubmit={handleSubmit}>
           <table>
@@ -57,38 +52,37 @@ const [loading,setLoading]=useState(false)
               <tr>
                 <td>Email</td>
                 <td>
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    autoComplete="email"
-                    required
-                  />
+                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete='email'
+                  style={{width:"200%"}} required />
                 </td>
               </tr>
-
+                    <tr>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                    </tr>
               <tr>
                 <td>Mobile</td>
                 <td>
-                  <input
-                    type="text"
-                    value={mob}
-                    onChange={(e) => setMob(e.target.value)}
-                    autoComplete="tel"
-                    required
-                  />
+                  <input type="text" value={mob} onChange={(e) => setMob(e.target.value)} autoComplete='tel'
+                    style={{width:"200%"}} required />
                 </td>
               </tr>
+
             </tbody>
           </table>
           <br />
-          <input type="submit" value="Submit" style={{ color: "green" }} />
+          <input type="submit" value="Submit" style={{ color: 'green' }} />
         </form>
-        <br />
-        <br />
-        <Link to="/admin1">Go Back</Link>
+        <br /><br />
+        <Link to="/adminlogin">Go Back</Link>
       </center>
     </div>
+
   );
 };
 

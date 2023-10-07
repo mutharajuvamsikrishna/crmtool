@@ -22,17 +22,11 @@ const AdminPasswordChange = () => {
 
     var v1 = data.password;
     var v2 = data.cnpassword;
-    var v = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[*&@#]).{6,}/; 
-    if(!data.password.match(v)){
-      alert("Password Should Minimum 6 Digits,Should have at least one uppercase,One Numeric And Special Symbols Like @,&,*,#")
-      return false;
-    }
     if (v1 != v2) {
       alert("Password doesn't Match To Confirm Password");
       return false;
     }
-   
-   
+
     axios
       .put("http://localhost:1279/adminchangepassword1", data)
       .then((response) => {
@@ -63,43 +57,47 @@ const AdminPasswordChange = () => {
         <br />
         <br />
         <br />
+        
         <h2>Change Password</h2>
+        <div style={{backgroundColor:"white",minHeight:"50vh",width:"40%"}}>
         <form onSubmit={handleSubmit}>
-          <table>
-            <tbody>
-              <tr>
-                <td>Password</td>
-                <td>
-                  <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    autoComplete="new-password"
-                    required
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>ConfirmPassword</td>
-                <td>
-                  <input
-                    type="password"
-                    value={cnpassword}
-                    onChange={(e) => setCnpassword(e.target.value)}
-                    autoComplete="new-password"
-                    required
-                  />
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <div className="form-group">
+           <br/>
+           <label>Password</label>
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder='Enter Password'
+              autoComplete="off"
+              required
+            />
+          </div>
+          <div className="form-group">
+           <br/>
+           <label>Confirm Password</label>
+            <input
+              type="password"
+              className="form-control"
+              id="cnpassword"
+              value={cnpassword}
+              onChange={(e) => setCnpassword(e.target.value)}
+              placeholder='Enter Confirm Password'
+              autoComplete="off"
+              required
+            />
+          </div>
           <br />
-          <input type="submit" value="Submit" style={{ color: "green" }} />
+          <button type="submit" className="btn btn-primary">Change</button>
         </form>
+        </div>
         <br />
         <br />
-        <a href="/reg">Go Back</a>
+        <a href="/adminlogin">Go Back</a>
       </center>
+    
     </div>
   );
 };

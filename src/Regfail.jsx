@@ -9,7 +9,7 @@ export default function Regfail() {
        <br/><br/>
        <Link to="/login">Login</Link>
        <br/><br/>
-       <Link to="/register">Go Back</Link>
+       <a href="javascript:history.go(-1)">Go Back</a>
       </center>
 
 

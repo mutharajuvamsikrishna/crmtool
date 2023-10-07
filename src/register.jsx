@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -42,7 +42,7 @@ const Register = () => {
       return false;
     }
     if(!data.password.match(v)){
-      alert("Password Should Minimum 6 Digits,Should have at least one uppercase,One Numeric And Special Symbols Like @,&,*,#")
+      alert("Password Should Minimum 6 Digits,Should have at least one uppercase and  Lowercase,One Numeric And Special Symbols Like @,&,*,#")
       return false;
     }
    if(v1!=v2){
@@ -81,13 +81,15 @@ navigate("/otp", { state: { data: data } }); // Use navigate to change the route
   return (
     <div style={{backgroundColor:'lightgray', minHeight:"99vh"}}>
       <center>
-        <br /><br /><br /><br /><br /><br />
+        <br /><br /><br />
         <div style={{backgroundColor:"whitesmoke",minHeight:"50vh",width:"40%"}}>
         <h2 style={{color:'green'}}>Register With ONiE Soft</h2>
         <br />
         <form onSubmit={handleSubmit} style={{ maxWidth: '400px' }}>
+      
           <div className="form-group">
-          
+          <br/>
+          <label>Email</label>
             <input
               type="email"
               className="form-control"
@@ -101,6 +103,7 @@ navigate("/otp", { state: { data: data } }); // Use navigate to change the route
           </div>
           <div className="form-group">
           <br/>
+          <label>Name</label>
             <input
               type="text"
               className="form-control"
@@ -114,6 +117,7 @@ navigate("/otp", { state: { data: data } }); // Use navigate to change the route
           </div>
           <div className="form-group">
            <br/>
+           <label>Mobile Number</label>
             <input
               type="text"
               className="form-control"
@@ -127,6 +131,7 @@ navigate("/otp", { state: { data: data } }); // Use navigate to change the route
           </div>
           <div className="form-group">
            <br/>
+           <label>Password</label>
             <input
               type="password"
               className="form-control"
@@ -140,6 +145,7 @@ navigate("/otp", { state: { data: data } }); // Use navigate to change the route
           </div>
           <div className="form-group">
            <br/>
+           <label>Confirm Password</label>
             <input
               type="password"
               className="form-control"
@@ -156,9 +162,12 @@ navigate("/otp", { state: { data: data } }); // Use navigate to change the route
             Register
           </button>
         </form>
+        <div>
+        <br/>
+        <Link to="/login" style={{color:"blue"}}>Already have an account?</Link>
+      </div>
         </div>
-        <br /><br />
-        <a href="/reg">Go Back</a>
+     
       </center>
     </div>
   );
