@@ -46,7 +46,7 @@ email:email
 
   
   const expand = (id) => {
-    console.log(id);
+    
     
     setResponse1(id);
   };
@@ -91,8 +91,9 @@ email:email
       <br />
       <br />
 
-      <h2 className="text-center">Application List</h2>
-      <h3 className="text-center">No of Customers {employees.length}</h3>
+      <h2 className="text-center">Applications List</h2>
+      <br/>
+      <h4 className="text-center" style={{color:"blue"}}>Total No.of Clients: {employees.length}</h4>
 
       <br />
      
@@ -109,17 +110,17 @@ email:email
                 
                 <tr>
                   <th>Application ID</th>
-                  <td>{emp.id}</td>
+                 <td className="id2">{emp.id}</td>
                   <th>BDM Name</th>
-                  <td>{emp.bdmname}</td>
+                  <td className="id2">{emp.bdmname}</td>
                   <th>1st Response Date</th>
-                  <td>{emp.firstres}</td>
+                 <td className="id2">{emp.firstres}</td>
                 </tr>
                 {response1 !== emp.id&& (
                 <tr className="text-center">
-                  <td></td>
+                 <td className="id2"></td>
 
-                  <td>
+                 <td className="id2" colSpan={4}>
                     <AiOutlineFullscreen
                       onClick={() => expand(emp.id)}
                      
@@ -129,24 +130,25 @@ email:email
                       }}
                     />
                   </td>
+                  <td></td>
                 </tr>
                 )}
 
                 <tr>
                   <th>Latest Response Date</th>
-                  <td>{emp.lastres}</td>
-                  <th>Current State</th>
-                  <td>{emp.currentstate}</td>
+                 <td className="id2">{emp.lastres}</td>
+                  <th style={{color:"green"}}>Current State</th>
+                 <td className="id2">{emp.currentstate}</td>
                   <th>Company Name</th>
-                      <td>{emp.cmpname}</td>
+                     <td className="id2">{emp.cmpname}</td>
                 </tr>
                <br/><br/><br/>
                 {response1===emp.id && (
                   <>
                   <tr className="text-center">
-                  <td></td>
+                 <td className="id2"></td>
 
-                  <td>
+                 <td className="id2" colSpan={4}>
                     <AiOutlineCompress
                       onClick={() => expand1(emp.id)}
                      
@@ -156,132 +158,167 @@ email:email
                       }}
                     />
                   </td>
+                  <td></td>
                 </tr>
                     <tr>
                       <th>Latest Final Status</th>
 
-                      <td>{emp.lfstatus}</td>
+                     <td className="id2">{emp.lfstatus}</td>
                     
                       <th>POC Status </th>
 
-                      <td>{emp.pocstatus}</td>
+                     <td className="id2">{emp.pocstatus}</td>
 
                       <th>Industry/Domain</th>
-                      <td>{emp.domain}</td>
+                     <td className="id2">{emp.domain}</td>
                     </tr>
 
                     <tr>
                       <th>Interested Service/s </th>
-                      <td>{emp.intrestserv}</td>
-                      <th>More Details </th>
+                     <td className="id2">{emp.intrestserv}</td>
+                      <th>Summary</th>
 
-                      <td>{emp.moredetail}</td>
+                      <td className="id2" > <textarea
+      
+      value={emp.moredetail}
+     
+      className="form-control"
+      autoComplete="moredetail"
+      rows="1" // You can adjust this initial number of rows
+      style={{ resize: "vertical", }} // This allows vertical resizing
+    /></td>
                     
                       <th>Info Shared</th>
-                      <td>{emp.infoshared}</td>
+                      <td className="id2" > <textarea
+      
+      value={emp.infoshared}
+     
+      className="form-control"
+      autoComplete="infoshared"
+      rows="1" // You can adjust this initial number of rows
+      style={{ resize: "vertical", }} // This allows vertical resizing
+    /></td>
                        </tr>
                        <tr>
                       <th>Details Asked</th>
-                      <td>{emp.detailask}</td>
+                      <td className="id2"  > <textarea
+      
+      value={emp.detailask}
+     
+      className="form-control"
+      autoComplete="detailask"
+      rows="1" // You can adjust this initial number of rows
+      style={{ resize: "vertical", }} // This allows vertical resizing
+    /></td>
                     
                       <th>Website </th>
-                      <td>{emp.website}</td>
+                     <td className="id2">{emp.website}</td>
                       <th>LinkedIn Profile </th>
 
-                      <td>{emp.linkprof}</td>
+                     <td className="id2">{emp.linkprof}</td>
                     </tr>
 
                     <tr>
                       <th>Continent/Region </th>
-                      <td>{emp.region}</td>
+                     <td className="id2">{emp.region}</td>
                       <th>Country</th>
-                      <td>{emp.coun}</td>
+                     <td className="id2">{emp.coun}</td>
                       <th>W.r.t IST Time</th>
-                      <td>{emp.time}</td>
+                     <td className="id2">{emp.time}</td>
             
                     </tr>
                     <tr>
                     <th>Before/After</th>
-                      <td>{emp.cusbefore}</td>
+                     <td className="id2">{emp.cusbefore}</td>
                       <th>
                         Time Zone
                       </th>
-                      <td>{emp.timezone}</td>
+                     <td className="id2">{emp.timezone}</td>
+                    <th></th>
+                    <td></td>
                     </tr>
-                    <td>
-                      <h5 className="text-center">
+                   <td className="id2">
+                      <h5 className="text-center" style={{color:"orange"}}>
                         Main Contact Person Details
                       </h5>
                     </td>
                     <tr>
                       <th>Full Name </th>
-                      <td>{emp.maincontact}</td>
+                     <td className="id2">{emp.maincontact}</td>
 
                       <th>LinkedIn Profile</th>
-                      <td>{emp.mainlinkprof}</td>
+                     <td className="id2">{emp.mainlinkprof}</td>
                       <th>Email ID</th>
-                      <td>{emp.mainemail}</td>
+                     <td className="id2">{emp.mainemail}</td>
                     </tr>
                     <tr>
                       
                       <th>Phone No</th>
 
-                      <td>{emp.mainmob}</td>
+                     <td className="id2" colSpan={5}>{emp.mainmob}</td>
                     </tr>
-                    <td>
-                      <h5 className="text-center">
+                   <td className="id2">
+                      <h5 className="text-center"  style={{color:"orange"}}>
                         Second Contact Person Details
                       </h5>
                     </td>
                     <tr>
                       <th>Full Name </th>
-                      <td>{emp.secondcontact}</td>
+                     <td className="id2">{emp.secondcontact}</td>
 
                       <th>LinkedIn Profile</th>
-                      <td>{emp.secondlinkprof}</td>
+                     <td className="id2">{emp.secondlinkprof}</td>
                       <th>Email ID</th>
-                      <td>{emp.secondmainemail}</td>
+                     <td className="id2">{emp.secondmainemail}</td>
                     </tr>
                     <tr>
                      
                       <th>Phone No</th>
 
-                      <td>{emp.secondmob}</td>
+                     <td className="id2" colSpan={5}>{emp.secondmob}</td>
                     </tr>
-                    <td>
-                      <h5 className="text-center">1st e-mail Details </h5>
+                   <td className="id2">
+                      <h5 className="text-center" style={{color:"indigo"}}>1st e-mail Details </h5>
                     </td>
                     <tr>
                       <th>Date</th>
-                      <td>{emp.emdate}</td>
+                     <td className="id2">{emp.emdate}</td>
                       <th>From Name</th>
-                      <td>{emp.emname}</td>
+                     <td className="id2">{emp.emname}</td>
                       <th>To Name</th>
-                      <td>{emp.emtoname}</td>
+                     <td className="id2">{emp.emtoname}</td>
                     </tr>
 
                     <tr>
                      
                       <th>E-mail-1 State</th>
 
-                      <td>{emp.emstate}</td>
+                     <td className="id2">{emp.emstate}</td>
                     
 
                     
-                      <th>1st e-mail Summary </th>
-                      <td>{emp.emsummary}</td>
+                      <th style={{color:"blue"}}>1st e-mail Summary </th>
+                      <td className="id2" colSpan={3} > <textarea
+      
+      value={emp.emsummary}
+     
+      className="form-control"
+      autoComplete="emsummary"
+      rows="1" // You can adjust this initial number of rows
+      style={{ resize: "vertical", }} // This allows vertical resizing
+    /></td>
                     </tr>
 
-                    <td>
-                      <h5 className="text-center">2nd e-mail Details </h5>
+                   <td className="id2">
+                      <h5 className="text-center" style={{color:"indigo"}}>2nd e-mail Details </h5>
                     </td>
                     <tr>
                       <th>Date</th>
-                      <td>{emp.emdate1}</td>
+                     <td className="id2">{emp.emdate1}</td>
                       <th>From Name</th>
-                      <td>{emp.emname1}</td>
+                     <td className="id2">{emp.emname1}</td>
                       <th>To Name</th>
-                      <td>{emp.emtoname1}</td>
+                     <td className="id2">{emp.emtoname1}</td>
                     </tr>
 
                     <tr>
@@ -289,94 +326,134 @@ email:email
                      
                       <th>E-mail-2 State</th>
 
-                      <td>{emp.emstate1}</td>
+                     <td className="id2">{emp.emstate1}</td>
                     
-                      <th>2nd e-mail Summary </th>
-                      <td>{emp.emsummary1}</td>
+                      <th style={{color:"blue"}}>2nd e-mail Summary </th>
+                     <td className="id2" colSpan={3}> <textarea
+      
+      value={emp.emsummary1}
+     
+      className="form-control"
+      autoComplete="emsummary1"
+      rows="1" // You can adjust this initial number of rows
+      style={{ resize: "vertical" }} // This allows vertical resizing
+    /></td>
                     </tr>
 
-                    <td>
-                      <h5 className="text-center">3rd e-mail Details </h5>
+                   <td className="id2">
+                      <h5 className="text-center" style={{color:"indigo"}}>3rd e-mail Details </h5>
                     </td>
                     <tr>
                       <th>Date</th>
-                      <td>{emp.emdate2}</td>
+                     <td className="id2">{emp.emdate2}</td>
                       <th>From Name</th>
-                      <td>{emp.emname2}</td>
+                     <td className="id2">{emp.emname2}</td>
                       <th>To Name</th>
-                      <td>{emp.emtoname2}</td>
+                     <td className="id2">{emp.emtoname2}</td>
                   </tr>
                      <tr>
                       <th>E-mail-3 State</th>
 
-                      <td>{emp.emstate2}</td>
+                     <td className="id2">{emp.emstate2}</td>
                     
-                      <th>3rd e-mail Summary </th>
-                      <td>{emp.emsummary2}</td>
+                      <th style={{color:"blue"}}>3rd e-mail Summary </th>
+                      <td className="id2"colSpan={3}> <textarea
+      
+      value={emp.emsummary2}
+     
+      className="form-control"
+      autoComplete="emsummary2"
+      rows="1" // You can adjust this initial number of rows
+      style={{ resize: "vertical" }} // This allows vertical resizing
+    /></td>
                     </tr>
 
-                    <td>
-                      <h5 className="text-center">1st Call Details </h5>
+                   <td className="id2">
+                      <h5 className="text-center" style={{color:"green"}}>1st Call Details </h5>
                     </td>
                     <tr>
                       <th>Date</th>
-                      <td>{emp.cuscalldate}</td>
+                     <td className="id2">{emp.cuscalldate}</td>
                       <th>IST Time</th>
-                      <td>{emp.isttime}</td>
+                     <td className="id2">{emp.isttime}</td>
                       <th>From Name</th>
-                      <td>{emp.fromname}</td>
+                     <td className="id2">{emp.fromname}</td>
                     </tr>
                     <tr>
                       
                       <th>Call-1 State</th>
-                      <td>{emp.callstatus}</td>
+                     <td className="id2">{emp.callstatus}</td>
                     
                       <th>MOM with Actions </th>
-                      <td>{emp.callsummery}</td>
+                      <td className="id2" colSpan={3}> <textarea
+      
+      value={emp.callsummery}
+     
+      className="form-control"
+      autoComplete="callsummery"
+      rows="1" // You can adjust this initial number of rows
+      style={{ resize: "vertical" }} // This allows vertical resizing
+    /></td>
                     </tr>
-                    <td>
-                      <h5 className="text-center">2nd Call Details </h5>
+                   <td className="id2">
+                      <h5 className="text-center" style={{color:"green"}}>2nd Call Details </h5>
                     </td>
                     <tr>
                       <th>Date</th>
-                      <td>{emp.cuscalldate1}</td>
+                     <td className="id2">{emp.cuscalldate1}</td>
                       <th>IST Time</th>
-                      <td>{emp.isttime1}</td>
+                     <td className="id2">{emp.isttime1}</td>
                       <th>From Name</th>
-                      <td>{emp.fromname1}</td>
+                     <td className="id2">{emp.fromname1}</td>
                     </tr>
                     <tr>
                       
                       <th>Call-2 State</th>
-                      <td>{emp.callstatus1}</td>
+                     <td className="id2">{emp.callstatus1}</td>
                     
                       <th>MOM with Actions </th>
-                      <td>{emp.callsummery1}</td>
+                      <td className="id2" colSpan={3}> <textarea
+      
+      value={emp.callsummery1}
+     
+      className="form-control"
+      autoComplete="callsummery1"
+      rows="1" // You can adjust this initial number of rows
+      style={{ resize: "vertical" }} // This allows vertical resizing
+    /></td>
                     </tr>
 
-                    <td>
-                      <h5 className="text-center">3rd Call Details </h5>
+                   <td className="id2">
+                      <h5 className="text-center" style={{color:"green"}}>3rd Call Details </h5>
                     </td>
                     <tr>
                       <th>Date</th>
-                      <td>{emp.cuscalldate2}</td>
+                     <td className="id2">{emp.cuscalldate2}</td>
                       <th>IST Time</th>
-                      <td>{emp.isttime2}</td>
+                     <td className="id2">{emp.isttime2}</td>
                       <th>From Name</th>
-                      <td>{emp.fromname2}</td>
+                     <td className="id2">{emp.fromname2}</td>
                     </tr>
                     <tr>
                      
                       <th>Call-3 State</th>
-                      <td>{emp.callstatus2}</td>
+                     <td className="id2">{emp.callstatus2}</td>
                    
                       <th>MOM with Actions </th>
-                      <td>{emp.callsummery2}</td>
+                      <td className="id2" colSpan={3}> <textarea
+      
+      value={emp.callsummery2}
+     
+      className="form-control"
+      autoComplete="callsummery2"
+      rows="1" // You can adjust this initial number of rows
+      style={{ resize: "vertical" }} // This allows vertical resizing
+    /></td>
                     </tr>
                    
                     <tr>
                       <th>Edit</th>
-                      <td>
+                     <td className="id2" colSpan={5}>
                         <button
                           className="btn btn-primary"
                           onClick={() => handleSubmit2(emp.id)}
@@ -385,11 +462,10 @@ email:email
                         </button>
                       </td>
                     
-                     
                     </tr>
                     <br/><br/><br/>
                     <tr>
-                      <td></td>
+                     <td className="id2"></td>
                     </tr>
                   </>
                 )}

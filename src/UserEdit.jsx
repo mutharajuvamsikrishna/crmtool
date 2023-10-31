@@ -110,8 +110,10 @@ const data={
       <br />
       <br />
       <br />
-      <h2 className="text-center">Edit CRM Details</h2>
-<h3 className="text-center">Your Application ID Is {id}</h3>
+      <h2 className="text-center" style={{color:"orange"}}>Update Client Details</h2>
+      <br/>
+<h4 className="text-center" style={{color:"blue"}}>Your Application ID: {id}</h4>
+<br/>
       <div className="text-center">
         {/* Render the form for editing data */}
         {loading ? (
@@ -122,7 +124,7 @@ const data={
               <tbody>
                 <tr>
                   <th>BDM Name</th>
-                  <td>
+                  <td className="id2">
                   <select
                   id="id"
                   name="bdmname"
@@ -139,10 +141,10 @@ const data={
                 </select>
                   </td>
 
-                  <td>
+                  <td className="id2">
                     <th>1st Response Date</th>
                   </td>
-                  <td>
+                  <td className="id2">
                     <input
                       type="date"
                       name="firstres"
@@ -150,10 +152,10 @@ const data={
                       onChange={handleInputChange} 
                     />
                   </td>
-                  <td>
+                  <td className="id2">
                     <th>Last Response Date</th>
                   </td>
-                  <td>
+                  <td className="id2">
                     <input
                       type="date"
                       name="lastres"
@@ -164,7 +166,7 @@ const data={
                 </tr>
                 <tr>
                   <th>Company Name</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="cmpname"
@@ -173,7 +175,7 @@ const data={
                     />
                   </td>
                   <th>Latest Final Status</th>
-                  <td>
+                  <td className="id2">
                   <select
                   id="id"
                   name="lfstatus"
@@ -196,7 +198,7 @@ const data={
                 </select>
                   </td>
                   <th>POC Status</th>
-                  <td>
+                  <td className="id2">
                  
                 <select
                   id="id"
@@ -221,7 +223,7 @@ const data={
 
                <tr>
                   <th>Industry/Domain</th>
-                  <td>
+                  <td className="id2">
                   <select
                   id="id"
                   name="domain"
@@ -248,7 +250,7 @@ const data={
                 </select>
                   </td>
                   <th>Interested Service/s </th>
-                  <td>
+                  <td className="id2">
                   <select
                   id="id"
                   name="intrestserv"
@@ -285,39 +287,46 @@ const data={
                 </select>
               
                   </td>
-                  <th>More Details </th>
-                  <td>
-                  <input
-                      type="text"
-                      name="moredetail"
-                      value={formData.moredetail || ""}
-                      onChange={handleInputChange} 
-                    />
+                  <th>Summary </th>
+                  <td className="id2">
+                  <textarea
+      name="moredetail"
+      value={formData.moredetail}
+      onChange={handleInputChange}
+      className="form-control"
+      autoComplete="moredetail"
+      rows="1" // You can adjust this initial number of rows
+      style={{ resize: "vertical" }} // This allows vertical resizing
+    />
                   </td>
                </tr>
 
 
                <tr>
                   <th>Info Shared</th>
-                  <td>
-                  <input
-                      type="text"
+                  <td className="id2">
+                  <textarea
+                     
                       name="infoshared"
-                      value={formData.infoshared || ""}
+                      value={formData.infoshared}
+                      rows="1" // You can adjust this initial number of rows
+                      style={{ resize: "vertical" }} // This allows vertical resizing
                       onChange={handleInputChange} 
                     />
                   </td>
                   <th>Details Asked</th>
-                  <td>
-                  <input
-                      type="text"
+                  <td className="id2">
+                  <textarea
+                     
                       name="detailask"
-                      value={formData.detailask || ""}
+                      value={formData.detailask}
+                      rows="1" // You can adjust this initial number of rows
+                      style={{ resize: "vertical" }} // This allows vertical resizing
                       onChange={handleInputChange} 
                     />
                   </td>
                   <th>Website</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="website"
@@ -330,7 +339,7 @@ const data={
 
                <tr>
                   <th>LinkedIn Profile </th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="linkprof"
@@ -339,7 +348,7 @@ const data={
                     />
                   </td>
                   <th>Continent/Region </th>
-                  <td>
+                  <td className="id2">
                   <select
       id="id"
       name="region"
@@ -360,7 +369,7 @@ const data={
     </select>
                   </td>
                   <th>Country</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="coun"
@@ -374,16 +383,16 @@ const data={
                   <th>W.r.t  IST  Time
 
 </th>
-                  <td>
+                  <td className="id2">
                   <input
-                      type="text"
+                      type="time"
                       name="time"
                       value={formData.time || ""}
                       onChange={handleInputChange} 
                     />
                   </td>
                   <th>Before/After</th>
-                  <td>
+                  <td className="id2">
                   <select
       id="id"
       name="cusbefore"
@@ -400,7 +409,7 @@ const data={
                   </td>
                   
                   <th>Current State</th>
-                  <td>
+                  <td className="id2">
                   <select
                   id="id"
                   name="currentstate"
@@ -419,15 +428,15 @@ const data={
                 
                </tr>
 <tr>
-  <td></td>
-  <td><h5 className="text-center">
+  
+  <td className="id2" colSpan={6}><h5 className="text-center" style={{color:"blue"}}>
 Main Contact Person Details
 </h5></td>
 </tr>
 
                <tr>
                   <th>Full Name</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="maincontact"
@@ -436,7 +445,7 @@ Main Contact Person Details
                     />
                   </td>
                   <th>Email ID</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="mainemail"
@@ -445,7 +454,7 @@ Main Contact Person Details
                     />
                   </td>
                   <th>Phone No</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="mainmob"
@@ -457,7 +466,7 @@ Main Contact Person Details
 
 <tr>
 <th>LinkedIn Profile </th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="mainlinkprof"
@@ -465,18 +474,19 @@ Main Contact Person Details
                       onChange={handleInputChange} 
                     />
                   </td>
+                  <td colSpan={5}></td>
 </tr>
 
 <tr>
-  <td></td>
-  <td><h5 className="text-center">
+  
+  <td className="id2" colSpan={6}><h5 className="text-center" style={{color:"blue"}}>
 Second Contact Person Details
 </h5></td>
 </tr>
 
                <tr>
                   <th>Full Name</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="secondcontact"
@@ -485,7 +495,7 @@ Second Contact Person Details
                     />
                   </td>
                   <th>Email ID</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="secondemail"
@@ -494,7 +504,7 @@ Second Contact Person Details
                     />
                   </td>
                   <th>Phone No</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="secondmob"
@@ -506,7 +516,7 @@ Second Contact Person Details
 
 <tr>
 <th>LinkedIn Profile </th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="secondlinkprof"
@@ -514,15 +524,16 @@ Second Contact Person Details
                       onChange={handleInputChange} 
                     />
                   </td>
+                  <td colSpan={6}></td>
 </tr>
 
 <tr>
-  <td></td>
-  <td><h5 className="text-center">1st e-mail Details </h5></td>
+  
+  <td className="id2" colSpan={6}><h5 className="text-center" style={{color:"green"}}>1st e-mail Details </h5></td>
 </tr>
 <tr>
                   <th>Date</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="date"
                       name="emdate"
@@ -531,7 +542,7 @@ Second Contact Person Details
                     />
                   </td>
                   <th>From Name</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="emname"
@@ -540,7 +551,7 @@ Second Contact Person Details
                     />
                   </td>
                   <th>To Name</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="emtoname"
@@ -552,7 +563,7 @@ Second Contact Person Details
    
                <tr>
                   <th>E-mail-1 State</th>
-                  <td>
+                  <td className="id2">
                   <select
       id="id"
       name="emstate"
@@ -569,25 +580,28 @@ Second Contact Person Details
     </select>
                   </td>
                   <th>1st e-mail Summary </th>
-                  <td>
-                  <input
-                      type="text"
-                      name=""
-                      value={formData.emsummary || ""}
-                      onChange={handleInputChange} 
-                    />
+                  <td className="id2" colSpan={3}>
+                  <textarea
+      name="emsummary"
+      value={formData.emsummary}
+      onChange={handleInputChange}
+      className="form-control"
+      autoComplete="emsummary"
+      rows="1" // You can adjust this initial number of rows
+      style={{ resize: "vertical" }} // This allows vertical resizing
+    />
                   </td>
                  
                </tr>
 
                
                <tr>
-                <td></td>
-  <td><h5 className="text-center">2nd e-mail Details </h5></td>
+               
+  <td className="id2" colSpan={6}><h5 className="text-center" style={{color:"green"}}>2nd e-mail Details </h5></td>
 </tr>
 <tr>
                   <th>Date</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="date"
                       name="emdate1"
@@ -596,7 +610,7 @@ Second Contact Person Details
                     />
                   </td>
                   <th>From Name</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="emname1"
@@ -605,7 +619,7 @@ Second Contact Person Details
                     />
                   </td>
                   <th>To Name</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="emtoname1"
@@ -617,7 +631,7 @@ Second Contact Person Details
    
                <tr>
                   <th>E-mail-2 State</th>
-                  <td>
+                  <td className="id2">
                   <select
       id="id"
       name="emstate1"
@@ -633,34 +647,29 @@ Second Contact Person Details
       <option value="To Follow-up">To Follow-up</option>
     </select>
                   </td>
-                  <th>1st e-mail Summary </th>
-                  <td>
-                  <input
-                      type="text"
-                      name=""
-                      value={formData.emsummary || ""}
-                      onChange={handleInputChange} 
-                    />
-                  </td>
+                  
                   <th>2nd e-mail Summary </th>
-                  <td>
-                  <input
-                      type="text"
-                      name="emsummary1"
-                      value={formData.emsummary1 || ""}
-                      onChange={handleInputChange} 
-                    />
+                  <td className="id2" colSpan={3}>
+                  <textarea
+      name="emsummary1"
+      value={formData.emsummary1}
+      onChange={handleInputChange}
+      className="form-control"
+      autoComplete="emsummary1"
+      rows="1" // You can adjust this initial number of rows
+      style={{ resize: "vertical" }} // This allows vertical resizing
+    />
                   </td>
                  
                </tr>
 
                <tr>
-                <td></td>
-  <td><h5 className="text-center">3rd e-mail Details </h5></td>
+              
+  <td className="id2" colSpan={6}><h5 className="text-center" style={{color:"green"}}>3rd e-mail Details </h5></td>
 </tr>
 <tr>
                   <th>Date</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="date"
                       name="emdate2"
@@ -669,7 +678,7 @@ Second Contact Person Details
                     />
                   </td>
                   <th>From Name</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="emname2"
@@ -678,7 +687,7 @@ Second Contact Person Details
                     />
                   </td>
                   <th>To Name</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="emtoname2"
@@ -690,7 +699,7 @@ Second Contact Person Details
    
                <tr>
                   <th>E-mail-3 State</th>
-                  <td>
+                  <td className="id2">
                   <select
       id="id"
       name="emstate2"
@@ -706,33 +715,28 @@ Second Contact Person Details
       <option value="To Follow-up">To Follow-up</option>
     </select>
                   </td>
-                  <th>1st e-mail Summary </th>
-                  <td>
-                  <input
-                      type="text"
-                      name=""
-                      value={formData.emsummary || ""}
-                      onChange={handleInputChange} 
-                    />
-                  </td>
+                 
                   <th>3rd e-mail Summary </th>
-                  <td>
-                  <input
-                      type="text"
-                      name="emsummary2"
-                      value={formData.emsummary2 || ""}
-                      onChange={handleInputChange} 
-                    />
+                  <td className="id2" colSpan={3}>
+                  <textarea
+      name="emsummary2"
+      value={formData.emsummary2}
+      onChange={handleInputChange}
+      className="form-control"
+     
+      rows="1" // You can adjust this initial number of rows
+      style={{ resize: "vertical" }} // This allows vertical resizing
+    />
                   </td>
                </tr>
                <tr>
-                <td></td>
-                    <td><h5 className="text-center">1st Call Details </h5></td>
+                
+                    <td className="id2" colSpan={6}><h5 className="text-center" style={{color:"orange"}}>1st Call Details </h5></td>
                   </tr>
                  
     <tr>
                   <th>Date </th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="date"
                       name="cuscalldate"
@@ -741,16 +745,16 @@ Second Contact Person Details
                     />
                   </td>
                   <th>IST Time</th>
-                  <td>
+                  <td className="id2">
                   <input
-                      type="text"
+                      type="time"
                       name="isttmime"
                       value={formData.isttime || ""}
                       onChange={handleInputChange} 
                     />
                   </td>
                   <th>From Name</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="fromname"
@@ -761,7 +765,7 @@ Second Contact Person Details
                </tr>
                <tr>
                   <th>Call-1 State</th>
-                  <td>
+                  <td className="id2">
                   <select
       id="id"
       name="callstatus"
@@ -780,13 +784,16 @@ Second Contact Person Details
     </select>
                   </td>
                   <th>MOM with Actions </th>
-                  <td>
-                  <input
-                      type="text"
-                      name="callsummery"
-                      value={formData.callsummery || ""}
-                      onChange={handleInputChange} 
-                    />
+                  <td className="id2" colSpan={3}>
+                  <textarea
+      name="callsummery"
+      value={formData.callsummery}
+      onChange={handleInputChange}
+      className="form-control"
+     
+      rows="1" // You can adjust this initial number of rows
+      style={{ resize: "vertical" }} // This allows vertical resizing
+    />
                   </td>
                </tr>
 
@@ -795,13 +802,13 @@ Second Contact Person Details
 
 
                <tr>
-                <td></td>
-                    <td><h5 className="text-center">2nd Call Details </h5></td>
+               
+                    <td className="id2" colSpan={6}><h5 className="text-center" style={{color:"orange"}}>2nd Call Details </h5></td>
                   </tr>
 
 <tr>
                   <th>Date </th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="date"
                       name="cuscalldate1"
@@ -810,16 +817,16 @@ Second Contact Person Details
                     />
                   </td>
                   <th>IST Time</th>
-                  <td>
+                  <td className="id2">
                   <input
-                      type="text"
+                      type="time"
                       name="isttmime1"
                       value={formData.isttime1 || ""}
                       onChange={handleInputChange} 
                     />
                   </td>
                   <th>From Name</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="fromname1"
@@ -830,7 +837,7 @@ Second Contact Person Details
                </tr>
                <tr>
                   <th>Call-2 State</th>
-                  <td>
+                  <td className="id2">
                   <select
       id="id"
       name="callstatus1"
@@ -849,22 +856,25 @@ Second Contact Person Details
     </select>
                   </td>
                   <th>MOM with Actions </th>
-                  <td>
-                  <input
-                      type="text"
-                      name="callsummery1"
-                      value={formData.callsummery1 || ""}
-                      onChange={handleInputChange} 
-                    />
+                  <td className="id2" colSpan={3}>
+                  <textarea
+      name="callsummery1"
+      value={formData.callsummery1}
+      onChange={handleInputChange}
+      className="form-control"
+     
+      rows="1" // You can adjust this initial number of rows
+      style={{ resize: "vertical" }} // This allows vertical resizing
+    />
                   </td>
                </tr>
                <tr>
-                <td></td>
-                    <td><h5 className="text-center">3rd Call Details </h5></td>
+                
+                    <td className="id2" colSpan={6}><h5 className="text-center" style={{color:"orange"}}>3rd Call Details </h5></td>
                   </tr>
                <tr>
                   <th>Date </th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="date"
                       name="cuscalldate2"
@@ -873,16 +883,16 @@ Second Contact Person Details
                     />
                   </td>
                   <th>IST Time</th>
-                  <td>
+                  <td className="id2">
                   <input
-                      type="text"
+                      type="time"
                       name="isttmime2"
                       value={formData.isttime2 || ""}
                       onChange={handleInputChange} 
                     />
                   </td>
                   <th>From Name</th>
-                  <td>
+                  <td className="id2">
                   <input
                       type="text"
                       name="fromname2"
@@ -893,7 +903,7 @@ Second Contact Person Details
                </tr>
                <tr>
                   <th>Call-3 State</th>
-                  <td>
+                  <td className="id2">
                   <select
       id="id"
       name="callstatus2"
@@ -912,13 +922,16 @@ Second Contact Person Details
     </select>
                   </td>
                   <th>MOM with Actions </th>
-                  <td>
-                  <input
-                      type="text"
-                      name="callsummery"
-                      value={formData.callsummery2 || ""}
-                      onChange={handleInputChange} 
-                    />
+                  <td className="id2" colSpan={3}>
+                  <textarea
+      name="callsummery2"
+      value={formData.callsummery2}
+      onChange={handleInputChange}
+      className="form-control"
+     
+      rows="1" // You can adjust this initial number of rows
+      style={{ resize: "vertical" }} // This allows vertical resizing
+    />
                   </td>
                </tr>
               

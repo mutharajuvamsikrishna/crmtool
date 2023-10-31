@@ -110,11 +110,7 @@ call3:"",
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
-      setFormData({
-        ...formData,
-        [name]: value,
-      });
-    
+      
 
     
       setFormData({
@@ -137,7 +133,7 @@ if (type==="profile"){
   }
   return (
   
-    <div className="" style={{ minHeight: "100vh", backgroundColor:"skyblue" }}>
+    <div className="" style={{ minHeight: "100vh", backgroundColor:"blue" }}>
       <div
       style={{
         position: "absolute",
@@ -155,15 +151,20 @@ if (type==="profile"){
           color:"blue"
         }} />
     </div>
+   
+    <div className="application">
     
-      <div className="row justify-content-center">
-        <div className="col-md-6 mt-5">
+      <div className="row justify">
+        <div className="col-md-10 mt-5">
           <h2 className="text-center mb-4" style={{ color: "blue" }}>
-            ONiE Soft Client Request
+             New Client Details
           </h2>
+          
+      
+    <br/>
           <form onSubmit={handleSubmit}>
             <div className="form-group row my-3">
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
                 BDM Name
               </label>
               <div className="col-sm-2 my-1">
@@ -181,8 +182,8 @@ if (type==="profile"){
                   <option value="Krishna">Krishna</option>
                 </select>
               </div>
-              <label htmlFor="email" className="col-sm-2 col-form-label my-1">
-                1st Response Date
+              <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
+                1st Response 
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -193,7 +194,7 @@ if (type==="profile"){
                   className="form-control"
                 />
               </div>
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
                 Last Response
               </label>
               <div className="col-sm-2 my-1">
@@ -211,7 +212,7 @@ if (type==="profile"){
             </div>
 
             <div className="form-group row my-3">
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
                 Current State
               </label>
               <div className="col-sm-2 my-1">
@@ -230,7 +231,7 @@ if (type==="profile"){
                 </select>
               </div>
 
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
                 Latest Final Status
               </label>
               <div className="col-sm-2 my-1">
@@ -256,8 +257,8 @@ if (type==="profile"){
               </div>
 
               
-              <label htmlFor="rexpy" className="col-sm-2 col-form-label my-1">
-                Company Name
+              <label htmlFor="rexpy" className="col-sm-2 col-form-label my-1 label-custom">
+                Company 
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -276,8 +277,8 @@ if (type==="profile"){
 
             
             <div className="form-group row my-3">
-              <label htmlFor="lwd" className="col-sm-2 col-form-label my-1">
-                Poc Status
+              <label htmlFor="lwd" className="col-sm-2 col-form-label my-1 label-custom">
+                POC Status
               </label>{" "}
               {/* Add my-1 class here */}
               <div className="col-sm-2 my-1">
@@ -301,7 +302,7 @@ if (type==="profile"){
                 </select>
               </div>
               {/* <div className="form-group row my-2"> */}
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
                 Industry/Domain
               </label>
               <div className="col-sm-2 my-1">
@@ -330,7 +331,7 @@ if (type==="profile"){
                 </select>
               </div>
               {/* <div className="form-group row my-1"> Add my-2 class here */}
-              <label htmlFor="domain" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="domain" className="col-sm-2 col-form-label my-1 label-custom">
                 Interested Service/s{" "}
               </label>{" "}
               {/* Add my-1 class here */}
@@ -374,8 +375,8 @@ if (type==="profile"){
             </div>
 
             <div className="form-group row my-3">
-  <label htmlFor="id" className="col-sm-2 col-form-label my-1">
-    More Details
+  <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
+    Summary
   </label>
   <div className="col-sm-10 my-1">
     <textarea
@@ -392,8 +393,8 @@ if (type==="profile"){
 
 
 <div className="form-group row my-3">
-  <label htmlFor="id" className="col-sm-2 col-form-label my-1">
-    Information Shared
+  <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
+    Info Shared
   </label>
   <div className="col-sm-10 my-1">
     <textarea
@@ -408,7 +409,7 @@ if (type==="profile"){
   </div>
 </div>
 <div className="form-group row my-3">
-  <label htmlFor="id" className="col-sm-2 col-form-label my-1">
+  <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
    Details Asked
   </label>
   <div className="col-sm-10 my-1">
@@ -424,7 +425,7 @@ if (type==="profile"){
   </div>
 </div>
 <div className="form-group row my-3">
-<label htmlFor="id" className="col-sm-2 col-form-label my-1 required-label">
+<label htmlFor="id" className="col-sm-2 col-form-label my-1 required-label label-custom">
   * Website
 </label>
 
@@ -439,8 +440,8 @@ if (type==="profile"){
                   required
                 />
               </div>
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
-               Linkdin Profile <AiOutlineLinkedin/>
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
+               Linkdin Profile 
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -454,7 +455,7 @@ if (type==="profile"){
               </div>
               </div>
               <div className="form-group row my-3">
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
                 Country
               </label>
               <div className="col-sm-2 my-1">
@@ -470,7 +471,7 @@ if (type==="profile"){
                 />
               </div>
            
-              <label htmlFor="email" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
               Continent/Region 
               </label>
               <div className="col-sm-2 my-1">
@@ -492,7 +493,7 @@ if (type==="profile"){
       <option value="Antarctica">Antarctica</option>
     </select>
               </div>
-              <label htmlFor="email" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
               Time Zone
               </label>
               <div className="col-sm-2 my-1">
@@ -517,10 +518,10 @@ if (type==="profile"){
               </div>
 
             <div className="form-group row my-3">
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
-              W.r.t  IST  Time
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
+              No.Of Hours
 
-  <AiFillClockCircle/>
+  
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -532,8 +533,8 @@ if (type==="profile"){
                   autoComplete=""
                 />
               </div>
-              <label htmlFor="email" className="col-sm-2 col-form-label my-1">
-              Before/After
+              <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
+              Before/After (w.r.t IST)
               </label>
               <div className="col-sm-2 my-1">
               <select
@@ -549,11 +550,18 @@ if (type==="profile"){
       <option value="Before">Before</option>
     </select>
               </div>
-             
               </div>
-              <h5 className='text-center'>Main Contact Person Details</h5>
+          
+              <br/>
+              <div>
+                
+              <h4 className='text-center'>Main Contact Person Details</h4>
+              </div>
+              <br/>
+          
               <div className="form-group row my-3">
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
+              
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
                 
 Full Name
 
@@ -572,7 +580,7 @@ Full Name
               </div>
            
            
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
               LinkedIn Profile
               </label>
               <div className="col-sm-2 my-1">
@@ -585,8 +593,8 @@ Full Name
                   autoComplete=""
                 />
               </div>
-              <label htmlFor="email" className="col-sm-2 col-form-label my-1">
-                Email <AiOutlineMail/>
+              <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
+                Email 
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -600,8 +608,8 @@ Full Name
               </div>
               </div>
               <div className="form-group row my-1">
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
-               Mobile Number<AiFillMobile style={{height:"20px",width:"20px"}}/>
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
+               Mobile Number
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -618,10 +626,13 @@ Full Name
             </div>
 
 
-
-              <h5 className='text-center'>Second Contact Person Details</h5>
+<br/>
+<div>
+              <h4 className='text-center'>Second Contact Person Details</h4>
+              </div>
+              <br/>
               <div className="form-group row my-3">
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
                 
 Full Name
 
@@ -640,7 +651,7 @@ Full Name
               </div>
            
            
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
               LinkedIn Profile
               </label>
               <div className="col-sm-2 my-1">
@@ -653,8 +664,8 @@ Full Name
                   autoComplete=""
                 />
               </div>
-              <label htmlFor="email" className="col-sm-2 col-form-label my-1">
-                Email <AiOutlineMail/>
+              <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
+                Email 
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -667,8 +678,8 @@ Full Name
               </div>
               </div>
               <div className="form-group row my-1">
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
-               Mobile Number<AiFillMobile style={{height:"20px",width:"20px"}}/>
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
+               Mobile Number
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -683,9 +694,11 @@ Full Name
                 />
               </div>
             </div>
+            <br/>
             <div className="form-group row my-3">
-      <label htmlFor="lwd" className="col-sm-4 col-form-label my-1">
-        Do You Have 1st Email Details
+              
+      <label htmlFor="lwd" className="col-sm-4 col-form-label my-1 label-custom">
+        Do You Have 1st Email Details?
       </label>
       <div className="col-sm-2 my-1">
         <select
@@ -703,9 +716,9 @@ Full Name
     </div>
               {formData.email1=== 'Yes' && (
                 <>
-            <h5 className="text-center">1st e-mail Details </h5>
+            <h4 className="text-center">1st e-mail Details </h4>
               <div className="form-group row my-3">
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
                 
 Date
 
@@ -724,7 +737,7 @@ Date
               </div>
            
            
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
               From Name
               </label>
               <div className="col-sm-2 my-1">
@@ -737,7 +750,7 @@ Date
                   autoComplete=""
                 />
               </div>
-              <label htmlFor="email" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
               To Name
               </label>
               <div className="col-sm-2 my-1">
@@ -751,7 +764,7 @@ Date
               </div>
               </div>
               <div className="form-group row my-1">
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
               E-mail-1 State
               </label>
               <div className="col-sm-2 my-1">
@@ -770,7 +783,7 @@ Date
     </select>
               </div>
              
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
               1st e-mail Summary 
   </label>
   <div className="col-sm-6 my-1">
@@ -788,8 +801,8 @@ Date
             </>
               )}
                 <div className="form-group row my-3">
-      <label htmlFor="lwd" className="col-sm-4 col-form-label my-1">
-        Do You Have 2nd Email Details
+      <label htmlFor="lwd" className="col-sm-4 col-form-label my-1 label-custom">
+        Do You Have 2nd Email Details?
       </label>
       <div className="col-sm-2 my-1">
         <select
@@ -807,9 +820,9 @@ Date
     </div>
     {formData.email2=== 'Yes' && (
       <>
-            <h5 className="text-center">2nd e-mail Details </h5>
+            <h4 className="text-center">2nd e-mail Details </h4>
               <div className="form-group row my-3">
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
                 
 Date
 
@@ -828,7 +841,7 @@ Date
               </div>
            
            
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
               From Name
               </label>
               <div className="col-sm-2 my-1">
@@ -841,7 +854,7 @@ Date
                   autoComplete=""
                 />
               </div>
-              <label htmlFor="email" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
               To Name
               </label>
               <div className="col-sm-2 my-1">
@@ -855,7 +868,7 @@ Date
               </div>
               </div>
               <div className="form-group row my-1">
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
               E-mail-2 State
               </label>
               <div className="col-sm-2 my-1">
@@ -873,7 +886,7 @@ Date
       <option value="To Follow-up">To Follow-up</option>
     </select>
               </div>
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
               2nd e-mail Summary 
   </label>
   <div className="col-sm-6 my-1">
@@ -892,8 +905,8 @@ Date
             </>
             )}
              <div className="form-group row my-3">
-             <label htmlFor="lwd" className="col-sm-4 col-form-label my-1">
-        Do You Have 3rd Email Details
+             <label htmlFor="lwd" className="col-sm-4 col-form-label my-1 label-custom">
+        Do You Have 3rd Email Details?
       </label>
       <div className="col-sm-2 my-1">
         <select
@@ -912,9 +925,9 @@ Date
    {formData.email3=== 'Yes' && (
       <>
   
-            <h5 className="text-center">3rd e-mail Details </h5>
+            <h4 className="text-center">3rd e-mail Details </h4>
               <div className="form-group row my-3">
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
                 
 Date
 
@@ -933,7 +946,7 @@ Date
               </div>
            
            
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
               From Name
               </label>
               <div className="col-sm-2 my-1">
@@ -946,7 +959,7 @@ Date
                   autoComplete=""
                 />
               </div>
-              <label htmlFor="email" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
               To Name
               </label>
               <div className="col-sm-2 my-1">
@@ -960,7 +973,7 @@ Date
               </div>
               </div>
               <div className="form-group row my-1">
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
               E-mail-3 State
               </label>
               <div className="col-sm-2 my-1">
@@ -978,7 +991,7 @@ Date
       <option value="To Follow-up">To Follow-up</option>
     </select>
               </div>
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
               3rd e-mail Summary 
   </label>
   <div className="col-sm-6 my-1">
@@ -995,9 +1008,10 @@ Date
  </div>
  </>
             )}
+            <br/>
              <div className="form-group row my-3">
-              <label htmlFor="lwd" className="col-sm-4 col-form-label my-1">
-        Do You Have 1st Call Details
+              <label htmlFor="lwd" className="col-sm-4 col-form-label my-1 label-custom">
+        Do You Have 1st Call Details?
       </label>
       <div className="col-sm-2 my-1">
         <select
@@ -1015,9 +1029,9 @@ Date
     </div>
     {formData.call1=== 'Yes' && (
       <>
-  <h5 className="text-center">1st Call Details  </h5>
+  <h4 className="text-center">1st Call Details  </h4>
               <div className="form-group row my-3">
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
                 
 Date
 
@@ -1036,7 +1050,7 @@ Date
               </div>
            
            
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
               Ist Time
               </label>
               <div className="col-sm-2 my-1">
@@ -1049,7 +1063,7 @@ Date
                   autoComplete=""
                 />
               </div>
-              <label htmlFor="email" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
               From Name
               </label>
               <div className="col-sm-2 my-1">
@@ -1063,7 +1077,7 @@ Date
               </div>
               </div>
               <div className="form-group row my-1">
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
               Call-1 State
               </label>
               <div className="col-sm-2 my-1">
@@ -1083,7 +1097,7 @@ Date
      
     </select>
               </div>
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
               MOM with Actions 
   </label>
   <div className="col-sm-6 my-1">
@@ -1101,8 +1115,8 @@ Date
     </>
             )}
              <div className="form-group row my-3">
-              <label htmlFor="lwd" className="col-sm-4 col-form-label my-1">
-        Do You Have 2nd Call Details
+              <label htmlFor="lwd" className="col-sm-4 col-form-label my-1 label-custom">
+        Do You Have 2nd Call Details?
       </label>
       <div className="col-sm-2 my-1">
         <select
@@ -1120,9 +1134,9 @@ Date
     </div>
     {formData.call2=== 'Yes' && (
       <>
-    <h5 className="text-center">2nd Call Details  </h5>
+    <h4 className="text-center">2nd Call Details  </h4>
               <div className="form-group row my-3">
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
                 
 Date
 
@@ -1141,7 +1155,7 @@ Date
               </div>
            
            
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
               Ist Time
               </label>
               <div className="col-sm-2 my-1">
@@ -1154,7 +1168,7 @@ Date
                   autoComplete=""
                 />
               </div>
-              <label htmlFor="email" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
               From Name
               </label>
               <div className="col-sm-2 my-1">
@@ -1168,7 +1182,7 @@ Date
               </div>
               </div>
               <div className="form-group row my-1">
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
               Call-2 State
               </label>
               <div className="col-sm-2 my-1">
@@ -1187,7 +1201,7 @@ Date
      
     </select>
               </div>
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
               MOM with Actions 
   </label>
   <div className="col-sm-6 my-1">
@@ -1205,8 +1219,8 @@ Date
 </>
             )}
              <div className="form-group row my-3">
-              <label htmlFor="lwd" className="col-sm-4 col-form-label my-1">
-        Do You Have 3rd Call Details
+              <label htmlFor="lwd" className="col-sm-4 col-form-label my-1 label-custom">
+        Do You Have 3rd Call Details?
       </label>
       <div className="col-sm-2 my-1">
         <select
@@ -1224,9 +1238,9 @@ Date
     </div>
     {formData.call3=== 'Yes' && (
       <>
-<h5 className="text-center">3rd Call Details  </h5>
+<h4 className="text-center">3rd Call Details  </h4>
               <div className="form-group row my-3">
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
                 
 Date
 
@@ -1245,7 +1259,7 @@ Date
               </div>
            
            
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
               Ist Time
               </label>
               <div className="col-sm-2 my-1">
@@ -1258,7 +1272,7 @@ Date
                   autoComplete=""
                 />
               </div>
-              <label htmlFor="email" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
               From Name
               </label>
               <div className="col-sm-2 my-1">
@@ -1272,7 +1286,7 @@ Date
               </div>
               </div>
               <div className="form-group row my-1">
-              <label htmlFor="immi" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
               Call-3 State
               </label>
               <div className="col-sm-2 my-1">
@@ -1291,7 +1305,7 @@ Date
      
     </select>
               </div>
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1">
+              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
               MOM with Actions 
   </label>
   <div className="col-sm-6 my-1">
@@ -1310,7 +1324,9 @@ Date
   )}
 
             <div className="form-group row">
-              <div className="offset-sm-3 col-sm-9">
+             
+              <div className="offset-sm-5 col-sm-5">
+              <br/>
                 <input
                   type="submit"
                   value="Submit"
@@ -1321,12 +1337,18 @@ Date
             
            
           </form>
-          <br /> <br />
+          <br />
           <div className="text-center">
          <Link to="/loginsucess" state={{data:data}} style={{color:"bluegit"}}>Go Back</Link>
+       
           </div>
+          
         </div>
+        
         </div>
+        <br/>
+      </div>
+      
       </div>
    
   );

@@ -26,12 +26,12 @@ const [loading,setLoading]=useState(false)
         data
       );
       if (response.data === "adminotp") {
-        console.log(response.data);
-        console.log("Response data type:", typeof response.data);
+        
+        
         navigate("/adminchangepassword", { state: { data: data } }); // Use navigate to change the route
       } else {
         navigate("/Invalidcredits"); // Navigate to "/Invalidcredits"
-        console.log(response.data);
+        
       }
     } catch (error) {
       // Handle errors here
@@ -42,47 +42,40 @@ const [loading,setLoading]=useState(false)
     return <div><br/><br/><br></br><br/><br/><center><h1>Loading.....</h1></center></div>;
   }
   return (
-    <div style={{ backgroundColor: 'lightyellow', height: '99vh' }}>
+    <div className='password' style={{ backgroundColor: 'lightyellow', height: '99vh' }}>
       <center>
         <br /><br /><br /><br /><br /><br />
-        <h2>Forget Password</h2>
+        <h2>Change/Forget Password</h2>
+        <br />
         <form onSubmit={handleSubmit}>
-          <table>
+          <table cellPadding={13}>
             <tbody>
               <tr>
                 <td>Email</td>
                 <td>
-                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete='email'
-                  style={{width:"200%"}} required />
+                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} 
+                  placeholder="Enter Email" autoComplete='email'
+                  style={{width:"150%"}} required />
                 </td>
               </tr>
-                    <tr>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                    </tr>
+                   
               <tr>
                 <td>Mobile</td>
                 <td>
                   <input type="text" value={mob} onChange={(e) => setMob(e.target.value)} autoComplete='tel'
-                    style={{width:"200%"}} required />
+                    placeholder="Enter Mobile Number" style={{width:"150%"}} required />
                 </td>
               </tr>
 
             </tbody>
           </table>
-          <br />
-          <input type="submit" value="Submit" style={{ color: 'green' }} />
+          <br /> <br />
+          <button type="submit" class='btn btn-primary' >Submit</button>
         </form>
         <br /><br />
         <Link to="/adminlogin">Go Back</Link>
       </center>
     </div>
-
   );
 };
 

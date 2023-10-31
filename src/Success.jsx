@@ -10,7 +10,7 @@ const Success = () => {
   // Access the data object passed from the previous route
   const data = location.state.data;
   const ename = data.email;
-  console.log(data);
+ 
   const handleSubmit = (event) => {
     event.preventDefault();
 

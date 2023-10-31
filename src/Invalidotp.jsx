@@ -9,7 +9,7 @@ export default function Invalidotp() {
       <center>
         <h1 style={{ color: 'red' }}>Invalid OTP</h1>
         <br /> <br /> <br />
-        <Link to="/login">Go Back</Link>
+        <a href="javascript:history.go(-1)">Go Back</a>
       </center>
 
 

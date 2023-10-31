@@ -6,13 +6,13 @@ const AdminRegistersave = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [loading,setLoading]=useState(false);
-  console.log(location);
+
   const data1 = location.state.data;
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = location.state?.data; // Use optional chaining to check if data exists
     if (data) {
-      console.log(data);
+     
 
       // You can use axios to send the data to your backend server
       axios
@@ -22,7 +22,7 @@ const AdminRegistersave = () => {
 
           navigate("/regsucess1", { state: { data: data } }); // Use navigate to change the route
 
-          console.log(response.data);
+          
         })
         .catch((error) => {
           // Handle errors here

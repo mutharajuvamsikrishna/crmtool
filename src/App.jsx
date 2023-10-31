@@ -23,7 +23,6 @@ import ViewProApplication from './ViewProApplication';
 import TagRegister from './TagRegister';
 import AdminOtp from './AdminOtp';
 import AdminRegistersave from './AdminRegistersave';
-
 import AdminLogin from './AdminLogin';
 import AdminForgetPassword from './AdminForgetPassword';
 import AdminForgetPasswordOtp from './AdminChangeOtp';
@@ -37,14 +36,18 @@ import UserEdit from './UserEdit';
 import Profile from './Profile';
 import AdminProfile from './AdminProfile';
 import AdminRegfail from './AdminRegfail';
+import Addmore from './Addmore';
+
+import AdminAddmoreDetails from './AdminAddmoreDetails';
+
 function App() {
   return (
     <div className="maincontainer">
       <Router>
+        
         <Onielogo />
         <Routes>
           <Route path="/" element={<WelcomePage />} />
-         
           <Route path="/register" element={<Register />} />
           <Route path="/otp" element={<Otp />} />
           <Route path="/regsucess" element={<Regsucess />} />
@@ -65,7 +68,7 @@ function App() {
           <Route path="/admin" element={<TagRegister/>} />
           <Route path="/adminotp" element={<AdminOtp/>} />
           <Route path="/adminregsucess" element={<AdminRegistersave/>} />
-          
+          <Route path="/addmore" element={<Addmore/>} />
           <Route path="/adminlogin" element={<AdminLogin/>} />
           <Route path="/adminforgetpassword" element={<AdminForgetPassword/>} />
           <Route path="/adminchangepassword" element={<AdminForgetPasswordOtp/>} />
@@ -78,6 +81,9 @@ function App() {
           <Route path="/profile" element={<Profile/>} />
           <Route path="/adminprofile" element={<AdminProfile/>} />
           <Route path="/adminregfail" element={<AdminRegfail/>} />
+          
+          <Route path="/adminaddmore" element={<AdminAddmoreDetails/>} />
+        
         </Routes>
       </Router>
     </div>

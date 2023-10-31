@@ -6,11 +6,11 @@ const ChangeOtp = () => {
   const [otp, setOtp] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
+
 
   // Access the data object passed from the previous route, if available
   const data = location.state.data;
-  console.log(data);
+ 
 
   // const ename1 = data.email;
 
@@ -20,10 +20,15 @@ const ChangeOtp = () => {
     const otpdata = {
       otp: otp,
     };
-    if (otpdata.otp.length !== 6) {
-      alert("OTP must be 6 digits only");
-      return;
+    var v46= /^\d{6}$/;
+    if (otpdata.otp.length != 6) {
+      alert("OTP 6 digits only");
+      return false;
     }
+if(!otpdata.otp.match(v46)){
+  alert("OTP 6 Digits Numeric Only")
+  return false;
+}
 
     // You can use axios to send the data to your backend server
     axios
@@ -43,29 +48,19 @@ const ChangeOtp = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "lightgreen", height: "100vh" }}>
+    <div style={{ backgroundColor: '#f0f2f5', height: '100vh' }}>
       <center>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <h2 style={{ color: "blue" }}>Enter Your OTP </h2>
+        <br /><br /><br /><br /><br /><br />
+        <h2 style={{ color: 'blue' }}>Enter Your  OTP </h2>
+        <br/>
         <form onSubmit={handleSubmit}>
           {/* ... Your existing form elements ... */}
-          <input
-            type="text"
-            value={otp}
-            onChange={(e) => setOtp(e.target.value)}
-          />
-          <br />
-          <br />
-          <input type="submit" value="Submit" style={{ color: "green" }} />
+          <input type="text" value={otp} onChange={(e) => setOtp(e.target.value)} />
+          <br /><br /><br/>
+          <button type="submit" className='btn btn-primary' style={{fontSize:"18px"}}>Submit</button>
         </form>
-        <br />
-        <br />
-        <Link to="/reg">Go Back</Link>
+        <br /><br />
+        <a href="javascript:history.go(-1)">Go Back</a>
       </center>
     </div>
   );

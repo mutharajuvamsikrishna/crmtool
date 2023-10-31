@@ -4,7 +4,7 @@ import OnieLogoImage from './Images/oniesoft-final1.png'; // Adjust the path acc
 const Onielogo = () => {
   const logoStyle1 = {
     position: 'absolute',
-    top: 0,
+    top:20,
     left: 0,
   };
 

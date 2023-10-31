@@ -58,14 +58,12 @@ const Register = () => {
     
         if (response.data === "otp1") {
 
-          console.log(response.data);
-          console.log("Response data type:", typeof response.data);
+          
         
 navigate("/otp", { state: { data: data } }); // Use navigate to change the route
 
         } else {
-          console.log(response.data);
-          console.log("Response data type:", typeof response.data);
+          
          
           navigate("/regfail");
         }
@@ -81,12 +79,12 @@ navigate("/otp", { state: { data: data } }); // Use navigate to change the route
   return (
     <div style={{backgroundColor:'lightgray', minHeight:"99vh"}}>
       <center>
-        <br /><br /><br />
-        <div style={{backgroundColor:"whitesmoke",minHeight:"50vh",width:"40%"}}>
-        <h2 style={{color:'green'}}>Register With ONiE Soft</h2>
         <br />
+        <div  className="default">
+        <h2 style={{color:'green'}}>Sign Up for CRM System</h2>
+        
         <form onSubmit={handleSubmit} style={{ maxWidth: '400px' }}>
-      
+       
           <div className="form-group">
           <br/>
           <label>Email</label>
@@ -159,15 +157,15 @@ navigate("/otp", { state: { data: data } }); // Use navigate to change the route
           </div>
           <br />
           <button type="submit" className="btn btn-primary">
-            Register
+           Sign Up
           </button>
         </form>
         <div>
         <br/>
-        <Link to="/login" style={{color:"blue"}}>Already have an account?</Link>
+        <Link to="/login" style={{color:"blue"}}>Login, if you have an account!</Link>
       </div>
         </div>
-     
+     <br/>
       </center>
     </div>
   );

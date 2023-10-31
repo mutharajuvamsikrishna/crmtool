@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-
+import "./Application.css";
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -24,12 +24,10 @@ const Login = () => {
       .post('http://localhost:1279/loginform', data)
       .then((response) => {
         if (response.data === "personaldetails1") {
-          console.log(response.data);
-          console.log("Response data type:", typeof response.data);
+          
           navigate("/loginsucess", { state: { data: data } }); // Use navigate to change the route
         } else {
-          console.log(response.data);
-          console.log("Response data type:", typeof response.data);
+          
         alert("Invalid credentials")
         }
       })
@@ -41,38 +39,38 @@ const Login = () => {
 const handleSubmit1=()=>{
 navigate("/register")
 }
-  return (
-    <div style={{backgroundColor:"lightyellow",minHeight:"99vh"}}>
-      <center>
-        <br /><br /><br /><br /><br /><br />
-        <div>
-        <h2>Login With ONiE Soft</h2>
-        <br/>  <br/>
-        <form onSubmit={handleSubmit}>
-         
-                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete='email' placeholder='Enter Your Email'style={{width:"20%"}}required />
-               
-            <br/>   <br/>
-               
-                
-                  <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete='new-password'placeholder='Enter Your Password'style={{width:"20%"}} required />
-             
-                  <br/>  
-          <br />
-          <button className='btn btn-primary ' type="submit" style={{width:"10%"}}>Log In    </button>
-        </form>
+return (
+  <div style={{backgroundColor:"#f0f2f5",minHeight:"99vh"}}>
+    <center>
+      <br /><br /><br /><br /><br /><br />
+      <div>
+      <h2>Login to CRM System</h2>
+      <br/>  <br/>
+      <form onSubmit={handleSubmit}>
        
-        <br/>
-       <Link to="/forgetpassword">ChangePassword/ForgetPassword</Link>
-       </div>
-       <div>
-       <br/>
-<button className='btn btn-success' onClick={handleSubmit1}>Create Account</button>
-       </div>
-      
-      </center>
-    </div>
-  );
+                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete='email' placeholder='Enter Email'style={{width:"20%"}}required />
+             
+          <br/>   <br/>
+             
+              
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete='new-password'placeholder='Enter Password'style={{width:"20%"}} required />
+           
+                <br/>  <br/>
+        <br />
+        <button className='btn btn-primary ' type="submit" style={{width:"20%",fontSize:"22px"}}>Log In    </button>
+      </form>
+     
+      <br/><br/>
+      <Link to="/forgetpassword">Change/Forget Password</Link>
+     </div>
+     <div>
+     <br/><br/>
+<button className='btn btn-success' onClick={handleSubmit1} >Create New Account</button>
+     </div>
+    
+    </center>
+  </div>
+);
 };
 
 export default Login;

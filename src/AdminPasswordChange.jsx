@@ -8,7 +8,7 @@ const AdminPasswordChange = () => {
   const navigate = useNavigate();
   const location = useLocation(); // Move this line before any references to 'location'
 
-  console.log(location);
+
   const email = location.state.data.email; // Now you can access 'location'
 
   const handleSubmit = (event) => {
@@ -31,15 +31,14 @@ const AdminPasswordChange = () => {
       .put("http://localhost:1279/adminchangepassword1", data)
       .then((response) => {
         if (response.data === "adminchangepassword") {
-          console.log(response.data);
-          console.log("Response data type:", typeof response.data);
+          
           navigate({
             pathname: "/adminsuccess",
             state: { data: data }, // Pass the data object as state
           });
         } else {
           navigate("/Invalidcredits");
-          console.log(response.data);
+          
         }
       })
       .catch((error) => {
@@ -49,53 +48,60 @@ const AdminPasswordChange = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "lightyellow", height: "100vh" }}>
+    <div style={{ backgroundColor: "#f0f2f5", height: "100vh" }}>
       <center>
-        <br />
-        <br />
+       
         <br />
         <br />
         <br />
         <br />
         
         <h2>Change Password</h2>
-        <div style={{backgroundColor:"white",minHeight:"50vh",width:"40%"}}>
+        <br/>
+        <div className="default" style={{backgroundColor:"skyblue",minHeight:"40vh",width:"40%"}}>
         <form onSubmit={handleSubmit}>
         <div className="form-group">
            <br/>
-           <label>Password</label>
+           <label>New Password</label>
+           <p></p>
             <input
               type="password"
               className="form-control"
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder='Enter Password'
+              placeholder='Enter New Password'
               autoComplete="off"
+              style={{width:"40%"}}
               required
             />
           </div>
           <div className="form-group">
-           <br/>
-           <label>Confirm Password</label>
+           <br/> <br />
+        
+           <label>Confirm New Password</label>
+           <p></p>
             <input
               type="password"
               className="form-control"
               id="cnpassword"
               value={cnpassword}
               onChange={(e) => setCnpassword(e.target.value)}
-              placeholder='Enter Confirm Password'
+              placeholder='Confirm New Password'
               autoComplete="off"
+              style={{width:"40%"}}
               required
             />
           </div>
           <br />
-          <button type="submit" className="btn btn-primary">Change</button>
+          <button type="submit" className="btn btn-primary">Change Password</button>
         </form>
+        <br/>
         </div>
         <br />
         <br />
-        <a href="/adminlogin">Go Back</a>
+        <a href="javascript:history.go(-1)">Go Back</a>
+        
       </center>
     
     </div>

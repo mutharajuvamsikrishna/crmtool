@@ -6,13 +6,13 @@ const Registersave = () => {
   const navigate = useNavigate();
   const location = useLocation();
   
-  console.log(location);
+
 const data1=location.state.data;
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = location.state?.data; // Use optional chaining to check if data exists
     if (data) {
-      console.log(data);
+     
 
       // You can use axios to send the data to your backend server
       axios.post(`http://localhost:1279/save`, data)
@@ -21,7 +21,7 @@ const data1=location.state.data;
        
 navigate("/regsucess", { state: { data: data } }); // Use navigate to change the route
 
-          console.log(response.data);
+          
         })
         .catch((error) => {
           // Handle errors here

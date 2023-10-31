@@ -31,11 +31,11 @@ navigate("/login")
         <br />
         <br /> <br />
         <br />
-        <h1 style={{ color: 'blue' }}>Welcome To ONiE Soft</h1>
-        <br/><br/>
+        <h1 style={{ color: 'blue' }}>Welcome To CRM System</h1>
+        <br/><br/><br/><br/>
     
-      <button className='btn btn-primary' onClick={()=>handleNavigate("applicants")}>Applicants</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <button className='btn btn-primary' onClick={()=>handleNavigate("tag")}>Executive Team</button>
+      <button className='btn btn-primary' onClick={()=>handleNavigate("applicants")} style={{fontSize:"18px"}}>Sales Team</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button className='btn btn-primary' onClick={()=>handleNavigate("tag")} style={{fontSize:"18px"}}>Executive Team</button>
       </center>
       </div>
     </div>

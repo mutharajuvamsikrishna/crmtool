@@ -3,34 +3,25 @@ import axios from "axios";
 import { useLocation, Link } from "react-router-dom";
 import "./ViweAll.css";
 import { SlLogout } from "react-icons/Sl";
+import { BsPersonFillAdd } from "react-icons/bs";
+
 const Profile = () => {
   const [employee, setEmployee] = useState(null);
-  const [userLocation, setUserLocation] = useState(null); // Add this state variable
+  const [formData, setFormData] = useState([]);
   const location = useLocation();
+
   const email = location.state.data.email;
+  const data = {
+    email: email,
+  };
 
   useEffect(() => {
     fetchEmployee();
+    fetchEmployeeData(email);
   }, [email]);
 
-  useEffect(() => {
-    // Check if geolocation is supported by the browser
-    if ("geolocation" in navigator) {
-      // Request the user's geolocation
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          // Extract and store the user's location
-          const { latitude, longitude } = position.coords;
-          setUserLocation({ latitude, longitude });
-        },
-        (error) => {
-          console.error("Error getting geolocation:", error);
-        }
-      );
-    } else {
-      console.error("Geolocation is not supported by this browser.");
-    }
-  }, []);
+ 
+  
 
   const fetchEmployee = () => {
     axios
@@ -43,43 +34,113 @@ const Profile = () => {
       });
   };
 
+  const fetchEmployeeData = (email) => {
+    axios
+      .get(`http://localhost:1279/viewaddmore?email=${email}`)
+      .then((response) => {
+        setFormData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+const empid=formData.empid;
+
+const data1={
+  empid:empid
+ 
+}
+
   return (
     <div className="container6">
-      <br /> <br /> <br /> <br /> <br />
-      <div className="profile-header text-center">
-        <h1 style={{ textDecoration: "underline", color: "blue" }}>Profile</h1>
+      <br /> <br />
+      <div>
+        <h3 style={{ textDecoration: "underline", color: "blue", textAlign: "center" }}>Profile</h3>
       </div>
-      <div className="profile-content">
+      <div>
         <br />
         {employee && (
-          <div>
+          <div className="row justify">
             <center>
-              <p>
-                <strong>Name:</strong> {employee.ename}
-              </p>
-              <p>
-                <strong>Email:</strong> {employee.email}
-              </p>
-              <p>
-                <strong>Mobile Number:</strong> {employee.mob}
-              </p>
-             
-              <br />
-              <Link to="/login">
-                <SlLogout
-                  style={{
-                    height: "30px",
-                    width: "30px",
-                  }}
-                />
-              </Link>
-              <p>Logout</p>
+              <table cellPadding={13}>
+                <tbody>
+                  <tr>
+                    <td>Name</td>
+                    <td>{employee.ename}</td>
+                  </tr>
+                  <tr>
+                    <td>Email</td>
+                    <td>{employee.email}</td>
+                  </tr>
+                  <tr>
+                    <td>Mobile Number</td>
+                    <td>{employee.mob}</td>
+                    <td></td>
+                  </tr>
+                  {data1.empid !== undefined && (
+                    <>
+                      <tr>
+                        <td>Employee ID</td>
+                        <td>{formData.empid}</td>
+                      </tr>
+                      <tr>
+                        <td>Gender</td>
+                        <td>{formData.gender}</td>
+                      </tr>
+                      <tr>
+                        <td>Continent/Region</td>
+                        <td>{formData.region}</td>
+                      </tr>
+                      <tr>
+                        <td>Country</td>
+                        <td>{formData.country}</td>
+                      </tr>
+                      <tr>
+                        <td>City</td>
+                        <td>{formData.city}</td>
+                      </tr>
+                    </>
+                  )}
+                </tbody>
+              </table>
+
+              <div className="profile-info">
+              
+  {data1.empid === undefined && (
+    <Link to="/addmore" state={{ data: data }}>
+      <BsPersonFillAdd
+        style={{
+          height: "50px",
+          width: "50px",
+        }}
+      />
+      <br />
+      Add Info
+    </Link>
+  )}
+</div>
+
             </center>
+
+            <div className="profile-info">
+              <center>
+                <br /><br />
+                <Link to="/login">
+                  <SlLogout
+                    style={{
+                      height: "50px",
+                      width: "50px",
+                    }}
+                  />
+                  <br />Log Out
+                </Link>
+              </center>
+            </div>
           </div>
         )}
       </div>
 
-      <br /> <br /> <br />
+      <br /> <br />
       <center>
         <a href="javascript:history.go(-1)">Go Back</a>
       </center>

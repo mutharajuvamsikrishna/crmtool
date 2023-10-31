@@ -5,6 +5,7 @@
     width:100%;
    padding-left: 20px;
    padding-right: 10px;
+   
   }
   /* ViweAll.css */
 .table th,
@@ -16,6 +17,13 @@
   float: right;
 }
 .container6{
-  background-color:lightgray;
+  /* background-color:; */
   height: 99vh;
+}
+/* Profile.css */
+.profile-info {
+  margin-bottom: 10px; /* Add margin between profile info elements */
+}
+.id2{
+  font-size: 20px;
 }

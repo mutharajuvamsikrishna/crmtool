@@ -4,7 +4,7 @@ const Regsucess = () => {
 
   const location = useLocation();
   
-  console.log(location);
+
 const data1=location.state.data;
   return (
     <div>

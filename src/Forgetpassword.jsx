@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-
+import "./Application.css";
 const Forgetpassword = () => {
   const [email, setEmail] = useState('');
   const [mob, setMob] = useState('');
@@ -23,12 +23,12 @@ setLoading(true)
     try {
       const response = await axios.post('http://localhost:1279/changepassword', data);
       if (response.data === "otp") {
-        console.log(response.data);
-        console.log("Response data type:", typeof response.data);
+        
+        
         navigate("/changepassword", { state: { data: data } }); // Use navigate to change the route
       } else {
         navigate("/Invalidcredits"); // Navigate to "/Invalidcredits"
-        console.log(response.data);
+        
       }
     } catch (error) {
       // Handle errors here
@@ -36,44 +36,38 @@ setLoading(true)
     }
   };
   if (loading) {
-    return <div><br/><br/><br></br><br/><br/><center><h1>Loading.....</h1></center></div>;
+    return <div><br/><br/><br></br><br/><br/><center><h1>Sending OTP .....</h1></center></div>;
   }
   return (
-    <div style={{ backgroundColor: 'lightyellow', height: '99vh' }}>
+    <div className='password' style={{ backgroundColor: 'lightyellow', height: '99vh' }}>
       <center>
         <br /><br /><br /><br /><br /><br />
-        <h2>Forget Password</h2>
+        <h2>Change/Forget Password</h2>
+        <br />
         <form onSubmit={handleSubmit}>
-          <table>
+          <table cellPadding={13}>
             <tbody>
               <tr>
                 <td>Email</td>
                 <td>
-                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete='email'
-                  style={{width:"200%"}} required />
+                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} 
+                  placeholder="Enter Email" autoComplete='email'
+                  style={{width:"150%"}} required />
                 </td>
               </tr>
-                    <tr>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                    </tr>
+                   
               <tr>
                 <td>Mobile</td>
                 <td>
                   <input type="text" value={mob} onChange={(e) => setMob(e.target.value)} autoComplete='tel'
-                    style={{width:"200%"}} required />
+                    placeholder="Enter Mobile Number" style={{width:"150%"}} required />
                 </td>
               </tr>
 
             </tbody>
           </table>
-          <br />
-          <input type="submit" value="Submit" style={{ color: 'green' }} />
+          <br /> <br />
+          <button type="submit" class='btn btn-primary' >Submit</button>
         </form>
         <br /><br />
         <Link to="/login">Go Back</Link>

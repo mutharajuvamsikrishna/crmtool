@@ -134,9 +134,11 @@ setResponseneedtofollow(needtofollow.length)
   return (
     <React.Fragment>
       <div className="container-flucourse mb-3">
-        <h3 className="text-center">Welcome to Piechart </h3>
-        <h4 className="text-center">Total No.of Applicants {data.length}</h4>
-       
+        <br/>
+        <h3 className="text-center">Welcome to CRM Pie Charts </h3>
+        <br/>
+        <h4 className="text-center">Total No.of Clients {data.length}</h4>
+       <br/>
         <Chart
           type="pie"
           wcourseth={1349}
@@ -176,7 +178,7 @@ setResponseneedtofollow(needtofollow.length)
           }}
         ></Chart>
         <br />
-        <br />
+       
 
         <center>
         <a href="javascript:history.go(-1)">Go Back</a>

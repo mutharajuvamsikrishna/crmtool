@@ -24,12 +24,10 @@ const AdminLogin = () => {
       .post('http://localhost:1279/adminloginform', data)
       .then((response) => {
         if (response.data === "adminlogin") {
-          console.log(response.data);
-          console.log("Response data type:", typeof response.data);
+          
           navigate("/viewalldetails", { state: { data: data } }); // Use navigate to change the route
         } else {
-          console.log(response.data);
-          console.log("Response data type:", typeof response.data);
+          
         alert("Invalid credentials")
         }
       })
@@ -42,32 +40,32 @@ const handleSubmit1=()=>{
 navigate("/admin")
 }
   return (
-    <div style={{backgroundColor:"lightyellow",minHeight:"99vh"}}>
+    <div style={{backgroundColor:"#f0f2f5",minHeight:"99vh"}}>
       <center>
         <br /><br /><br /><br /><br /><br />
         <div>
-        <h2>Login With ONiE Soft</h2>
+        <h2>Login to CRM System</h2>
         <br/>  <br/>
         <form onSubmit={handleSubmit}>
          
-                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete='email' placeholder='Enter Your Email'style={{width:"20%"}}required />
+                  <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} autoComplete='email' placeholder='Enter Email'style={{width:"20%"}}required />
                
             <br/>   <br/>
                
                 
-                  <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete='new-password'placeholder='Enter Your Password'style={{width:"20%"}} required />
+                  <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete='new-password'placeholder='Enter Password'style={{width:"20%"}} required />
              
-                  <br/>  
+                  <br/>  <br/>
           <br />
-          <button className='btn btn-primary ' type="submit" style={{width:"10%"}}>Log In    </button>
+          <button className='btn btn-primary ' type="submit" style={{width:"20%",fontSize:"22px"}}>Log In    </button>
         </form>
        
-        <br/>
-        <Link to="/adminforgetpassword">ChangePassword/ForgetPassword</Link>
+        <br/><br/>
+        <Link to="/adminforgetpassword">Change/Forget Password</Link>
        </div>
        <div>
-       <br/>
-<button className='btn btn-success' onClick={handleSubmit1}>Create Account</button>
+       <br/><br/>
+<button className='btn btn-success' onClick={handleSubmit1} >Create New Account</button>
        </div>
       
       </center>
