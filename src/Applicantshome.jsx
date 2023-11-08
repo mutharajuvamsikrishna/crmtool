@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { CgProfile } from 'react-icons/cg';
 import axios from 'axios';
 import "./Application.css";
+import { getProfiles } from './Services/Api';
 const Applicantshome = () => {
   const [formdata, setFormData] = useState([]);
   const location = useLocation();
@@ -17,8 +18,9 @@ const Applicantshome = () => {
   }, [email]);
 
   const fetchEmployeeData = (email) => {
-    axios
-      .get(`http://localhost:1279/reg?email=${email}`)
+   // axios
+   //   .get(`http://localhost:1279/reg?email=${email}`)
+   getProfiles(email)
       .then((response) => {
       
         setFormData(response.data);

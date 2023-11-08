@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-
+import { postAdminForgetPassword } from "./Services/Api";
 const AdminForgetPassword = () => {
   const [email, setEmail] = useState("");
   const [mob, setMob] = useState("");
@@ -21,10 +21,11 @@ const [loading,setLoading]=useState(false)
     }
   setLoading(true)
     try {
-      const response = await axios.post(
-        "http://localhost:1279/adminchangepassword",
-        data
-      );
+    //  const response =await axios.post(
+        //"http://localhost:1279/adminchangepassword",
+       // data
+    //  );
+   const response=await postAdminForgetPassword(data)
       if (response.data === "adminotp") {
         
         

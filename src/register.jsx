@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate,Link } from 'react-router-dom';
-
+import { UserRegister } from "./Services/Api";
 const Register = () => {
   const [email, setEmail] = useState('');
   const [ename, setEname] = useState('');
@@ -50,10 +50,10 @@ const Register = () => {
     return false;
    }
    setLoading(true)
-    axios
+   // axios
     
-      .post('http://localhost:1279/register', data)
-     
+     // .post('http://localhost:1279/register', data)
+     UserRegister(data)
       .then((response) => {
     
         if (response.data === "otp1") {

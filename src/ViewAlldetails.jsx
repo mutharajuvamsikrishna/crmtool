@@ -7,7 +7,9 @@ import {
   AiOutlineFullscreen,
   AiOutlineCompress,
 } from "react-icons/ai";
-import { CgProfile } from "react-icons/cg";
+import { CgProfile } from "react-icons/cg"
+import { getAdminView,deleteUserById, getSearchQuery} from './Services/Api';
+;
 
 const ListEmployee = () => {
   const [employees, setEmployees] = useState([]);
@@ -30,10 +32,11 @@ const ListEmployee = () => {
   useEffect(() => {
     fetchEmployees();
   }, []);
-  //console.log(response1+"res")
+  
   const fetchEmployees = () => {
-    axios
-      .get("http://localhost:1279/req")
+   // axios
+    //  .get("http://localhost:1279/req")
+    getAdminView()
       .then((response) => {
         setEmployees(response.data);
       })
@@ -63,8 +66,9 @@ const ListEmployee = () => {
   };
 
   const deleteUser = (id) => {
-    axios
-      .delete(`http://localhost:1279/delete?id=${id}`)
+  //  axios
+  //    .delete(`http://localhost:1279/delete?id=${id}`)
+  deleteUserById(id)
       .then((response) => {
         alert("Deleted SucessFully");
       })
@@ -74,8 +78,9 @@ const ListEmployee = () => {
   };
 
   const handleSubmit1 = () => {
-    axios
-      .get(`http://localhost:1279/search?query=${searchQuery}`)
+   // axios
+   //   .get(`http://localhost:1279/search?query=${searchQuery}`)
+   getSearchQuery(searchQuery)
       .then((response) => {
         setEmployees(response.data);
       })

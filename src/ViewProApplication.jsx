@@ -4,6 +4,7 @@ import { useNavigate, Link,useLocation } from "react-router-dom";
 import "./ViweAll.css";
 import {  AiOutlineFullscreen,AiOutlineCompress } from "react-icons/ai";
 import { CgProfile } from 'react-icons/cg';
+import { getUserView } from "./Services/Api";
 const ListEmployee = () => {
   const [employees, setEmployees] = useState([]);
   const navigate = useNavigate();
@@ -19,8 +20,9 @@ email:email
   }, [email1]);
 
   const fetchEmployees = () => {
-    axios
-      .get("http://localhost:1279/req")
+  //  axios
+    //  .get("http://localhost:1279/req")
+    getUserView()
       .then((response) => {
         // Assuming response.data is an array of employee objects with an 'email' property
         const filterData = response.data.filter(

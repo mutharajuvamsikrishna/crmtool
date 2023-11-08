@@ -3,7 +3,7 @@ import axios from "axios";
 import { useLocation, useNavigate,Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 import "./Application.css";
-import { AiOutlineLinkedin, AiOutlineMail,AiFillMobile,AiFillClockCircle, } from "react-icons/ai";
+ import { postApplicationDetails } from "./Services/Api";
 import { CgProfile } from 'react-icons/cg';
 const Application = () => {
   const location =useLocation();
@@ -83,8 +83,9 @@ call3:"",
   const handleSubmit = (event) => {
     event.preventDefault();
     
-    axios
-      .post("http://localhost:1279/prosave", formData)
+  //  axios
+    //  .post("http://localhost:1279/prosave", formData)
+    postApplicationDetails(formData)
       .then((response) => {
         if (response.data === "personaldetails") {
           navigate("/success2", { state: { data: formData} }); // Use navigate to change the route

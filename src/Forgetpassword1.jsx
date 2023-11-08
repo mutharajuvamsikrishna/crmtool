@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
-
+import { postChangeUserPasswordByEmail } from './Services/Api';
 const Forgetpassword1 = () => {
   const [cnpassword, setCnpassword] = useState('');
   const [password, setPassword] = useState('');
@@ -27,8 +27,9 @@ const Forgetpassword1 = () => {
         return false;
        }
 
-    axios
-      .put('http://localhost:1279/changepassword1', data)
+   // axios
+    //  .put('http://localhost:1279/changepassword1', data)
+    postChangeUserPasswordByEmail(data)
       .then((response) => {
         if (response.data === "savesuceess1") {
           

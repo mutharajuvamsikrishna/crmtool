@@ -4,6 +4,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./ViewProApplication.css"; // Import your custom CSS file
 import "./ViweAll.css";
 import { CgProfile } from 'react-icons/cg';
+import { getProfessional,postApplicationDetails} from './Services/Api';
+
 const AdminEdit = () => {
   // State variables
  
@@ -20,8 +22,9 @@ const AdminEdit = () => {
   }, [id]);
 
   const fetchEmployeeData = (id) => {
-    axios
-      .get(`http://localhost:1279/viewprofessional?id=${id}`)
+    getProfessional(id)
+    //axios
+    //  .get(`http://localhost:1279/viewprofessional?id=${id}`)
       .then((response) => {
        
 
@@ -63,8 +66,9 @@ const data={
   const handleSubmit1 = (event) => {
    
      
-    axios
-      .post("http://localhost:1279/prosave", formData)
+   // axios
+     // .post("http://localhost:1279/prosave", formData)
+     postApplicationDetails(formData)
       .then((response) => {
         if (response.data === "personaldetails") {
           alert("Details Updated Successfully");
@@ -142,9 +146,9 @@ const data={
                 </select>
                   </td>
 
-                  <td className="id2">
+                 
                     <th>1st Response Date</th>
-                  </td>
+                 
                   <td className="id2">
                     <input
                       type="date"
@@ -153,9 +157,9 @@ const data={
                       onChange={handleInputChange} 
                     />
                   </td>
-                  <td className="id2">
+                  
                     <th>Last Response Date</th>
-                  </td>
+                
                   <td className="id2">
                     <input
                       type="date"

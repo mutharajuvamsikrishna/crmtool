@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import "./Application.css";
+import { postUserLogin } from './Services/Api';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,8 +21,9 @@ const Login = () => {
       alert("Password Should Minimum 6 Digits,Should have at least one uppercase and  Lowercase,One Numeric And Special Symbols Like @,&,*,#")
       return false;
     }
-    axios
-      .post('http://localhost:1279/loginform', data)
+  //  axios
+     // .post('http://localhost:1279/loginform', data)
+     postUserLogin(data)
       .then((response) => {
         if (response.data === "personaldetails1") {
           

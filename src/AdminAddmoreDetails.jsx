@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import { useLocation, Link,useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { CgProfile } from 'react-icons/cg';
+import { postUserAddmore } from './Services/Api';
 const AdminAddmoreDetails=() =>{
   
   const [gender, setGender] = useState("Male");
@@ -36,11 +37,12 @@ const navigate=useNavigate();
 
       return false;
     }
-    axios
-      .post("http://localhost:1279/addmore", data1)
+   // axios
+      //.post("http://localhost:1279/addmore", data1)
+      postUserAddmore(data1)
       .then((response) => {
         if (response.data === "addmoredone") {
-      navigate("/success2",{state:{data:data}})
+   alert("Details Changed SuccessFully")
        
         
         } 

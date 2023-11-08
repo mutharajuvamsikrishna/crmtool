@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-
+import { UserRegisterSuccess } from "./Services/Api";
 const Registersave = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,7 +15,8 @@ const data1=location.state.data;
      
 
       // You can use axios to send the data to your backend server
-      axios.post(`http://localhost:1279/save`, data)
+    //  axios.post(`http://localhost:1279/save`, data)
+    UserRegisterSuccess(data)
         .then((response) => {
           // Handle the response here if needed
        

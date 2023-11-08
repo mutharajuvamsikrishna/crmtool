@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation, Link } from "react-router-dom";
 import "./ViweAll.css";
-import { SlLogout } from "react-icons/Sl";
+//import { SlLogout } from "react-icons/Sl";
+import { SlLogout } from "react-icons/sl";
 import { BsPersonFillAdd } from "react-icons/bs";
-
+import { geAdminProfiles,getViewAddmore } from './Services/Api'
 const AdminProfile = () => {
   const [employee, setEmployee] = useState(null);
   const [formData, setFormData] = useState([]);
@@ -24,8 +25,9 @@ const AdminProfile = () => {
   
 
   const fetchEmployee = () => {
-    axios
-    .get(`http://localhost:1279/adminreg?email=${email}`)
+  //  axios
+   // .get(`http://localhost:1279/adminreg?email=${email}`)
+   geAdminProfiles(email)
       .then((response) => {
         setEmployee(response.data);
       })
@@ -35,8 +37,9 @@ const AdminProfile = () => {
   };
 
   const fetchEmployeeData = (email) => {
-    axios
-      .get(`http://localhost:1279/viewaddmore?email=${email}`)
+ //   axios
+    //  .get(`http://localhost:1279/viewaddmore?email=${email}`)
+    getViewAddmore(email)
       .then((response) => {
         setFormData(response.data);
       })
@@ -107,7 +110,7 @@ const data1={
               <div className="profile-info">
               
   {data1.empid === undefined && (
-    <Link to="/addmore" state={{ data: data }}>
+    <Link to="/adminaddmore" state={{ data: data }}>
       <BsPersonFillAdd
         style={{
           height: "50px",
@@ -125,7 +128,7 @@ const data1={
             <div className="profile-info">
               <center>
                 <br /><br />
-                <Link to="/login">
+                <Link to="/adminlogin">
                   <SlLogout
                     style={{
                       height: "50px",
@@ -148,4 +151,4 @@ const data1={
   );
 };
 
-export default AdminProfile;
+export default AdminProfile;

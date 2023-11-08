@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
-
+import { putAdminPasswordChange } from "./Services/Api";
 const AdminPasswordChange = () => {
   const [cnpassword, setCnpassword] = useState("");
   const [password, setPassword] = useState("");
@@ -27,8 +27,9 @@ const AdminPasswordChange = () => {
       return false;
     }
 
-    axios
-      .put("http://localhost:1279/adminchangepassword1", data)
+   // axios
+   //   .put("http://localhost:1279/adminchangepassword1", data)
+   putAdminPasswordChange(data)
       .then((response) => {
         if (response.data === "adminchangepassword") {
           

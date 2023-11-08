@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useLocation, Link } from "react-router-dom";
-
+import { postAdminRegister } from "./Services/Api";
 const AdminRegistersave = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,8 +15,9 @@ const AdminRegistersave = () => {
      
 
       // You can use axios to send the data to your backend server
-      axios
-        .post(`http://localhost:1279/adminsave`, data)
+     // axios
+      //  .post(`http://localhost:1279/adminsave`, data)
+      postAdminRegister(data)
         .then((response) => {
           // Handle the response here if needed
 

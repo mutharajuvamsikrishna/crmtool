@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate,Link } from "react-router-dom";
-
+import { AdminRegister } from "./Services/Api";
 const TagRegister = () => {
   const [id, setId] = useState("");
   const [email, setEmail] = useState("");
@@ -41,8 +41,9 @@ const TagRegister = () => {
       return false;
     }
     setLoading(true)
-    axios
-      .post("http://localhost:1279/adminregister", data)
+   // axios
+    //  .post("http://localhost:1279/adminregister", data)
+    AdminRegister(data)
       .then((response) => {
         if (response.data === "adminotp1") {
           

@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation, Link } from "react-router-dom";
 import "./ViweAll.css";
-import { SlLogout } from "react-icons/Sl";
+//import { SlLogout } from "react-icons/Sl";
+import { SlLogout } from "react-icons/sl";
 import { BsPersonFillAdd } from "react-icons/bs";
+import { getProfiles,getViewAddmore} from './Services/Api';
 
 const Profile = () => {
   const [employee, setEmployee] = useState(null);
@@ -24,8 +26,9 @@ const Profile = () => {
   
 
   const fetchEmployee = () => {
-    axios
-      .get(`http://localhost:1279/reg?email=${email}`)
+  // axios
+    //  .get(`http://localhost:1279/reg?email=${email}`)
+   getProfiles(email)
       .then((response) => {
         setEmployee(response.data);
       })
@@ -35,8 +38,9 @@ const Profile = () => {
   };
 
   const fetchEmployeeData = (email) => {
-    axios
-      .get(`http://localhost:1279/viewaddmore?email=${email}`)
+ //   axios
+    //  .get(`http://localhost:1279/viewaddmore?email=${email}`)
+    getViewAddmore(email)
       .then((response) => {
         setFormData(response.data);
       })
@@ -148,4 +152,4 @@ const data1={
   );
 };
 
-export default Profile;
+export default Profile;

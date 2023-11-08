@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-
+import { postUserOtp } from './Services/Api';
 const Otp = () => {
   const [otp, setOtp] = useState('');
   const navigate = useNavigate();
@@ -43,7 +43,8 @@ if(!otpdata.otp.match(v46)){
     // You can use axios to send the data to your backend server
 
 
-    axios.post(`http://localhost:1279/otp1?otp=${otp}`,otpdata)
+    //axios.post(`http://localhost:1279/otp1?otp=${otp}`,otpdata)
+    postUserOtp(otp)
       .then((response) => {
         // Handle the response here if needed
         if(response.data=="regsucess"){

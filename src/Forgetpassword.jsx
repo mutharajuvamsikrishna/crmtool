@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import "./Application.css";
+import { postUserForgetPassword } from './Services/Api';
 const Forgetpassword = () => {
   const [email, setEmail] = useState('');
   const [mob, setMob] = useState('');
@@ -21,7 +22,9 @@ const[loading,setLoading]=useState(false);
     }
 setLoading(true)
     try {
-      const response = await axios.post('http://localhost:1279/changepassword', data);
+     // const response = await axios.post('http://localhost:1279/changepassword', data);
+    const response= await postUserForgetPassword(data);
+     
       if (response.data === "otp") {
         
         
