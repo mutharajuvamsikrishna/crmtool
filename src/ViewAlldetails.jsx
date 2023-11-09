@@ -49,6 +49,7 @@ const ListEmployee = () => {
   const handleSubmit2 = (id) => {
     const data = {
       id: id,
+      email:email
     };
     navigate("/adminedit", { state: { data: data } });
   };

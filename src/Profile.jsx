@@ -66,36 +66,34 @@ const data1={
         {employee && (
           <div className="row justify">
             <center>
-              <table cellPadding={13}>
+              <table cellPadding={15}>
                 <tbody>
                   <tr>
                     <td>Name</td>
                     <td>{employee.ename}</td>
-                  </tr>
-                  <tr>
+                 
                     <td>Email</td>
                     <td>{employee.email}</td>
                   </tr>
                   <tr>
                     <td>Mobile Number</td>
                     <td>{employee.mob}</td>
-                    <td></td>
+                    <td>Status</td>
+                    <td style={{color:"green"}}>online</td>
                   </tr>
                   {data1.empid !== undefined && (
                     <>
                       <tr>
                         <td>Employee ID</td>
                         <td>{formData.empid}</td>
-                      </tr>
-                      <tr>
+                     
                         <td>Gender</td>
                         <td>{formData.gender}</td>
                       </tr>
                       <tr>
                         <td>Continent/Region</td>
                         <td>{formData.region}</td>
-                      </tr>
-                      <tr>
+                    
                         <td>Country</td>
                         <td>{formData.country}</td>
                       </tr>
@@ -134,6 +132,7 @@ const data1={
                     style={{
                       height: "50px",
                       width: "50px",
+                      
                     }}
                   />
                   <br />Log Out

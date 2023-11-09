@@ -80,9 +80,9 @@ const navigate=useNavigate();
           color:"blue"
         }} />
     </div>
-      <br /><br /><br />
+     
       <h2 className='text-center' style={{ color: 'blue' }}>Add More Details   </h2>
-      <br />
+      
       <center>
         <div className='addmore'>
           <form onSubmit={handleSubmit} style={{ maxWidth: '400px' }}>
@@ -165,7 +165,7 @@ const navigate=useNavigate();
           </form>
          <br/>
         </div>
-        <br />
+      
           <a href="javascript:history.go(-1)">Go Back</a>
       </center>
     </div>

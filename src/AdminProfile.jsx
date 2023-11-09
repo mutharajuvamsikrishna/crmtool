@@ -54,101 +54,100 @@ const data1={
  
 }
 
-  return (
-    <div className="container6">
-      <br /> <br />
-      <div>
-        <h3 style={{ textDecoration: "underline", color: "blue", textAlign: "center" }}>Profile</h3>
-      </div>
-      <div>
-        <br />
-        {employee && (
-          <div className="row justify">
-            <center>
-              <table cellPadding={13}>
-                <tbody>
-                  <tr>
-                    <td>Name</td>
-                    <td>{employee.ename}</td>
-                  </tr>
-                  <tr>
-                    <td>Email</td>
-                    <td>{employee.email}</td>
-                  </tr>
-                  <tr>
-                    <td>Mobile Number</td>
-                    <td>{employee.mob}</td>
-                    <td></td>
-                  </tr>
-                  {data1.empid !== undefined && (
-                    <>
-                      <tr>
-                        <td>Employee ID</td>
-                        <td>{formData.empid}</td>
-                      </tr>
-                      <tr>
-                        <td>Gender</td>
-                        <td>{formData.gender}</td>
-                      </tr>
-                      <tr>
-                        <td>Continent/Region</td>
-                        <td>{formData.region}</td>
-                      </tr>
-                      <tr>
-                        <td>Country</td>
-                        <td>{formData.country}</td>
-                      </tr>
-                      <tr>
-                        <td>City</td>
-                        <td>{formData.city}</td>
-                      </tr>
-                    </>
-                  )}
-                </tbody>
-              </table>
-
-              <div className="profile-info">
-              
-  {data1.empid === undefined && (
-    <Link to="/adminaddmore" state={{ data: data }}>
-      <BsPersonFillAdd
-        style={{
-          height: "50px",
-          width: "50px",
-        }}
-      />
+return (
+  <div className="container6">
+    <br /> <br />
+    <div>
+      <h3 style={{ textDecoration: "underline", color: "blue", textAlign: "center" }}>Profile</h3>
+    </div>
+    <div>
       <br />
-      Add Info
-    </Link>
-  )}
-</div>
-
-            </center>
+      {employee && (
+        <div className="row justify">
+          <center>
+            <table cellPadding={15}>
+              <tbody>
+                <tr>
+                  <td>Name</td>
+                  <td>{employee.ename}</td>
+               
+                  <td>Email</td>
+                  <td>{employee.email}</td>
+                </tr>
+                <tr>
+                  <td>Mobile Number</td>
+                  <td>{employee.mob}</td>
+                  <td>Status</td>
+                  <td style={{color:"green"}}>online</td>
+                </tr>
+                {data1.empid !== undefined && (
+                  <>
+                    <tr>
+                      <td>Employee ID</td>
+                      <td>{formData.empid}</td>
+                   
+                      <td>Gender</td>
+                      <td>{formData.gender}</td>
+                    </tr>
+                    <tr>
+                      <td>Continent/Region</td>
+                      <td>{formData.region}</td>
+                  
+                      <td>Country</td>
+                      <td>{formData.country}</td>
+                    </tr>
+                    <tr>
+                      <td>City</td>
+                      <td>{formData.city}</td>
+                    </tr>
+                  </>
+                )}
+              </tbody>
+            </table>
 
             <div className="profile-info">
-              <center>
-                <br /><br />
-                <Link to="/adminlogin">
-                  <SlLogout
-                    style={{
-                      height: "50px",
-                      width: "50px",
-                    }}
-                  />
-                  <br />Log Out
-                </Link>
-              </center>
-            </div>
-          </div>
-        )}
-      </div>
+            
+{data1.empid === undefined && (
+  <Link to="/addmore" state={{ data: data }}>
+    <BsPersonFillAdd
+      style={{
+        height: "50px",
+        width: "50px",
+      }}
+    />
+    <br />
+    Add Info
+  </Link>
+)}
+</div>
 
-      <br /> <br />
-      <center>
-        <a href="javascript:history.go(-1)">Go Back</a>
-      </center>
+          </center>
+
+          <div className="profile-info">
+            <center>
+              <br /><br />
+              <Link to="/login">
+                <SlLogout
+                  style={{
+                    height: "50px",
+                    width: "50px",
+                    
+                  }}
+                />
+                <br />Log Out
+              </Link>
+            </center>
+          </div>
+        </div>
+      )}
     </div>
-  );
+
+    <br /> <br />
+    <center>
+      <a href="javascript:history.go(-1)">Go Back</a>
+    </center>
+  </div>
+);
 };
 
 export default AdminProfile;

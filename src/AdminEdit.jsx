@@ -12,6 +12,11 @@ const AdminEdit = () => {
   const [loading, setLoading] = useState(true);
   const location = useLocation();
   const id = location.state.data.id;
+  const email=location.state.data.email;
+ 
+const data={
+  email:email
+}
   const navigate = useNavigate();
 
   // State object to store form field values
@@ -28,18 +33,12 @@ const AdminEdit = () => {
       .then((response) => {
        
 
-        // Filter out keys with null values or empty strings
-        const filteredData = Object.fromEntries(
-          Object.entries(response.data).filter(
-            ([_, value]) => value !== null && value !== ""
-          )
-        );
 
        
         setLoading(false);
 
-        // Set the initial values of form fields from employeeData
-        setFormData(filteredData);
+       
+        setFormData(response.data);
       
       })
       .catch((error) => {
@@ -47,10 +46,7 @@ const AdminEdit = () => {
         setLoading(false);
       });
   };
-const email=formData.email;
-const data={
-  email:email
-}
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
@@ -115,7 +111,7 @@ const data={
       <br />
       <br />
       <br />
-      <h2 className="text-center" style={{color:"orange"}}>Update Client Details</h2>
+      <h2 className="text-center" style={{color:"orange"}}>Update Client Details </h2>
       <br/>
 <h4 className="text-center" style={{color:"blue"}}>Your Application ID: {id}</h4>
 <br/>
