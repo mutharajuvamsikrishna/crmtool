@@ -333,6 +333,7 @@ const data={
                       name="website"
                       value={formData.website || ""}
                       onChange={handleInputChange} 
+                      required
                     />
                   </td>
                </tr>

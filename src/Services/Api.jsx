@@ -33,7 +33,7 @@ export const postAdminChangeOtp = (otp) => {
   return Api.post(`/adminotp5?otp=${otp}`)
 }
 export const postUserChangeOtp = (otp) => {
-  return Api.post(`/otp1?otp=${otp}`)
+  return Api.post(`/otp5?otp=${otp}`)
 }
 export const postApplicationDetails = (formdata) => {
   return Api.post("/prosave",formdata)
@@ -52,7 +52,7 @@ export const postAdminOtp = (otp) => {
   return Api.post(`/adminotp1?otp=${otp}`)
 }
 export const postUserOtp = (otp) => {
-  return Api.post(`/otp5?otp=${otp}`)
+  return Api.post(`/otp1?otp=${otp}`)
 }
 export const putAdminPasswordChange = (data) => {
   return Api.put("/adminchangepassword1",data)
