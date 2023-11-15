@@ -35,9 +35,10 @@ navigate("/regsucess", { state: { data: data } }); // Use navigate to change the
 
   return (
     <div>
-      <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
+      <br /> <br /> <br /> <br /> <br /> <br /> <br /> 
       <center>
-      <h3 style={{ color: 'green' }}>preview</h3>
+      <h3 style={{ color: 'green' }}>Preview</h3>
+      <br/>
         <table>
           <thead></thead>
 <tbody>
@@ -55,7 +56,7 @@ navigate("/regsucess", { state: { data: data } }); // Use navigate to change the
         </table>
         
         <br/><br/>
-        <button onClick={handleSubmit}>Confirm</button>
+        <button className='btn btn-primary' onClick={handleSubmit}>Confirm</button>
         <br /><br />
         <Link to="/register">Go Back</Link>
       </center>

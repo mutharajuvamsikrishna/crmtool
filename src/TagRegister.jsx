@@ -60,7 +60,7 @@ const TagRegister = () => {
       });
   };
   if (loading) {
-    return <div><br/><br/><br></br><br/><br/><center><h1>Loading.....</h1></center></div>;
+    return <div><br/><br/><br></br><br/><br/><center><h1>Sending OTP.....</h1></center></div>;
   }
   return (
     <div style={{backgroundColor:'lightgray', minHeight:"99vh"}}>

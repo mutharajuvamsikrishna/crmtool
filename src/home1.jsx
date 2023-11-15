@@ -23,7 +23,7 @@ navigate("/login")
   }
 }
   return (
-    <div style={{ backgroundColor: 'lightgreen', height: "100vh", }}>
+    <div className='home' style={{  height: "99vh", }}>
     <div style={bgStyle}/>
       <div style={{opacity:0.8}}>
       <center>
@@ -31,7 +31,7 @@ navigate("/login")
         <br />
         <br /> <br />
         <br />
-        <h1 style={{ color: 'blue' }}>Welcome To CRM System</h1>
+        <h1 style={{ color: 'blue' }}>Welcome to CRM System</h1>
         <br/><br/><br/><br/>
     
       <button className='btn btn-primary' onClick={()=>handleNavigate("applicants")} style={{fontSize:"18px"}}>Sales Team</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -57,7 +57,7 @@ return (
               
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete='new-password'placeholder='Enter Password'style={{width:"20%"}} required />
            
-                <br/>  <br/>
+                <br/> 
         <br />
         <button className='btn btn-primary ' type="submit" style={{width:"20%",fontSize:"22px"}}>Log In    </button>
       </form>
