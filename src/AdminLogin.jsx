@@ -43,7 +43,7 @@ navigate("/admin")
   return (
     <div style={{backgroundColor:"#f0f2f5",minHeight:"99vh"}}>
       <center>
-        <br /><br /><br /><br /><br /><br />
+        <br /><br /><br /><br /><br />
         <div>
         <h2>Login to CRM System</h2>
         <br/>  <br/>
@@ -58,14 +58,14 @@ navigate("/admin")
              
                   <br/> 
           <br />
-          <button className='btn btn-primary ' type="submit" style={{width:"20%",fontSize:"22px"}}>Log In    </button>
+          <button className='btn btn-primary ' type="submit" style={{width:"10%",fontSize:"18px"}}>Log In</button>
         </form>
        
-        <br/><br/>
-        <Link to="/adminforgetpassword">Change/Forget Password</Link>
+        <br/>
+        <Link to="/adminforgetpassword">Forget Password?</Link>
        </div>
        <div>
-       <br/><br/>
+       <br/>
 <button className='btn btn-success' onClick={handleSubmit1} >Create New Account</button>
        </div>
       
