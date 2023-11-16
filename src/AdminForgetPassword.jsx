@@ -46,7 +46,7 @@ const [loading,setLoading]=useState(false)
     <div className='password' style={{ backgroundColor: 'lightyellow', height: '99vh' }}>
       <center>
         <br /><br /><br /><br /><br /><br />
-        <h2>Change/Forget Password</h2>
+        <h2>Forget Password</h2>
         <br />
         <form onSubmit={handleSubmit}>
           <table cellPadding={13}>
@@ -56,7 +56,7 @@ const [loading,setLoading]=useState(false)
                 <td>
                   <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} 
                   placeholder="Enter Email" autoComplete='email'
-                  style={{width:"150%"}} required />
+                  style={{width:"110%"}} required />
                 </td>
               </tr>
                    
@@ -64,16 +64,16 @@ const [loading,setLoading]=useState(false)
                 <td>Mobile</td>
                 <td>
                   <input type="text" value={mob} onChange={(e) => setMob(e.target.value)} autoComplete='tel'
-                    placeholder="Enter Mobile Number" style={{width:"150%"}} required />
+                    placeholder="Enter Mobile Number" style={{width:"110%"}} required />
                 </td>
               </tr>
 
             </tbody>
           </table>
-          <br /> <br />
+          <br /> 
           <button type="submit" class='btn btn-primary' >Submit</button>
         </form>
-        <br /><br />
+        <br />
         <Link to="/adminlogin">Go Back</Link>
       </center>
     </div>

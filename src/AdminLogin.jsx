@@ -58,7 +58,7 @@ navigate("/admin")
              
                   <br/> 
           <br />
-          <button className='btn btn-primary ' type="submit" style={{width:"10%",fontSize:"18px"}}>Log In</button>
+          <button className='btn btn-primary ' type="submit" style={{width:"20%",fontSize:"18px"}}>Log In</button>
         </form>
        
         <br/>

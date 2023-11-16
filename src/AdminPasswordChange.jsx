@@ -73,12 +73,12 @@ const AdminPasswordChange = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder='Enter New Password'
               autoComplete="off"
-              style={{width:"40%"}}
+              style={{width:"40%",borderColor:'black'}}
               required
             />
           </div>
           <div className="form-group">
-           <br/> <br />
+           <br/> 
         
            <label>Confirm New Password</label>
            <p></p>
@@ -90,12 +90,12 @@ const AdminPasswordChange = () => {
               onChange={(e) => setCnpassword(e.target.value)}
               placeholder='Confirm New Password'
               autoComplete="off"
-              style={{width:"40%"}}
+              style={{width:"40%",borderColor:'black'}}
               required
             />
           </div>
           <br />
-          <button type="submit" className="btn btn-primary">Change Password</button>
+          <button type="submit" className="btn btn-primary">Submit</button>
         </form>
         <br/>
         </div>

@@ -35,31 +35,41 @@ const AdminRegistersave = () => {
   };
 
   return (
-    <div>
-      <br /> <br /> <br /> <br /> <br /> <br /> <br /> 
+    <div className='default'>
+      <br /> <br /> <br /> 
       <center>
-        <h3 style={{ color: "green" }}>Preview</h3>
-<br/>
-        <table>
+      <h3 style={{ color: '',textDecoration:"underline" }}>Preview</h3>
+      <br/>
+        <table cellPadding={13} border={1}>
           <thead></thead>
-          <tbody>
-            <tr>
-              <td>{data1.ename}</td>
-            </tr>
-            <tr>
-              <td>{data1.email}</td>
-            </tr>
-            <tr>
-              <td>{data1.mob}</td>
-            </tr>
-          </tbody>
-        </table>
+<tbody>
+<tr>
+  <td>
+   ID
+  </td>
+  <td>{data1.id}</td>
+</tr>
+<tr>
+  <td>
+    Name 
+  </td>
+  <td>{data1.ename}</td>
+</tr>
+<tr>
+  <td>Email</td>
+  <td>{data1.email}</td>
+</tr><tr>
+  <td>Mobile Number</td>
+  <td>{data1.mob}</td>
+</tr>
+</tbody>
 
-        <br />
-        <br />
-        <button className='btn btn-primary'onClick={handleSubmit}>Confirm</button>
-        <br />
-        <br />
+
+        </table>
+        
+        <br/>
+        <button className='btn btn-primary' onClick={handleSubmit}>Confirm</button>
+        <br /><br />
         <Link to="/admin">Go Back</Link>
       </center>
     </div>

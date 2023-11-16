@@ -59,11 +59,11 @@ return (
            
                 <br/> 
         <br />
-        <button className='btn btn-primary ' type="submit" style={{width:"10%",fontSize:"18px"}}>Log In</button>
+        <button className='btn btn-primary ' type="submit" style={{width:"20%",fontSize:"18px"}}>Log In</button>
       </form>
      
       <br/>
-      <Link to="/adminforgetpassword">Forget Password?</Link>
+      <Link to="/forgetpassword">Forget Password?</Link>
      </div>
      <div>
      <br/>

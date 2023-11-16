@@ -59,7 +59,7 @@ const Forgetpassword1 = () => {
         
         <h2>Change Password</h2>
         <br/>
-        <div className="default" style={{backgroundColor:"skyblue",minHeight:"40vh",width:"40%"}}>
+        <div className="default" style={{backgroundColor:"",minHeight:"40vh",width:"40%"}}>
         <form onSubmit={handleSubmit}>
         <div className="form-group">
            <br/>
@@ -73,12 +73,12 @@ const Forgetpassword1 = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder='Enter New Password'
               autoComplete="off"
-              style={{width:"40%"}}
+              style={{width:"40%",borderColor:'black'}}
               required
             />
           </div>
           <div className="form-group">
-           <br/> <br />
+           <br/> 
         
            <label>Confirm New Password</label>
            <p></p>
@@ -90,17 +90,17 @@ const Forgetpassword1 = () => {
               onChange={(e) => setCnpassword(e.target.value)}
               placeholder='Confirm New Password'
               autoComplete="off"
-              style={{width:"40%"}}
+              style={{width:"40%",borderColor:'black'}}
               required
             />
           </div>
           <br />
-          <button type="submit" className="btn btn-primary">Change Password</button>
+          <button type="submit" className="btn btn-primary">Submit</button>
         </form>
         <br/>
         </div>
         <br />
-        <br />
+       
         <a href="javascript:history.go(-1)">Go Back</a>
         
       </center>

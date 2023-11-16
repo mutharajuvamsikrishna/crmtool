@@ -34,20 +34,25 @@ navigate("/regsucess", { state: { data: data } }); // Use navigate to change the
   };
 
   return (
-    <div>
-      <br /> <br /> <br /> <br /> <br /> <br /> <br /> 
+    <div className='default'>
+      <br /> <br /> <br /> 
       <center>
-      <h3 style={{ color: 'green' }}>Preview</h3>
+      <h3 style={{ color: '',textDecoration:"underline" }}>Preview</h3>
       <br/>
-        <table>
+        <table cellPadding={13} border={1}>
           <thead></thead>
 <tbody>
 <tr>
+  <td>
+    Name 
+  </td>
   <td>{data1.ename}</td>
 </tr>
 <tr>
+  <td>Email</td>
   <td>{data1.email}</td>
 </tr><tr>
+  <td>Mobile Number</td>
   <td>{data1.mob}</td>
 </tr>
 </tbody>
@@ -55,7 +60,7 @@ navigate("/regsucess", { state: { data: data } }); // Use navigate to change the
 
         </table>
         
-        <br/><br/>
+        <br/>
         <button className='btn btn-primary' onClick={handleSubmit}>Confirm</button>
         <br /><br />
         <Link to="/register">Go Back</Link>

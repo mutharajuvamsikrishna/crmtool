@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./ViewProApplication.css"; // Import your custom CSS file
 import "./ViweAll.css";
 import { CgProfile } from 'react-icons/cg';
-import { getProfessional,postApplicationDetails} from './Services/Api';
+import { getProfessional,putUserEditDetailsUpdate} from './Services/Api';
 
 const AdminEdit = () => {
   // State variables
@@ -65,11 +65,11 @@ const data={
   };
   const handleSubmit1 = (event) => {
    
-    postApplicationDetails(formData)
+    putUserEditDetailsUpdate(formData)
    // axios
       //.post("http://localhost:1279/prosave", formData)
       .then((response) => {
-        if (response.data === "personaldetails") {
+        if (response.data === "updated successfullly") {
           alert("Details Updated Successfully");
         } else {
           navigate("/regfail");

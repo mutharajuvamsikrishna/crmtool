@@ -85,3 +85,6 @@ export const UserRegister = (data) => {
 export const UserRegisterSuccess = (data) => {
   return Api.post("/save",data)
 }
+export const putUserEditDetailsUpdate = (formdata) => {
+  return Api.put("/usereditupdate",formdata)
+}

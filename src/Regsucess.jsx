@@ -7,8 +7,11 @@ const Regsucess = () => {
 
 const data1=location.state.data;
   return (
-    <div>
-      <br/><br/><br/><br/><br/><br/>
+    <div className='id15'>
+      <br/><br/><br/><br/> 
+      <div style={{float:"right"}}>
+      <a href="/login">Login</a>
+        </div><br/><br/>
     <p>Dear {data1.ename},</p>
   
   <p>We are thrilled to inform you that your registration with ONiE Soft has been successfully completed. Welcome aboard! We appreciate your decision to join our growing community.</p>
