@@ -19,6 +19,8 @@
 .container6{
   /* background-color:; */
   height: 99vh;
+  font-size: 16px;
+  font-weight: bold;
 }
 /* Profile.css */
 .profile-info {

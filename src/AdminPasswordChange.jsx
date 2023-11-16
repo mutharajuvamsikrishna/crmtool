@@ -59,7 +59,7 @@ const AdminPasswordChange = () => {
         
         <h2>Change Password</h2>
         <br/>
-        <div className="default" style={{backgroundColor:"skyblue",minHeight:"40vh",width:"40%"}}>
+        <div className="default" style={{backgroundColor:"",minHeight:"40vh",width:"40%"}}>
         <form onSubmit={handleSubmit}>
         <div className="form-group">
            <br/>
@@ -99,8 +99,7 @@ const AdminPasswordChange = () => {
         </form>
         <br/>
         </div>
-        <br />
-        <br />
+        
         <a href="javascript:history.go(-1)">Go Back</a>
         
       </center>

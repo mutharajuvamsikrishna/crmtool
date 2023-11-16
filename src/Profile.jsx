@@ -57,7 +57,7 @@ const data1={
 
   return (
     <div className="container6">
-      <br /> <br />
+      <br /> <br /><br/><br/>
       <div>
         <h3 style={{ textDecoration: "underline", color: "blue", textAlign: "center" }}>Profile</h3>
       </div>
@@ -66,7 +66,7 @@ const data1={
         {employee && (
           <div className="row justify">
             <center>
-              <table cellPadding={15}>
+              <table cellPadding={20} border={2}>
                 <tbody>
                   <tr>
                     <td>Name</td>
@@ -107,13 +107,13 @@ const data1={
               </table>
 
               <div className="profile-info">
-              
+              <br/>
   {data1.empid === undefined && (
     <Link to="/addmore" state={{ data: data }}>
       <BsPersonFillAdd
         style={{
-          height: "50px",
-          width: "50px",
+          height: "30px",
+          width: "30px",
         }}
       />
       <br />
@@ -126,12 +126,12 @@ const data1={
 
             <div className="profile-info">
               <center>
-                <br /><br />
+                <br />
                 <Link to="/login">
                   <SlLogout
                     style={{
-                      height: "50px",
-                      width: "50px",
+                      height: "30px",
+                      width: "30px",
                       
                     }}
                   />
@@ -143,7 +143,7 @@ const data1={
         )}
       </div>
 
-      <br /> <br />
+      <br /> 
       <center>
         <a href="javascript:history.go(-1)">Go Back</a>
       </center>

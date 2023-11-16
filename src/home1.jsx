@@ -5,7 +5,7 @@ const WelcomePage = () => {
   const bgStyle = {
     backgroundImage: 'url("https://oniesoft.com/images/oniesoft-final.png")',
     backgroundSize: 'cover',
-    opacity:0.5,
+    opacity:0.1,
     width: '100%', // Set the width of the container if needed
     height: '100vh', // Set the height of the container if needed
     position:"absolute",
@@ -32,7 +32,7 @@ navigate("/login")
         <br /> <br />
         <br />
         <h1 style={{ color: 'blue' }}>Welcome to CRM System</h1>
-        <br/><br/><br/><br/>
+        <br/><br/><br/>
     
       <button className='btn btn-primary' onClick={()=>handleNavigate("applicants")} style={{fontSize:"18px"}}>Sales Team</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <button className='btn btn-primary' onClick={()=>handleNavigate("tag")} style={{fontSize:"18px"}}>Executive Team</button>
