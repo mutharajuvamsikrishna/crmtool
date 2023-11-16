@@ -63,7 +63,7 @@ if(!otpdata.otp.match(v46)){
           <br /><br /><br/>
           <button type="submit" className='btn btn-primary' style={{fontSize:"18px"}}>Submit</button>
         </form>
-        <br /><br />
+        <br />
         <a href="javascript:history.go(-1)">Go Back</a>
       </center>
     </div>

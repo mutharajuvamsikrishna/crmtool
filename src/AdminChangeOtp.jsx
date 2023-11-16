@@ -57,7 +57,7 @@ if(!otpdata.otp.match(v46)){
         <form onSubmit={handleSubmit}>
           {/* ... Your existing form elements ... */}
           <input type="text" value={otp} onChange={(e) => setOtp(e.target.value)} />
-          <br /><br /><br/>
+          <br /><br />
           <button type="submit" className='btn btn-primary' style={{fontSize:"18px"}}>Submit</button>
         </form>
         <br /><br />
