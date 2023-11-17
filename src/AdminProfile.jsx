@@ -55,8 +55,8 @@ const data1={
 }
 
 return (
-  <div className="container6">
-    <br /> <br />
+  <div className="container6" style={{padding:"7%"}}>
+   
     <div>
       <h3 style={{ textDecoration: "underline", color: "blue", textAlign: "center" }}>Profile</h3>
     </div>
@@ -65,7 +65,7 @@ return (
       {employee && (
         <div className="row justify">
           <center>
-            <table cellPadding={15}>
+            <table  className="table table-striped table-bordered">
               <tbody>
                 <tr>
                   <td>Name</td>
@@ -106,13 +106,13 @@ return (
             </table>
 
             <div className="profile-info">
-            
+            <br />
 {data1.empid === undefined && (
   <Link to="/addmore" state={{ data: data }}>
     <BsPersonFillAdd
       style={{
-        height: "50px",
-        width: "50px",
+        height: "30px",
+        width: "30px",
       }}
     />
     <br />
@@ -129,8 +129,8 @@ return (
               <Link to="/login">
                 <SlLogout
                   style={{
-                    height: "50px",
-                    width: "50px",
+                    height: "30px",
+                    width: "30px",
                     
                   }}
                 />

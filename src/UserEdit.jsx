@@ -29,17 +29,13 @@ const AdminEdit = () => {
        
 
         // Filter out keys with null values or empty strings
-        const filteredData = Object.fromEntries(
-          Object.entries(response.data).filter(
-            ([_, value]) => value !== null && value !== ""
-          )
-        );
+      
 
        
         setLoading(false);
 
         // Set the initial values of form fields from employeeData
-        setFormData(filteredData);
+        setFormData(response.data);
       
       })
       .catch((error) => {
@@ -137,10 +133,11 @@ const data={
                   className="form-control"
                   
                 >
-                   
-                  <option value="Vamsi">Vamsi</option>
-                  <option value="Sai">Sai</option>
-                  <option value="Krishna">Krishna</option>
+<option value="Bharath">Bharath</option>
+<option alue="Prashanth">Prashanth</option>
+<option value="Posu Babu">Posu Babu</option>
+<option value="Murali">Murali</option>
+<option value="Ramana">Ramana</option>
                 </select>
                   </td>
 

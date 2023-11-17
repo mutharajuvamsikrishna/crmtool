@@ -39,7 +39,7 @@ navigate("/regsucess", { state: { data: data } }); // Use navigate to change the
       <center>
       <h3 style={{ color: '',textDecoration:"underline" }}>Preview</h3>
       <br/>
-        <table cellPadding={13} border={1}>
+        <table className="table table-striped table-bordered">
           <thead></thead>
 <tbody>
 <tr>

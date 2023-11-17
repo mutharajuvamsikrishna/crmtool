@@ -101,9 +101,33 @@ const ListEmployee = () => {
     setResponse1("");
   };
   const handleSubmit = () => {
-    if (bdm === "bdmname_value") {
+    if (bdm === "Bharath") {
       const filterData = employees.filter(
-        (employee) => employee.bdmname === "bdmname_value"
+        (employee) => employee.bdmname === "Bharath"
+      );
+      setEmployees(filterData);
+    }
+    if (bdm === "Prashanth") {
+      const filterData = employees.filter(
+        (employee) => employee.bdmname === "Prashanth"
+      );
+      setEmployees(filterData);
+    }
+    if (bdm === "Posu Babu") {
+      const filterData = employees.filter(
+        (employee) => employee.bdmname === "Posu Babu"
+      );
+      setEmployees(filterData);
+    }
+    if (bdm === "Murali") {
+      const filterData = employees.filter(
+        (employee) => employee.bdmname === "Murali"
+      );
+      setEmployees(filterData);
+    }
+    if (bdm === "Ramana") {
+      const filterData = employees.filter(
+        (employee) => employee.bdmname === "Ramana"
       );
       setEmployees(filterData);
     }
@@ -583,15 +607,15 @@ const ListEmployee = () => {
               onChange={(event) => setBdm(event.target.value)}
             >
               <option value="">Select an option</option>
-              <option value="bdmname_value">bdmname_value</option>
+              <option value="Bharath">Bharath</option>
 
-              <option value="">""</option>
+              <option value="Prashanth">Prashanth</option>
 
-              <option value="">""</option>
+              <option value="Posu Babu">Posu Babu</option>
 
-              <option value="">""</option>
+              <option value="Murali">Murali</option>
 
-              <option value="">""</option>
+              <option value="Ramana">Ramana</option>
             </select>
             {/* firstt */}
             <button onClick={handleSubmit}>Search</button>
@@ -847,7 +871,7 @@ const ListEmployee = () => {
                 <tr className="text-center">
                  <td className="id2"></td>
 
-                 <td className="id2" colSpan={4}>
+                 <td className="id2" colSpan={3}>
                     <AiOutlineFullscreen
                       onClick={() => expand(emp.id)}
                      

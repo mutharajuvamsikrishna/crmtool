@@ -122,7 +122,7 @@ email:email
                 <tr className="text-center">
                  <td className="id2"></td>
 
-                 <td className="id2" colSpan={4}>
+                 <td className="id2" colSpan={3}>
                     <AiOutlineFullscreen
                       onClick={() => expand(emp.id)}
                      
