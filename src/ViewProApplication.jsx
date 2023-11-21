@@ -115,8 +115,8 @@ email:email
                  <td className="id2">{emp.id}</td>
                   <th>BDM Name</th>
                   <td className="id2">{emp.bdmname}</td>
-                  <th>1st Response Date</th>
-                 <td className="id2">{emp.firstres}</td>
+                  <th style={{color:"green"}}>To FollowUp Date</th>
+                 <td className="id2">{emp.followup}</td>
                 </tr>
                 {response1 !== emp.id&& (
                 <tr className="text-center">
@@ -133,6 +133,7 @@ email:email
                     />
                   </td>
                   <td></td>
+                  <td></td>
                 </tr>
                 )}
 
@@ -144,7 +145,7 @@ email:email
                   <th>Company Name</th>
                      <td className="id2">{emp.cmpname}</td>
                 </tr>
-               <br/><br/><br/>
+               <br/><br/>
                 {response1===emp.id && (
                   <>
                   <tr className="text-center">
@@ -236,14 +237,16 @@ email:email
                         Time Zone
                       </th>
                      <td className="id2">{emp.timezone}</td>
-                    <th></th>
-                    <td></td>
+                     <th>1st Response Date</th>
+                 <td className="id2">{emp.firstres}</td>
                     </tr>
-                   <td className="id2">
+                    <tr>
+                   <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"orange"}}>
                         Main Contact Person Details
                       </h5>
                     </td>
+                    </tr>
                     <tr>
                       <th>Full Name </th>
                      <td className="id2">{emp.maincontact}</td>
@@ -259,11 +262,13 @@ email:email
 
                      <td className="id2" colSpan={5}>{emp.mainmob}</td>
                     </tr>
-                   <td className="id2">
+                    <tr>
+                   <td className="id2" colSpan={6}>
                       <h5 className="text-center"  style={{color:"orange"}}>
                         Second Contact Person Details
                       </h5>
                     </td>
+                    </tr>
                     <tr>
                       <th>Full Name </th>
                      <td className="id2">{emp.secondcontact}</td>
@@ -279,9 +284,11 @@ email:email
 
                      <td className="id2" colSpan={5}>{emp.secondmob}</td>
                     </tr>
-                   <td className="id2">
+                    <tr>
+                   <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"indigo"}}>1st e-mail Details </h5>
                     </td>
+                    </tr>
                     <tr>
                       <th>Date</th>
                      <td className="id2">{emp.emdate}</td>
@@ -310,10 +317,11 @@ email:email
       style={{ resize: "vertical", }} // This allows vertical resizing
     /></td>
                     </tr>
-
-                   <td className="id2">
+                    <tr>
+                   <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"indigo"}}>2nd e-mail Details </h5>
                     </td>
+                    </tr>
                     <tr>
                       <th>Date</th>
                      <td className="id2">{emp.emdate1}</td>
@@ -341,10 +349,11 @@ email:email
       style={{ resize: "vertical" }} // This allows vertical resizing
     /></td>
                     </tr>
-
-                   <td className="id2">
+                   <tr>
+                   <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"indigo"}}>3rd e-mail Details </h5>
                     </td>
+                    </tr>
                     <tr>
                       <th>Date</th>
                      <td className="id2">{emp.emdate2}</td>
@@ -369,10 +378,11 @@ email:email
       style={{ resize: "vertical" }} // This allows vertical resizing
     /></td>
                     </tr>
-
-                   <td className="id2">
+                   <tr>
+                   <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"green"}}>1st Call Details </h5>
                     </td>
+                    </tr>
                     <tr>
                       <th>Date</th>
                      <td className="id2">{emp.cuscalldate}</td>
@@ -397,9 +407,11 @@ email:email
       style={{ resize: "vertical" }} // This allows vertical resizing
     /></td>
                     </tr>
-                   <td className="id2">
+                    <tr>
+                   <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"green"}}>2nd Call Details </h5>
                     </td>
+                    </tr>
                     <tr>
                       <th>Date</th>
                      <td className="id2">{emp.cuscalldate1}</td>
@@ -424,10 +436,11 @@ email:email
       style={{ resize: "vertical" }} // This allows vertical resizing
     /></td>
                     </tr>
-
-                   <td className="id2">
+                   <tr>
+                   <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"green"}}>3rd Call Details </h5>
                     </td>
+                    </tr>
                     <tr>
                       <th>Date</th>
                      <td className="id2">{emp.cuscalldate2}</td>
@@ -465,7 +478,7 @@ email:email
                       </td>
                     
                     </tr>
-                    <br/><br/><br/>
+                    <br/><br/>
                     <tr>
                      <td className="id2"></td>
                     </tr>

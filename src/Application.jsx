@@ -12,7 +12,7 @@ const Application = () => {
     email:email
   }
   const [formData, setFormData] = useState({
-bdmname:"",
+bdmname:"Bharath",
    firstres:"",
    lastres:"",
    currentstate:"Hot",
@@ -77,12 +77,13 @@ email3:"",
 call1:"",
 call2:"",
 call3:"",
+followup:""
   });
   const navigate=useNavigate();
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    
+    console.log(formData +"   :Formdata")
   //  axios
     //  .post("http://localhost:1279/prosave", formData)
     postApplicationDetails(formData)
@@ -451,6 +452,20 @@ if (type==="profile"){
                   type="text"
                   name="linkprof"
                   value={formData.linkprof}
+                  onChange={handleInputChange}
+                  className="form-control"
+                  autoComplete="linkprof"
+                />
+              </div>
+              <label htmlFor="followup" className="col-sm-2 col-form-label my-1 label-custom"
+              style={{color:"blue"}}>
+               To FollowUp Date
+              </label>
+              <div className="col-sm-2 my-1">
+                <input
+                  type="date"
+                  name="followup"
+                  value={formData.followup}
                   onChange={handleInputChange}
                   className="form-control"
                   autoComplete="linkprof"

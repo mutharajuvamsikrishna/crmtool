@@ -420,13 +420,28 @@ const data={
                   className="form-control"
                   
                 >
-                  <option value={formData.currentstate}>Selected Value {formData.currentstate} </option>
+                 
                   <option value="Hot">Hot</option>
                   <option value="Warm">Warm</option>
                   <option value="Cold">Cold</option>
                 </select>
                   </td>
                 
+               </tr>
+               <tr>
+                <th>
+                  To FollowUp Date
+                </th>
+                <td>
+                  <input type="date"
+                  name="followup"
+                  value={formData.followup}
+                  onChange={handleInputChange} 
+                  />
+                </td>
+                <td colSpan={4}>
+
+                </td>
                </tr>
 <tr>
   

@@ -5,15 +5,16 @@ import { UserRegisterSuccess } from "./Services/Api";
 const Registersave = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  
+  const [load,setLoading]=useState(false);
 
 const data1=location.state.data;
   const handleSubmit = (event) => {
+    setLoading(true);
     event.preventDefault();
+    
     const data = location.state?.data; // Use optional chaining to check if data exists
     if (data) {
      
-
       // You can use axios to send the data to your backend server
     //  axios.post(`http://localhost:1279/save`, data)
     UserRegisterSuccess(data)
@@ -22,7 +23,6 @@ const data1=location.state.data;
        
 navigate("/regsucess", { state: { data: data } }); // Use navigate to change the route
 
-          
         })
         .catch((error) => {
           // Handle errors here
@@ -32,6 +32,9 @@ navigate("/regsucess", { state: { data: data } }); // Use navigate to change the
       console.error("Data not found in location state.");
     }
   };
+  if(load){
+    return <div style={{paddingTop:"10%"}}><h1 className='text-center'>Sending Details By Email.....</h1></div>;
+  }
 
   return (
     <div className='default'>

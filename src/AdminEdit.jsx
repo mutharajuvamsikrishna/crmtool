@@ -423,13 +423,27 @@ const data={
                   className="form-control"
                   
                 >
-                  <option value={formData.currentstate}>Selected Value {formData.currentstate} </option>
+                  
                   <option value="Hot">Hot</option>
                   <option value="Warm">Warm</option>
                   <option value="Cold">Cold</option>
                 </select>
                   </td>
-                
+               </tr>
+               <tr>
+                <th>
+                  To FollowUp Date
+                </th>
+                <td>
+                  <input type="date"
+                  name="followup"
+                  value={formData.followup}
+                  onChange={handleInputChange} 
+                  />
+                </td>
+                <td colSpan={4}>
+
+                </td>
                </tr>
 <tr>
   
@@ -531,8 +545,8 @@ Second Contact Person Details
                   <td colSpan={6}></td>
 </tr>
 
+
 <tr>
-  
   <td className="id2" colSpan={6}><h5 className="text-center" style={{color:"green"}}>1st e-mail Details </h5></td>
 </tr>
 <tr>
@@ -595,7 +609,6 @@ Second Contact Person Details
       style={{ resize: "vertical" }} // This allows vertical resizing
     />
                   </td>
-                 
                </tr>
 
                

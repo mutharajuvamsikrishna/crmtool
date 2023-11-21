@@ -39,6 +39,7 @@ const ListEmployee = () => {
     getAdminView()
       .then((response) => {
         setEmployees(response.data);
+        
       })
       .catch((error) => {
         console.log(error);
@@ -77,7 +78,7 @@ const ListEmployee = () => {
         console.error(error);
       });
   };
-
+console.log(employees)
   const handleSubmit1 = () => {
    // axios
    //   .get(`http://localhost:1279/search?query=${searchQuery}`)
@@ -852,20 +853,21 @@ const ListEmployee = () => {
       </div>
       <br />
       <div className="row">
-        <table className="table table-striped table-bordered">
+      <table className="table table-striped table-bordered">
           <thead>
             <tr></tr>
           </thead>
           <tbody>
             {employees.map((emp, index) => (
               <React.Fragment key={emp.linkprof}>
+                
                 <tr>
                   <th>Application ID</th>
                  <td className="id2">{emp.id}</td>
                   <th>BDM Name</th>
                   <td className="id2">{emp.bdmname}</td>
-                  <th>1st Response Date</th>
-                 <td className="id2">{emp.firstres}</td>
+                  <th style={{color:"green"}}>To FollowUp Date</th>
+                 <td className="id2">{emp.followup}</td>
                 </tr>
                 {response1 !== emp.id&& (
                 <tr className="text-center">
@@ -882,6 +884,7 @@ const ListEmployee = () => {
                     />
                   </td>
                   <td></td>
+                  <td></td>
                 </tr>
                 )}
 
@@ -893,7 +896,7 @@ const ListEmployee = () => {
                   <th>Company Name</th>
                      <td className="id2">{emp.cmpname}</td>
                 </tr>
-               <br/><br/><br/>
+               <br/><br/>
                 {response1===emp.id && (
                   <>
                   <tr className="text-center">
@@ -936,7 +939,8 @@ const ListEmployee = () => {
       className="form-control"
       autoComplete="moredetail"
       rows="1" // You can adjust this initial number of rows
-      style={{ resize: "vertical", }} // This allows vertical resizing
+      
+      style={{ resize: "vertical",}} // This allows vertical resizing
     /></td>
                     
                       <th>Info Shared</th>
@@ -968,6 +972,7 @@ const ListEmployee = () => {
 
                      <td className="id2">{emp.linkprof}</td>
                     </tr>
+
                     <tr>
                       <th>Continent/Region </th>
                      <td className="id2">{emp.region}</td>
@@ -984,14 +989,16 @@ const ListEmployee = () => {
                         Time Zone
                       </th>
                      <td className="id2">{emp.timezone}</td>
-                    <th></th>
-                    <td></td>
+                     <th>1st Response Date</th>
+                 <td className="id2">{emp.firstres}</td>
                     </tr>
-                   <td className="id2">
+                    <tr>
+                   <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"orange"}}>
                         Main Contact Person Details
                       </h5>
                     </td>
+                    </tr>
                     <tr>
                       <th>Full Name </th>
                      <td className="id2">{emp.maincontact}</td>
@@ -1007,11 +1014,13 @@ const ListEmployee = () => {
 
                      <td className="id2" colSpan={5}>{emp.mainmob}</td>
                     </tr>
-                   <td className="id2">
+                    <tr>
+                   <td className="id2" colSpan={6}>
                       <h5 className="text-center"  style={{color:"orange"}}>
                         Second Contact Person Details
                       </h5>
                     </td>
+                    </tr>
                     <tr>
                       <th>Full Name </th>
                      <td className="id2">{emp.secondcontact}</td>
@@ -1027,9 +1036,11 @@ const ListEmployee = () => {
 
                      <td className="id2" colSpan={5}>{emp.secondmob}</td>
                     </tr>
-                   <td className="id2">
+                    <tr>
+                   <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"indigo"}}>1st e-mail Details </h5>
                     </td>
+                    </tr>
                     <tr>
                       <th>Date</th>
                      <td className="id2">{emp.emdate}</td>
@@ -1058,10 +1069,11 @@ const ListEmployee = () => {
       style={{ resize: "vertical", }} // This allows vertical resizing
     /></td>
                     </tr>
-
-                   <td className="id2">
+                    <tr>
+                   <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"indigo"}}>2nd e-mail Details </h5>
                     </td>
+                    </tr>
                     <tr>
                       <th>Date</th>
                      <td className="id2">{emp.emdate1}</td>
@@ -1089,10 +1101,11 @@ const ListEmployee = () => {
       style={{ resize: "vertical" }} // This allows vertical resizing
     /></td>
                     </tr>
-
-                   <td className="id2">
+                   <tr>
+                   <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"indigo"}}>3rd e-mail Details </h5>
                     </td>
+                    </tr>
                     <tr>
                       <th>Date</th>
                      <td className="id2">{emp.emdate2}</td>
@@ -1117,10 +1130,11 @@ const ListEmployee = () => {
       style={{ resize: "vertical" }} // This allows vertical resizing
     /></td>
                     </tr>
-
-                   <td className="id2">
+                   <tr>
+                   <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"green"}}>1st Call Details </h5>
                     </td>
+                    </tr>
                     <tr>
                       <th>Date</th>
                      <td className="id2">{emp.cuscalldate}</td>
@@ -1145,9 +1159,11 @@ const ListEmployee = () => {
       style={{ resize: "vertical" }} // This allows vertical resizing
     /></td>
                     </tr>
-                   <td className="id2">
+                    <tr>
+                   <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"green"}}>2nd Call Details </h5>
                     </td>
+                    </tr>
                     <tr>
                       <th>Date</th>
                      <td className="id2">{emp.cuscalldate1}</td>
@@ -1172,10 +1188,11 @@ const ListEmployee = () => {
       style={{ resize: "vertical" }} // This allows vertical resizing
     /></td>
                     </tr>
-
-                   <td className="id2">
+                   <tr>
+                   <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"green"}}>3rd Call Details </h5>
                     </td>
+                    </tr>
                     <tr>
                       <th>Date</th>
                      <td className="id2">{emp.cuscalldate2}</td>
@@ -1203,7 +1220,7 @@ const ListEmployee = () => {
                    
                     <tr>
                       <th>Edit</th>
-                     <td className="id2">
+                     <td className="id2" colSpan={2}>
                         <button
                           className="btn btn-primary"
                           onClick={() => handleSubmit2(emp.id)}
@@ -1211,10 +1228,6 @@ const ListEmployee = () => {
                           Edit
                         </button>
                       </td>
-                    
-                     
-                    
-
                       <th>Delete</th>
                       <td className="id2" colSpan={3}>
                         <button
@@ -1225,11 +1238,9 @@ const ListEmployee = () => {
                         </button>
                       </td>
                     </tr>
-                    <br />
-                    <br />
-                    <br />
+                    <br/><br/><br/>
                     <tr>
-                      <td className="id2"></td>
+                     <td className="id2"></td>
                     </tr>
                   </>
                 )}
