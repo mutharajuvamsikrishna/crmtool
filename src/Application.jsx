@@ -7,12 +7,14 @@ import "./Application.css";
 import { CgProfile } from 'react-icons/cg';
 const Application = () => {
   const location =useLocation();
-   const email=location.state.data.email
+  const [load,setLoad]=useState(false);
+   const email=location.state.data.email;
+   const ename=location.state.data.ename;
   const data={
     email:email
   }
   const [formData, setFormData] = useState({
-bdmname:"Bharath",
+bdmname:ename,
    firstres:"",
    lastres:"",
    currentstate:"Hot",
@@ -82,11 +84,13 @@ followup:""
   const navigate=useNavigate();
   
   const handleSubmit = (event) => {
+    setLoad(true)
     event.preventDefault();
     console.log(formData +"   :Formdata")
   //  axios
     //  .post("http://localhost:1279/prosave", formData)
     postApplicationDetails(formData)
+    
       .then((response) => {
         if (response.data === "personaldetails") {
           navigate("/success2", { state: { data: formData} }); // Use navigate to change the route
@@ -99,7 +103,9 @@ followup:""
         console.error(error);
       });
   };
-  
+  if(load){
+    return <div style={{paddingTop:"10%"}}><h1 className='text-center'>Sending Details By Email.....</h1></div>;
+  }
   const handleDropdownChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -159,7 +165,7 @@ if (type==="profile"){
       <div className="row justify">
         <div className="col-md-10 mt-5">
           <h2 className="text-center mb-4" style={{ color: "blue" }}>
-             New Client Details
+             New Client Details 
           </h2>
           
       
@@ -170,21 +176,13 @@ if (type==="profile"){
                 BDM Name
               </label>
               <div className="col-sm-2 my-1">
-              <select
-                  id="id"
+            <input type="text"
                   name="bdmname"
-                style={{ color: "green", appearance: "auto" }}
-                  value={formData.bdmname}
-                  onChange={handleInputChange}
+                  value={ename}
                   className="form-control"
-                  
-                >
-                <option value="Bharath">Bharath</option>
-<option alue="Prashanth">Prashanth</option>
-<option value="Posu Babu">Posu Babu</option>
-<option value="Murali">Murali</option>
-<option value="Ramana">Ramana</option>
-                </select>
+                  style={{color:"green"}}
+                  readOnly
+                  />
               </div>
               <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
                 1st Response 
@@ -216,9 +214,9 @@ if (type==="profile"){
             </div>
 
             <div className="form-group row my-3">
-              <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
-                Current State
-              </label>
+            <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
+    <span style={{ color: 'red' }}>*</span>Current State
+  </label>
               <div className="col-sm-2 my-1">
                 <select
                   id="id"
@@ -236,7 +234,7 @@ if (type==="profile"){
               </div>
 
               <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
-                Latest Final Status
+              <span style={{ color: 'red' }}>*</span>Latest Status
               </label>
               <div className="col-sm-2 my-1">
                 <select
@@ -262,7 +260,7 @@ if (type==="profile"){
 
               
               <label htmlFor="rexpy" className="col-sm-2 col-form-label my-1 label-custom">
-                Company 
+              <span style={{ color: 'red' }}>*</span>Company 
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -307,7 +305,7 @@ if (type==="profile"){
               </div>
               {/* <div className="form-group row my-2"> */}
               <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
-                Industry/Domain
+              <span style={{ color: 'red' }}>*</span>Industry/Domain
               </label>
               <div className="col-sm-2 my-1">
                 <select
@@ -380,7 +378,7 @@ if (type==="profile"){
 
             <div className="form-group row my-3">
   <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
-    Summary
+  <span style={{ color: 'red' }}>*</span>Summary
   </label>
   <div className="col-sm-10 my-1">
     <textarea
@@ -429,8 +427,8 @@ if (type==="profile"){
   </div>
 </div>
 <div className="form-group row my-3">
-<label htmlFor="id" className="col-sm-2 col-form-label my-1 required-label label-custom">
-  * Website
+<label htmlFor="id" className="col-sm-2 col-form-label my-1  label-custom">
+<span style={{ color: 'red' }}>*</span>Website
 </label>
 
               <div className="col-sm-2 my-1">
@@ -458,8 +456,8 @@ if (type==="profile"){
                 />
               </div>
               <label htmlFor="followup" className="col-sm-2 col-form-label my-1 label-custom"
-              style={{color:"blue"}}>
-               To FollowUp Date
+              >
+              <span style={{ color: 'red' }}>*</span>Follow-Up Date
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -474,7 +472,7 @@ if (type==="profile"){
               </div>
               <div className="form-group row my-3">
               <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
-                Country
+              <span style={{ color: 'red' }}>*</span>Country
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -512,7 +510,7 @@ if (type==="profile"){
     </select>
               </div>
               <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
-              Time Zone
+              <span style={{ color: 'red' }}>*</span>Time Zone
               </label>
               <div className="col-sm-2 my-1">
               <select
@@ -581,7 +579,7 @@ if (type==="profile"){
               
               <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
                 
-Full Name
+              <span style={{ color: 'red' }}>*</span>Full Name
 
               </label>
               <div className="col-sm-2 my-1">
@@ -612,7 +610,7 @@ Full Name
                 />
               </div>
               <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
-                Email 
+              <span style={{ color: 'red' }}>*</span>Email 
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -713,32 +711,15 @@ Full Name
               </div>
             </div>
             <br/>
-            <div className="form-group row my-3">
+           
               
-      <label htmlFor="lwd" className="col-sm-4 col-form-label my-1 label-custom">
-        Do You Have 1st Email Details?
-      </label>
-      <div className="col-sm-2 my-1">
-        <select
-          id="id"
-          name="email1"
-          style={{ color: 'green', appearance: 'auto' }}
-          value={formData.email1}
-          onChange={handleDropdownChange} // Use handleDropdownChange here
-          className="form-control"
-        >
-           <option value="No">No</option>
-          <option value="Yes">Yes</option>
-        </select>
-      </div>
-    </div>
-              {formData.email1=== 'Yes' && (
-                <>
+    
+             
             <h4 className="text-center">1st e-mail Details </h4>
               <div className="form-group row my-3">
               <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
                 
-Date
+              <span style={{ color: 'red' }}>*</span>Date
 
               </label>
               <div className="col-sm-2 my-1">
@@ -756,7 +737,7 @@ Date
            
            
               <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
-              From Name
+              <span style={{ color: 'red' }}>*</span>From Name
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -769,7 +750,7 @@ Date
                 />
               </div>
               <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
-              To Name
+              <span style={{ color: 'red' }}>*</span>To Name
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -783,7 +764,7 @@ Date
               </div>
               <div className="form-group row my-1">
               <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
-              E-mail-1 State
+              <span style={{ color: 'red' }}>*</span>E-mail-1 State
               </label>
               <div className="col-sm-2 my-1">
               <select
@@ -802,7 +783,7 @@ Date
               </div>
              
               <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
-              1st e-mail Summary 
+              <span style={{ color: 'red' }}>*</span>Summary 
   </label>
   <div className="col-sm-6 my-1">
     <textarea
@@ -816,8 +797,8 @@ Date
     />
   </div>
             </div>
-            </>
-              )}
+           
+              
                 <div className="form-group row my-3">
       <label htmlFor="lwd" className="col-sm-4 col-form-label my-1 label-custom">
         Do You Have 2nd Email Details?
@@ -842,7 +823,7 @@ Date
               <div className="form-group row my-3">
               <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
                 
-Date
+              <span style={{ color: 'red' }}>*</span>Date
 
               </label>
               <div className="col-sm-2 my-1">
@@ -860,7 +841,7 @@ Date
            
            
               <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
-              From Name
+              <span style={{ color: 'red' }}>*</span>From Name
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -873,7 +854,7 @@ Date
                 />
               </div>
               <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
-              To Name
+              <span style={{ color: 'red' }}>*</span>To Name
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -887,7 +868,7 @@ Date
               </div>
               <div className="form-group row my-1">
               <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
-              E-mail-2 State
+              <span style={{ color: 'red' }}>*</span>E-mail-2 State
               </label>
               <div className="col-sm-2 my-1">
               <select
@@ -905,7 +886,7 @@ Date
     </select>
               </div>
               <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
-              2nd e-mail Summary 
+              <span style={{ color: 'red' }}>*</span>Summary 
   </label>
   <div className="col-sm-6 my-1">
     <textarea
@@ -947,7 +928,7 @@ Date
               <div className="form-group row my-3">
               <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
                 
-Date
+              <span style={{ color: 'red' }}>*</span>Date
 
               </label>
               <div className="col-sm-2 my-1">
@@ -965,7 +946,7 @@ Date
            
            
               <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
-              From Name
+              <span style={{ color: 'red' }}>*</span>From Name
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -978,7 +959,7 @@ Date
                 />
               </div>
               <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
-              To Name
+              <span style={{ color: 'red' }}>*</span>To Name
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -992,7 +973,7 @@ Date
               </div>
               <div className="form-group row my-1">
               <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
-              E-mail-3 State
+              <span style={{ color: 'red' }}>*</span>E-mail-3 State
               </label>
               <div className="col-sm-2 my-1">
               <select
@@ -1010,7 +991,7 @@ Date
     </select>
               </div>
               <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
-              3rd e-mail Summary 
+              <span style={{ color: 'red' }}>*</span>Summary 
   </label>
   <div className="col-sm-6 my-1">
     <textarea
@@ -1051,7 +1032,7 @@ Date
               <div className="form-group row my-3">
               <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
                 
-Date
+              <span style={{ color: 'red' }}>*</span>Date
 
               </label>
               <div className="col-sm-2 my-1">
@@ -1069,7 +1050,7 @@ Date
            
            
               <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
-              Ist Time
+              <span style={{ color: 'red' }}>*</span>Ist Time
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -1082,7 +1063,7 @@ Date
                 />
               </div>
               <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
-              From Name
+              <span style={{ color: 'red' }}>*</span>From Name
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -1096,7 +1077,7 @@ Date
               </div>
               <div className="form-group row my-1">
               <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
-              Call-1 State
+              <span style={{ color: 'red' }}>*</span>Call-1 State
               </label>
               <div className="col-sm-2 my-1">
               <select
@@ -1116,7 +1097,7 @@ Date
     </select>
               </div>
               <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
-              MOM with Actions 
+              <span style={{ color: 'red' }}>*</span>MOM with Actions 
   </label>
   <div className="col-sm-6 my-1">
     <textarea
@@ -1156,7 +1137,7 @@ Date
               <div className="form-group row my-3">
               <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
                 
-Date
+              <span style={{ color: 'red' }}>*</span>Date
 
               </label>
               <div className="col-sm-2 my-1">
@@ -1174,7 +1155,7 @@ Date
            
            
               <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
-              Ist Time
+              <span style={{ color: 'red' }}>*</span>Ist Time
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -1187,7 +1168,7 @@ Date
                 />
               </div>
               <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
-              From Name
+              <span style={{ color: 'red' }}>*</span>From Name
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -1201,7 +1182,7 @@ Date
               </div>
               <div className="form-group row my-1">
               <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
-              Call-2 State
+              <span style={{ color: 'red' }}>*</span>Call-2 State
               </label>
               <div className="col-sm-2 my-1">
               <select
@@ -1220,7 +1201,7 @@ Date
     </select>
               </div>
               <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
-              MOM with Actions 
+              <span style={{ color: 'red' }}>*</span>MOM with Actions 
   </label>
   <div className="col-sm-6 my-1">
     <textarea
@@ -1260,7 +1241,7 @@ Date
               <div className="form-group row my-3">
               <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
                 
-Date
+              <span style={{ color: 'red' }}>*</span>Date
 
               </label>
               <div className="col-sm-2 my-1">
@@ -1278,7 +1259,7 @@ Date
            
            
               <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
-              Ist Time
+              <span style={{ color: 'red' }}>*</span>Ist Time
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -1291,7 +1272,7 @@ Date
                 />
               </div>
               <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
-              From Name
+              <span style={{ color: 'red' }}>*</span>From Name
               </label>
               <div className="col-sm-2 my-1">
                 <input
@@ -1305,7 +1286,7 @@ Date
               </div>
               <div className="form-group row my-1">
               <label htmlFor="immi" className="col-sm-2 col-form-label my-1 label-custom">
-              Call-3 State
+              <span style={{ color: 'red' }}>*</span>Call-3 State
               </label>
               <div className="col-sm-2 my-1">
               <select
@@ -1324,7 +1305,7 @@ Date
     </select>
               </div>
               <label htmlFor="id" className="col-sm-2 col-form-label my-1 label-custom">
-              MOM with Actions 
+              <span style={{ color: 'red' }}>*</span>MOM with Actions 
   </label>
   <div className="col-sm-6 my-1">
     <textarea

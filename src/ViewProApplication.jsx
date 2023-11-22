@@ -115,8 +115,8 @@ email:email
                  <td className="id2">{emp.id}</td>
                   <th>BDM Name</th>
                   <td className="id2">{emp.bdmname}</td>
-                  <th style={{color:"green"}}>To FollowUp Date</th>
-                 <td className="id2">{emp.followup}</td>
+                  <th>Company Name</th>
+                     <td className="id2">{emp.cmpname}</td>
                 </tr>
                 {response1 !== emp.id&& (
                 <tr className="text-center">
@@ -142,8 +142,8 @@ email:email
                  <td className="id2">{emp.lastres}</td>
                   <th style={{color:"green"}}>Current State</th>
                  <td className="id2">{emp.currentstate}</td>
-                  <th>Company Name</th>
-                     <td className="id2">{emp.cmpname}</td>
+                 <th style={{color:"orange"}}>Follow-Up Date</th>
+                 <td className="id2">{emp.followup}</td>
                 </tr>
                <br/><br/>
                 {response1===emp.id && (

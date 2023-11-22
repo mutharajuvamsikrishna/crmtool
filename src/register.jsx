@@ -73,8 +73,8 @@ navigate("/otp", { state: { data: data } }); // Use navigate to change the route
         console.error(error);
       });
   };
-  if (loading) {
-    return <div><br/><br/><br></br><br/><br/><center><h1>Sending OTP.....</h1></center></div>;
+  if(loading){
+    return <div style={{paddingTop:"10%"}}><h1 className='text-center'>Sending OTP.....</h1></div>;
   }
   return (
     <div style={{backgroundColor:'lightgray', minHeight:"99vh"}}>

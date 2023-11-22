@@ -10,6 +10,7 @@ const AdminEdit = () => {
   // State variables
  
   const [loading, setLoading] = useState(true);
+  const [response,setResponse]=useState(false);
   const location = useLocation();
   const id = location.state.data.id;
   const navigate = useNavigate();
@@ -60,13 +61,14 @@ const data={
     }
   };
   const handleSubmit1 = (event) => {
-   
+   setResponse(true);
     putUserEditDetailsUpdate(formData)
    // axios
       //.post("http://localhost:1279/prosave", formData)
       .then((response) => {
         if (response.data === "updated successfullly") {
           alert("Details Updated Successfully");
+          window.location.reload();
         } else {
           navigate("/regfail");
         }
@@ -76,7 +78,9 @@ const data={
         console.error(error);
       });
   };
-  
+  if(response){
+    return <div style={{paddingTop:"10%"}}><h1 className='text-center'>Wait.....</h1></div>;
+  }
   const handleSubmit2 = () => {
    
     const data = {
@@ -124,21 +128,16 @@ const data={
                 <tr>
                   <th>BDM Name</th>
                   <td className="id2">
-                  <select
+                  <input
                   id="id"
                   name="bdmname"
                 style={{ appearance: "auto",width:"230px" }}
                   value={formData.bdmname}
-                  onChange={handleInputChange}
+                  readOnly
                   className="form-control"
                   
-                >
-<option value="Bharath">Bharath</option>
-<option alue="Prashanth">Prashanth</option>
-<option value="Posu Babu">Posu Babu</option>
-<option value="Murali">Murali</option>
-<option value="Ramana">Ramana</option>
-                </select>
+                />
+
                   </td>
 
                  
@@ -174,7 +173,7 @@ const data={
                       onChange={handleInputChange} 
                     />
                   </td>
-                  <th>Latest Final Status</th>
+                  <th>Latest Status</th>
                   <td className="id2">
                   <select
                   id="id"
@@ -429,8 +428,8 @@ const data={
                 
                </tr>
                <tr>
-                <th>
-                  To FollowUp Date
+                <th style={{color:"orange"}}>
+                Follow-Up Date
                 </th>
                 <td>
                   <input type="date"

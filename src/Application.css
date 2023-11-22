@@ -1,9 +1,7 @@
 .hidden {
     display: none;
 }
-.required-label {
-    color:blue;
-  }
+
   .application{
     padding-left: 200px;
     background-color:#d7dade;
@@ -46,4 +44,8 @@ font-weight: bold;
   .id15{
     padding-left: 40px;
     padding-right: 50px;
+  }
+  .default1{
+   padding-left: 10%;
+   padding-right: 10%;
   }

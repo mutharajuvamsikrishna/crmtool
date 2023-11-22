@@ -28,7 +28,7 @@ const ListEmployee = () => {
   const [lcall, setLcall] = useState("");
   const [emstate, setEmstate] = useState("");
   const [lres, Lres] = useState("");
-
+const[deleteresponse,setDeleteResponse]=useState(false);
   useEffect(() => {
     fetchEmployees();
   }, []);
@@ -68,17 +68,21 @@ const ListEmployee = () => {
   };
 
   const deleteUser = (id) => {
+    setDeleteResponse(true)
   //  axios
   //    .delete(`http://localhost:1279/delete?id=${id}`)
   deleteUserById(id)
+  
       .then((response) => {
         alert("Deleted SucessFully");
+        window.location.reload();
       })
       .catch((error) => {
         console.error(error);
       });
   };
-console.log(employees)
+  
+
   const handleSubmit1 = () => {
    // axios
    //   .get(`http://localhost:1279/search?query=${searchQuery}`)
@@ -538,7 +542,9 @@ console.log(employees)
       setEmployees(filterData);
     }
   };
-
+  if(deleteresponse){
+    return <div style={{paddingTop:"10%"}}><h1 className='text-center'>Wait.....</h1></div>;
+  }
   return (
     <div className="id1">
       <div
@@ -858,16 +864,16 @@ console.log(employees)
             <tr></tr>
           </thead>
           <tbody>
-            {employees.map((emp, index) => (
-              <React.Fragment key={emp.linkprof}>
+            {employees.map((emp, id) => (
+              <React.Fragment key={emp.id}>
                 
                 <tr>
                   <th>Application ID</th>
                  <td className="id2">{emp.id}</td>
                   <th>BDM Name</th>
                   <td className="id2">{emp.bdmname}</td>
-                  <th style={{color:"green"}}>To FollowUp Date</th>
-                 <td className="id2">{emp.followup}</td>
+                  <th>Company Name</th>
+                     <td className="id2">{emp.cmpname}</td>
                 </tr>
                 {response1 !== emp.id&& (
                 <tr className="text-center">
@@ -893,8 +899,8 @@ console.log(employees)
                  <td className="id2">{emp.lastres}</td>
                   <th style={{color:"green"}}>Current State</th>
                  <td className="id2">{emp.currentstate}</td>
-                  <th>Company Name</th>
-                     <td className="id2">{emp.cmpname}</td>
+                 <th style={{color:"orange"}}>Follow-Up Date</th>
+                 <td className="id2" >{emp.followup}</td>
                 </tr>
                <br/><br/>
                 {response1===emp.id && (

@@ -9,6 +9,7 @@ const AdminRegistersave = () => {
 
   const data1 = location.state.data;
   const handleSubmit = (event) => {
+    setLoading(true);
     event.preventDefault();
     const data = location.state?.data; // Use optional chaining to check if data exists
     if (data) {
@@ -33,9 +34,12 @@ const AdminRegistersave = () => {
       console.error("Data not found in location state.");
     }
   };
-
+  if(loading){
+    
+    return <div style={{paddingTop:"10%"}}><h1 className='text-center'>Sending Details By Email.....</h1></div>;
+  }
   return (
-    <div className='default'>
+    <div className='default1'>
       <br /> <br /> <br /> 
       <center>
       <h3 style={{ color: '',textDecoration:"underline" }}>Preview</h3>

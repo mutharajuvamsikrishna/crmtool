@@ -37,7 +37,7 @@ navigate("/regsucess", { state: { data: data } }); // Use navigate to change the
   }
 
   return (
-    <div className='default'>
+    <div className='default1'>
       <br /> <br /> <br /> 
       <center>
       <h3 style={{ color: '',textDecoration:"underline" }}>Preview</h3>

@@ -33,8 +33,15 @@ const Applicantshome = () => {
   const ename = formdata.ename;
 
   const handleSubmit = (event) => {
+    const data1={   
+ename:ename,
+email:email
+    }
+   
     event.preventDefault();
-    navigate("/application", { state: { data: data } });
+    navigate("/application", { state: { data: data1 } });
+
+    
   }
 
   const handleSubmit1 = (event) => {
