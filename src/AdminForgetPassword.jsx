@@ -40,13 +40,13 @@ const [loading,setLoading]=useState(false)
     }
   };
   if (loading) {
-    return <div><br/><br/><br></br><br/><br/><center><h1>Loading.....</h1></center></div>;
+    return <div style={{paddingTop:"18%",color:"green"}}><h1 className='text-center'>Sending OTP.....</h1></div>;
   }
   return (
-    <div className='password' style={{ backgroundColor: 'lightyellow', height: '99vh' }}>
+    <div className='password' style={{ backgroundColor: '#f0f2f5', height: '99vh',paddingTop:"10%" }}>
       <center>
-        <br /><br /><br /><br /><br /><br />
-        <h2>Forget Password</h2>
+        
+        <h2 style={{color:"blue"}}>Forget Password</h2>
         <br />
         <form onSubmit={handleSubmit}>
           <table cellPadding={13}>
@@ -56,7 +56,8 @@ const [loading,setLoading]=useState(false)
                 <td>
                   <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} 
                   placeholder="Enter Email" autoComplete='email'
-                  style={{width:"110%"}} required />
+                  style={{width:"140%"}} className='form-control' required />
+                  
                 </td>
               </tr>
                    
@@ -64,7 +65,8 @@ const [loading,setLoading]=useState(false)
                 <td>Mobile</td>
                 <td>
                   <input type="text" value={mob} onChange={(e) => setMob(e.target.value)} autoComplete='tel'
-                    placeholder="Enter Mobile Number" style={{width:"110%"}} required />
+                    placeholder="Enter Mobile Number" style={{width:"140%"}} 
+                     className='form-control'required />
                 </td>
               </tr>
 

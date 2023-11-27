@@ -4,6 +4,7 @@ import { CgProfile } from 'react-icons/cg';
 import axios from 'axios';
 import "./Application.css";
 import { getProfiles } from './Services/Api';
+
 const Applicantshome = () => {
   const [formdata, setFormData] = useState([]);
   const location = useLocation();
@@ -12,7 +13,7 @@ const Applicantshome = () => {
   // Access the data object passed from the previous route
   const data = location.state.data;
   const email = data.email;
-  
+ 
   useEffect(() => {
     fetchEmployeeData(email);
   }, [email]);
@@ -55,6 +56,7 @@ email:email
 
   return (
     <>
+  
     <div
       style={{
         position: "absolute",
@@ -74,9 +76,9 @@ email:email
     </div>
     <div className='id3'>
         <center>
-          <br/><br/><br/><br/><br/><br/><br/><br/>
+          
           <h1 style={{ color: 'green' }}>Welcome {ename}</h1>
-          <br />
+          <br /><br/>
           <button className='btn btn-primary ' onClick={handleSubmit}>New Application</button>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button className='btn btn-primary' onClick={handleSubmit1}>View Application</button>

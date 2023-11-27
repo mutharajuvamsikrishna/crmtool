@@ -47,19 +47,30 @@ const data={
       });
   };
 
-  const handleInputChange = (event) => {
+  const handleInputChange = (evant) => {
+    evant.preventDefault();
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
     }));
   };
-  const confirmEdit = () => {
+  const confirmEdit = (event) => {
+    event.preventDefault();
+    var v46= /^\d{10}$/;
+    if(formData.mainmob!==""&&!formData.mainmob.match(v46)){
+      alert("Main Contact Mobile Number 10 Digits and Numeric Only")
+return false;
+    }
+    if(formData.secondmob!==""&&!formData.secondmob.match(v46)){
+      alert("Second Contact Mobile Number 10 Digits and Numeric Only")
+return false;
+    }
     if (window.confirm("Are you sure you want to Edit?")) {
       handleSubmit1();
     }
   };
-  const handleSubmit1 = (event) => {
+  const handleSubmit1 = () => {
    
     setResponse(true);
    // axios
@@ -80,7 +91,7 @@ const data={
       });
   };
   if(response){
-    return <div style={{paddingTop:"10%"}}><h1 className='text-center'>Wait.....</h1></div>;
+    return <div style={{paddingTop:"18%",color:"green"}}><h1 className='text-center'>Sending Details By Email.....</h1></div>;
   }
   const handleSubmit2 = () => {
    
@@ -171,8 +182,9 @@ const data={
                   <input
                       type="text"
                       name="cmpname"
-                      value={formData.cmpname || ""}
+                      value={formData.cmpname}
                       onChange={handleInputChange} 
+                      required
                     />
                   </td>
                   <th>Latest Status</th>
@@ -298,6 +310,7 @@ const data={
       autoComplete="moredetail"
       rows="1" // You can adjust this initial number of rows
       style={{ resize: "vertical" }} // This allows vertical resizing
+      
     />
                   </td>
                </tr>
@@ -333,7 +346,7 @@ const data={
                       name="website"
                       value={formData.website || ""}
                       onChange={handleInputChange} 
-                      required
+                      
                     />
                   </td>
                </tr>
@@ -377,6 +390,7 @@ const data={
                       name="coun"
                       value={formData.coun || ""}
                       onChange={handleInputChange} 
+                      
                     />
                   </td>
                </tr>
@@ -437,6 +451,7 @@ const data={
                   name="followup"
                   value={formData.followup}
                   onChange={handleInputChange} 
+                  
                   />
                 </td>
                 <td colSpan={4}>
@@ -458,6 +473,7 @@ Main Contact Person Details
                       name="maincontact"
                       value={formData.maincontact|| ""}
                       onChange={handleInputChange} 
+                      
                     />
                   </td>
                   <th>Email ID</th>
@@ -467,6 +483,7 @@ Main Contact Person Details
                       name="mainemail"
                       value={formData.mainemail || ""}
                       onChange={handleInputChange} 
+                      
                     />
                   </td>
                   <th>Phone No</th>
@@ -555,6 +572,7 @@ Second Contact Person Details
                       name="emdate"
                       value={formData.emdate || ""}
                       onChange={handleInputChange} 
+                      
                     />
                   </td>
                   <th>From Name</th>
@@ -564,6 +582,7 @@ Second Contact Person Details
                       name="emname"
                       value={formData.emname|| ""}
                       onChange={handleInputChange} 
+                      
                     />
                   </td>
                   <th>To Name</th>
@@ -573,6 +592,7 @@ Second Contact Person Details
                       name="emtoname"
                       value={formData.emtoname || ""}
                       onChange={handleInputChange} 
+                      
                     />
                   </td>
                </tr>
@@ -605,6 +625,7 @@ Second Contact Person Details
       autoComplete="emsummary"
       rows="1" // You can adjust this initial number of rows
       style={{ resize: "vertical" }} // This allows vertical resizing
+      
     />
                   </td>
                </tr>
@@ -788,7 +809,7 @@ Second Contact Person Details
       value={formData.callstatus}
       onChange={handleInputChange}
       className="form-control"
-      required
+      
     >
      
        <option value="To Follow-up">To Follow-up</option>
@@ -860,7 +881,7 @@ Second Contact Person Details
       value={formData.callstatus1}
       onChange={handleInputChange}
       className="form-control"
-      required
+      
     >
       
        <option value="To Follow-up">To Follow-up</option>
@@ -926,7 +947,7 @@ Second Contact Person Details
       value={formData.callstatus2}
       onChange={handleInputChange}
       className="form-control"
-      required
+      
     >
       
        <option value="To Follow-up">To Follow-up</option>

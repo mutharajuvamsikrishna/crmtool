@@ -11,7 +11,24 @@ const TagRegister = () => {
   const [cnpassword, setCnPassword] = useState("");
   const [loading,setLoading]=useState(false);
   const navigate = useNavigate();
-
+  const [showPassword,setShowPassword]=useState(false);
+  const [showPassword1,setShowPassword1]=useState(false);
+  const setResponse=(type)=>{
+    if(showPassword===true){
+     setShowPassword(false)
+    }
+    else{
+     setShowPassword(true)
+    }
+   }
+   const setResponse1=(type)=>{
+    if(showPassword1===true){
+     setShowPassword1(false)
+    }
+    else{
+     setShowPassword1(true)
+    }
+   }
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -26,14 +43,15 @@ const TagRegister = () => {
     var v45 = /^[a-zA-Z\s]*$/;
     var v1 = data.password;
     var v2 = data.cnpassword;
+    var v46= /^\d{10}$/;
     if (!data.ename.match(v45)) {
       alert("Name Alphabets Only");
 
       return false;
     }
 
-    if (data.mob.length != 10) {
-      alert("Mobile Number is 10 Digits only");
+    if (!data.mob.match(v46)) {
+      alert("Mobile Number is 10 Digits and Numeric only");
       return false;
     }
     if (v1 != v2) {
@@ -60,115 +78,122 @@ const TagRegister = () => {
       });
   };
   if (loading) {
-    return <div><br/><br/><br></br><br/><br/><center><h1>Sending OTP.....</h1></center></div>;
+    return <div style={{paddingTop:"18%",color:"green"}}><h1 className='text-center'>Sending OTP.....</h1></div>;
   }
   return (
-    <div style={{backgroundColor:'lightgray', minHeight:"99vh"}}>
-      <center>
-        <br />
-        <div  className="default">
-        <h2 style={{color:'green'}}>Sign Up for CRM System</h2>
-        
-        <form onSubmit={handleSubmit} style={{ maxWidth: '400px' }}>
-        <div className="form-group">
-          <br/>
-          <label>Employee ID</label>
-            <input
-              type="text"
-              className="form-control"
-              id="ID"
-              value={id}
-              onChange={(e) => setId(e.target.value)}
-              autoComplete="ID"
-              placeholder='Enter Employee ID'
-              required
-            />
-          </div>
-          <div className="form-group">
-          <br/>
-          <label>Email</label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              autoComplete="email"
-              placeholder='Enter Email'
-              required
-            />
-          </div>
-          <div className="form-group">
-          <br/>
-          <label>Name</label>
-            <input
-              type="text"
-              className="form-control"
-              id="name"
-              value={ename}
-              onChange={(e) => setEname(e.target.value)}
-              placeholder='Enter Name'
-              autoComplete="name"
-              required
-            />
-          </div>
-          <div className="form-group">
-           <br/>
-           <label>Mobile Number</label>
-            <input
-              type="text"
-              className="form-control"
-              id="mob"
-              value={mob}
-              onChange={(e) => setMob(e.target.value)}
-              autoComplete="tel"
-              placeholder='Enter Mobile Number'
-              required
-            />
-          </div>
-          <div className="form-group">
-           <br/>
-           <label>Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder='Enter Password'
-              autoComplete="off"
-              required
-            />
-          </div>
-          <div className="form-group">
-           <br/>
-           <label>Confirm Password</label>
-            <input
-              type="password"
-              className="form-control"
-              id="cnpassword"
-              value={cnpassword}
-              onChange={(e) => setCnPassword(e.target.value)}
-              placeholder='Enter Confirm Password'
-              autoComplete="off"
-              required
-            />
-          </div>
-          <br />
-          <button type="submit" className="btn btn-primary">
-           Sign Up
-          </button>
-        </form>
-        <div>
-        <br/>
-        <Link to="/adminlogin" style={{color:"blue"}}>Login, if you have an account!</Link>
+    <div style={{ backgroundColor: '#f0f2f5', minHeight: "100vh" }}>
+      <div style={{paddingTop:"4%"}} >
+        <h2 className='text-center'style={{ color: 'blue' }}>Sign Up for CRM System</h2>
       </div>
-        </div>
-     <br/>
-      </center>
-    </div>
+      <div style={{paddingTop:"1%"}}>
+        <center>
+          <form onSubmit={handleSubmit}>
+          <table cellPadding={20}>
+            <tbody>
+            <tr className='addmore1'>
+                <td>Employee ID</td>
+                <td>
+                  <input type="text"
+                  name="id"
+                  placeholder='Enter Employee ID'
+                  className='form-control'
+                  value={id}
+                  onChange={(e) => setId(e.target.value)}
+                  style={{width:"300px"}}
+                  required
+                  />
+                </td>
+              </tr>
+              <tr className='addmore1'>
+                <td>Email</td>
+                <td>
+                  <input type="text"
+                  name="email"
+                  placeholder='Enter Email'
+                  className='form-control'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  style={{width:"300px"}}
+                  required
+                  />
+                </td>
+              </tr>
+              <tr className='addmore1'>
+                <td>Name</td>
+                <td>
+                  <input type="text"
+                  name="ename"
+                  placeholder='Enter Name'
+                  className='form-control'
+                  value={ename}
+                  onChange={(e) => setEname(e.target.value)}
+                  style={{width:"300px"}}
+                  required
+                  />
+                </td>
+              </tr>
+              <tr className='addmore1'>
+                <td>Mobile Number</td>
+                <td>
+                  <input type="text"
+                  name="mob"
+                  placeholder='Enter Mobile Number'
+                  className='form-control'
+                  value={mob}
+                  onChange={(e) => setMob(e.target.value)}
+                  style={{width:"300px"}}
+                  required
+                  />
+                </td>
+              </tr>
+              <tr className='addmore1'>
+                <td>Password</td>
+                <td>
+                  <input type={showPassword?"text":"password"}
+                  name="password"
+                  placeholder='Enter Pasword'
+                  className='form-control'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  style={{width:"300px"}}
+                  required
+                  />
+                </td>
+                <td>
+                <button type="button" style={{height:"40px",width:"60px",border: "2px solid #3498db",}} className='btn btn-' onClick={()=>setResponse(showPassword)}>{showPassword? 'Hide':'Show'}</button>
+                </td>
+              </tr>
+              <tr className='addmore1'>
+                <td>Confirm Password</td>
+                <td>
+                  <input type={showPassword1?"text":"password"}
+                  name="password"
+                  placeholder='Enter Confirm Pasword'
+                  className='form-control'
+                  value={cnpassword}
+                  onChange={(e) => setCnPassword(e.target.value)}
+                  style={{width:"300px"}}
+                  required
+                  />
+                </td>
+                <td>
+                <button type="button" style={{height:"40px",width:"60px",border: "2px solid #3498db",}} className='btn btn-' onClick={()=>setResponse1(showPassword1)}>{showPassword1? 'Hide':'Show'}</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br/>
+          <button className='btn btn-primary' type='submit'>Submit</button>
+          </form>
+          <br/>
+          <Link to="/login" style={{color:"blue"}}>Login, if you have an account!</Link>
+        </center>
+      </div>
+      <br/><br/>
+     </div>
+
+    
   );
-  
 };
 
 export default TagRegister;

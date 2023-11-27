@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation, useNavigate,Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
-import "./Application.css";
+
  import { postApplicationDetails } from "./Services/Api";
 import { CgProfile } from 'react-icons/cg';
 const Application = () => {
@@ -17,9 +17,9 @@ const Application = () => {
 bdmname:ename,
    firstres:"",
    lastres:"",
-   currentstate:"Hot",
+   currentstate:"",
    cmpname:"",
-   lfstatus:"Yet to Respond",
+   lfstatus:"",
    pocstatus:"NA",
    intrestserv:"Select...",
    moredetail:"",
@@ -41,37 +41,37 @@ bdmname:ename,
    secondemail:"",
    secondmob:"",
    emdate:"",
-   domain:"Banking",
+   domain:"",
   emname:"",
   emdate1:"",
   emdate2:"",
 emtoname:"",
-emstate:"Yet to Respond",
+emstate:"",
 emsummary:"",
 emname1:"",
 emtoname1:"",
-emstate1:"Yet to Respond",
+emstate1:"",
 emsummary1:"",
 emname2:"",
 emtoname2:"",
-emstate2:"Yet to Respond",
+emstate2:"",
 emsummary2:"",
 cuscalldate:"",
 isttime:"",
 fromname:"",
-callstatus:"To Follow-up",
+callstatus:"",
 callsummery:"",
 cuscalldate1:"",
 isttime1:"",
 fromname1:"",
-callstatus1:"To Follow-up",
+callstatus1:"",
 callsummery1:"",
 cuscalldate2:"",
 isttime2:"",
 fromname2:"",
-callstatus2:"To Follow-up",
+callstatus2:"",
 callsummery2:"",
-timezone:"CT",
+timezone:"",
 email:email,
 email1:"",
 email2:"",
@@ -84,9 +84,58 @@ followup:""
   const navigate=useNavigate();
   
   const handleSubmit = (event) => {
+    if(formData.currentstate===""){
+      alert("Please Select Current State")
+      return false;
+    }
+    if(formData.lfstatus===""){
+      alert("Please Select Latest Status")
+      return false;
+    }
+    if(formData.domain===""){
+      alert("Please Select Industry/Domain")
+      return false;
+    }
+    if(formData.timezone===""){
+      alert("Please Select Time Zone")
+      return false;
+    }
+    var v46= /^\d{10}$/;
+    if(formData.mainmob!==""&&!formData.mainmob.match(v46)){
+      alert("Main Contact Mobile Number 10 Digits and Numeric Only")
+return false;
+    }
+    if(formData.secondmob!==""&&!formData.secondmob.match(v46)){
+      alert("Second Contact Mobile Number 10 Digits and Numeric Only")
+return false;
+    }
+if(formData.emstate===""){
+  alert("Please Select E-mail-1 State")
+  return false;
+}
+if(formData!==""&&formData.emstate1===""){
+  alert("Please Select E-mail-2 State")
+  return false;
+}
+if(formData!==""&&formData.emstate2===""){
+  alert("Please Select E-mail-3 State")
+  return false;
+}
+if(formData!==""&&formData.callstatus===""){
+  alert("Please Select Call-1 State")
+  return false;
+}
+if(formData!==""&&formData.callstatus1===""){
+  alert("Please Select Call-2 State")
+  return false;
+}
+if(formData!==""&&formData.callstatus2===""){
+  alert("Please Select Call-3 State")
+  return false;
+}
     setLoad(true)
     event.preventDefault();
-    console.log(formData +"   :Formdata")
+   
   //  axios
     //  .post("http://localhost:1279/prosave", formData)
     postApplicationDetails(formData)
@@ -104,7 +153,7 @@ followup:""
       });
   };
   if(load){
-    return <div style={{paddingTop:"10%"}}><h1 className='text-center'>Sending Details By Email.....</h1></div>;
+    return <div style={{paddingTop:"18%",color:"green"}}><h1 className='text-center'>Sending Details By Email.....</h1></div>;
   }
   const handleDropdownChange = (event) => {
     const { name, value } = event.target;
@@ -225,8 +274,9 @@ if (type==="profile"){
                   value={formData.currentstate}
                   onChange={handleInputChange}
                   className="form-control"
-                  
+                  required
                 >
+                <option value="">Select..</option>
                   <option value="Hot">Hot </option>
                   <option value="Warm">Warm</option>
                   <option value="Cold">Cold</option>
@@ -244,8 +294,9 @@ if (type==="profile"){
                   value={formData.lfstatus}
                   onChange={handleInputChange}
                   className="form-control"
-                  
+                  required
                 >
+                  <option value="">Select..</option>
                   <option value="Yet to Respond">Yet to Respond</option>
                   <option value="Waiting for Reply">Waiting for Reply</option>
                   <option value="Need to Follow-Up">Need to Follow-Up</option>
@@ -272,7 +323,7 @@ if (type==="profile"){
                   id="rexpy"
                   autoComplete="cmpname"
                   
-                  
+                  required 
                 />
               </div>
             </div>
@@ -315,8 +366,9 @@ if (type==="profile"){
                   value={formData.domain}
                   onChange={handleInputChange}
                   className="form-control"
-                  
+                  required
                 >
+                  <option value="">Select..</option>
                   <option value="Banking">Banking</option>
                   <option value="Insurence">Insurence</option>
                   <option value="Manufacturing">Manufacturing</option>
@@ -389,6 +441,7 @@ if (type==="profile"){
       autoComplete="moredetails"
       rows="1" // You can adjust this initial number of rows
       style={{ resize: "vertical" }} // This allows vertical resizing
+      required
     />
   </div>
 </div>
@@ -467,6 +520,7 @@ if (type==="profile"){
                   onChange={handleInputChange}
                   className="form-control"
                   autoComplete="linkprof"
+                  required
                 />
               </div>
               </div>
@@ -483,7 +537,7 @@ if (type==="profile"){
                   className="form-control"
                   id="sdate"
                   autoComplete="coun"
-                  
+                  required
                 />
               </div>
            
@@ -520,8 +574,9 @@ if (type==="profile"){
       value={formData.timezone}
       onChange={handleInputChange}
       className="form-control"
-      
+      required
     >
+      <option value="">Select..</option>
       <option value="PST">IST</option>
       <option value="CT">CT</option>
       <option value="PT">PT</option>
@@ -591,7 +646,7 @@ if (type==="profile"){
                   className="form-control"
                   id="sdate"
                   autoComplete=""
-                  
+                  required
                 />
               </div>
            
@@ -620,6 +675,7 @@ if (type==="profile"){
                   onChange={handleInputChange}
                   className="form-control"
                   autoComplete='email'
+                  required
                 />
               </div>
               </div>
@@ -731,7 +787,7 @@ Full Name
                   className="form-control"
                   id="sdate"
                   autoComplete=""
-                  
+                  required
                 />
               </div>
            
@@ -747,6 +803,7 @@ Full Name
                   onChange={handleInputChange}
                   className="form-control"
                   autoComplete=""
+                  required
                 />
               </div>
               <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
@@ -759,6 +816,7 @@ Full Name
                   value={formData.emtoname}
                   onChange={handleInputChange}
                   className="form-control"
+                  required
                 />
               </div>
               </div>
@@ -774,8 +832,9 @@ Full Name
       value={formData.emstate}
       onChange={handleInputChange}
       className="form-control"
-      
+      required
     >
+      <option value="">Select..</option>
       <option value="Yet to Respond">Yet to Respond </option>
       <option value="Waiting for Reply">Waiting for Reply</option>
       <option value="To Follow-up">To Follow-up</option>
@@ -794,6 +853,7 @@ Full Name
       autoComplete="emsummary"
       rows="1" // You can adjust this initial number of rows
       style={{ resize: "vertical" }} // This allows vertical resizing
+      required
     />
   </div>
             </div>
@@ -835,7 +895,7 @@ Full Name
                   className="form-control"
                   id="sdate"
                   autoComplete=""
-                  
+                  required
                 />
               </div>
            
@@ -851,6 +911,7 @@ Full Name
                   onChange={handleInputChange}
                   className="form-control"
                   autoComplete=""
+                  required
                 />
               </div>
               <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
@@ -863,6 +924,7 @@ Full Name
                   value={formData.emtoname1}
                   onChange={handleInputChange}
                   className="form-control"
+                  required
                 />
               </div>
               </div>
@@ -878,8 +940,10 @@ Full Name
       value={formData.emstate1}
       onChange={handleInputChange}
       className="form-control"
+      required
       
     >
+      <option value="">Select..</option>
       <option value="Yet to Respond ">Yet to Respond </option>
       <option value="Waiting for Reply">Waiting for Reply</option>
       <option value="To Follow-up">To Follow-up</option>
@@ -897,6 +961,7 @@ Full Name
       autoComplete="emsummary1"
       rows="1" // You can adjust this initial number of rows
       style={{ resize: "vertical" }} // This allows vertical resizing
+      required
     />
   </div>
 
@@ -940,7 +1005,7 @@ Full Name
                   className="form-control"
                   id="sdate"
                   autoComplete=""
-                  
+                  required
                 />
               </div>
            
@@ -956,6 +1021,7 @@ Full Name
                   onChange={handleInputChange}
                   className="form-control"
                   autoComplete=""
+                  required
                 />
               </div>
               <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
@@ -983,8 +1049,10 @@ Full Name
       value={formData.emstate2}
       onChange={handleInputChange}
       className="form-control"
+      required
       
     >
+      <option value="">Select..</option>
       <option value="Yet to Respond ">Yet to Respond </option>
       <option value="Waiting for Reply">Waiting for Reply</option>
       <option value="To Follow-up">To Follow-up</option>
@@ -1002,6 +1070,7 @@ Full Name
       autoComplete="emsummary2"
       rows="1" // You can adjust this initial number of rows
       style={{ resize: "vertical" }} // This allows vertical resizing
+      required
     />
   </div>
  </div>
@@ -1044,7 +1113,7 @@ Full Name
                   className="form-control"
                   id="sdate"
                   autoComplete=""
-                 
+                  required
                 />
               </div>
            
@@ -1060,6 +1129,7 @@ Full Name
                   onChange={handleInputChange}
                   className="form-control"
                   autoComplete=""
+                  required
                 />
               </div>
               <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
@@ -1072,6 +1142,7 @@ Full Name
                   value={formData.fromname}
                   onChange={handleInputChange}
                   className="form-control"
+                  required
                 />
               </div>
               </div>
@@ -1089,6 +1160,7 @@ Full Name
       className="form-control"
       required
     >
+      <option value="">Select..</option>
        <option value="To Follow-up">To Follow-up</option>
       <option value="Poc">Poc</option>
       <option value="Deal">Deal</option>
@@ -1108,6 +1180,7 @@ Full Name
       autoComplete=""
       rows="1" // You can adjust this initial number of rows
       style={{ resize: "vertical" }} // This allows vertical resizing
+      required
     />
   </div>
     </div>
@@ -1149,7 +1222,7 @@ Full Name
                   className="form-control"
                   id="sdate"
                   autoComplete=""
-                 
+                  required
                 />
               </div>
            
@@ -1165,6 +1238,7 @@ Full Name
                   onChange={handleInputChange}
                   className="form-control"
                   autoComplete=""
+                  required
                 />
               </div>
               <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
@@ -1177,6 +1251,7 @@ Full Name
                   value={formData.fromname1}
                   onChange={handleInputChange}
                   className="form-control"
+                  required
                 />
               </div>
               </div>
@@ -1194,6 +1269,7 @@ Full Name
       className="form-control"
       required
     >
+      <option value="">Select..</option>
        <option value="To Follow-up">To Follow-up</option>
       <option value="Poc">Poc</option>
       <option value="No Deal">No Deal</option>
@@ -1212,6 +1288,7 @@ Full Name
       autoComplete=""
       rows="1" // You can adjust this initial number of rows
       style={{ resize: "vertical" }} // This allows vertical resizing
+      required
     />
   </div>
 </div>
@@ -1253,7 +1330,7 @@ Full Name
                   className="form-control"
                   id="sdate"
                   autoComplete=""
-                 
+                  required
                 />
               </div>
            
@@ -1269,6 +1346,7 @@ Full Name
                   onChange={handleInputChange}
                   className="form-control"
                   autoComplete=""
+                  required
                 />
               </div>
               <label htmlFor="email" className="col-sm-2 col-form-label my-1 label-custom">
@@ -1281,6 +1359,7 @@ Full Name
                   value={formData.fromname2}
                   onChange={handleInputChange}
                   className="form-control"
+                  required
                 />
               </div>
               </div>
@@ -1298,6 +1377,7 @@ Full Name
       className="form-control"
       required
     >
+      <option value="">Select..</option>
        <option value="To Follow-up">To Follow-up </option>
       <option value="Poc">Poc</option>
       <option value="Deal">No Deal</option>
@@ -1316,6 +1396,7 @@ Full Name
       autoComplete=""
       rows="1" // You can adjust this initial number of rows
       style={{ resize: "vertical" }} // This allows vertical resizing
+      required
     />
   </div>
   </div>

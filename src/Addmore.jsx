@@ -1,11 +1,11 @@
 import React, { useState,useEffect } from 'react';
 import { useLocation, Link,useNavigate } from 'react-router-dom';
+import "./Application.css";
 import axios from 'axios';
 import { CgProfile } from 'react-icons/cg';
 import { postUserAddmore } from './Services/Api';
 const Addmore=() =>{
-  
-  const [gender, setGender] = useState("Male");
+  const [gender, setGender] = useState("");
   const [country, setCountry] = useState("");
   const [region, setRegion] = useState("Asia");
   const [empid, setEmpid] = useState("");
@@ -27,6 +27,11 @@ const navigate=useNavigate();
       city: city,
     };
     var v45=/^[a-zA-Z\s]*$/;
+    
+    if(data1.gender===""){
+      alert("Please Select Gender")
+      return false;
+    }
     if (!data1.country.match(v45)) {
       alert("Country Alphabets Only");
 
@@ -37,6 +42,7 @@ const navigate=useNavigate();
 
       return false;
     }
+    
   //  axios
    //   .post("http://localhost:1279/addmore", data1)
    postUserAddmore(data1)
@@ -62,7 +68,7 @@ const navigate=useNavigate();
   }
 
   return (
-    <div style={{ backgroundColor: 'lightgray', minHeight: "99vh" }}>
+    <div style={{ backgroundColor: '#f0f2f5', minHeight: "99vh" }}>
       <div
       style={{
         position: "absolute",
@@ -80,48 +86,58 @@ const navigate=useNavigate();
           color:"blue"
         }} />
     </div>
-      
-      <h2 className='text-center' style={{ color: 'blue' }}>Add More Details   </h2>
+      <div style={{paddingTop:"5%"}} >
+        <h2 className='text-center'style={{ color: 'blue' }}>Add More Details</h2>
+      </div>
+      <div style={{paddingTop:"1%"}}>
+        <center>
+          <form onSubmit={handleSubmit}>
+          <table cellPadding={20}>
+            <tbody>
+              <tr className='addmore1'>
+                <td>Employee ID</td>
+                <td>
+                  <input type="text"
+                  name="empid"
+                  placeholder='Enter Employee ID'
+                  className='form-control'
+                  value={empid}
+                  onChange={(e) => setEmpid(e.target.value)}
+                  style={{width:"300px"}}
+                  required
+                  />
+                </td>
+              </tr>
+              <tr>
+  <td className='addmore1'>Gender</td>
+  <td>
+    Male <input
+      type="radio"
+      name="gender"
+      value="male"
+      checked={gender === "male"}
+      onChange={(e) => setGender(e.target.value)}
+    />&nbsp;&nbsp;&nbsp;
+    Female <input
+      type="radio"
+      name="gender"
+      value="female"
+      checked={gender === "female"}
+      onChange={(e) => setGender(e.target.value)}
      
-      <center>
-        <div className='addmore'>
-          <form onSubmit={handleSubmit} style={{ maxWidth: '400px' }}>
-            <div className="form-group">
-              <br />
-              <label>Employee ID</label>
-              <input
-                type="text"
-                className="form-control"
-                value={empid}
-                onChange={(e) => setEmpid(e.target.value)}
-                autoComplete="empid"
-                placeholder='Enter Employee ID'
-                required
-              />
-            </div>
-            <div className="form-group">
-              <br />
-              <label>Gender</label>
-              <select
-              name="gender"
-                style={{ color: 'green', appearance: 'auto' }}
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-                className="form-control"
-              >
-                <option value="Male">Male</option>
-                <option value="Female">Female</option> 
-              </select>
-            </div>
-            <div className="form-group">
-              <br />
-              <label>Continent/Region</label>
-              <select
+    />
+  </td>
+</tr>
+<tr className='addmore1'>
+                <td>Continent/Region</td>
+                <td>
+                <select
                 style={{ color: "green", appearance: "auto" }}
                 name="region"
                 value={region}
                 onChange={(e) => setRegion(e.target.value)}
                 className="form-control"
+                required
               >
                 <option value="Asia">Asia</option>
                 <option value="North America">North America</option>
@@ -131,44 +147,46 @@ const navigate=useNavigate();
                 <option value="Europe">Europe</option>
                 <option value="Antarctica">Antarctica</option>
               </select>
-            </div>
-            <div className="form-group">
-              <br />
-              <label>Country</label>
-              <input
-                type="text"
-                className="form-control"
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-                placeholder='Enter Country'
-                autoComplete="Enter Country"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <br />
-              <label>City</label>
-              <input
-                type="text"
-                className="form-control"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                placeholder='Enter City'
-                autoComplete="city"
-                required
-              />
-            </div>
-            <br />
-            <button type="submit" className="btn btn-primary">
-             Submit
-            </button>
+                </td>
+              </tr>
+              <tr className='addmore1'>
+                <td>Country</td>
+                <td>
+                  <input type="text"
+                  name="country"
+                  placeholder='Enter Country'
+                  className='form-control'
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                  style={{width:"300px"}}
+                  required
+                  />
+                </td>
+              </tr>
+              <tr className='addmore1'>
+                <td>City</td>
+                <td>
+                  <input type="text"
+                  name="city"
+                  placeholder='Enter City'
+                  className='form-control'
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                  style={{width:"300px"}}
+                  required
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br/>
+          <button className='btn btn-primary' type='submit'>Submit</button>
           </form>
-          <br />
-        </div>
-       
+          <br/>
           <a href="javascript:history.go(-1)">Go Back</a>
-      </center>
-    </div>
+        </center>
+      </div>
+     </div>
   );
 }
 export default Addmore;

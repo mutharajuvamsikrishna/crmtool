@@ -108,7 +108,7 @@ return (
             <div className="profile-info">
             <br />
 {data1.empid === undefined && (
-  <Link to="/addmore" state={{ data: data }}>
+  <Link to="/adminaddmore" state={{ data: data }}>
     <BsPersonFillAdd
       style={{
         height: "30px",

@@ -7,7 +7,15 @@ const AdminPasswordChange = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const location = useLocation(); // Move this line before any references to 'location'
-
+  const [showPassword,setShowPassword]=useState(false);
+  const setResponse=(type)=>{
+    if(showPassword===true){
+     setShowPassword(false)
+    }
+    else{
+     setShowPassword(true)
+    }
+   }
 
   const email = location.state.data.email; // Now you can access 'location'
 
@@ -49,15 +57,12 @@ const AdminPasswordChange = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#f0f2f5", height: "100vh" }}>
+    <div style={{ backgroundColor: "#f0f2f5", height: "99vh",paddingTop:"5%" }}>
       <center>
        
-        <br />
-        <br />
-        <br />
-        <br />
+      
         
-        <h2>Change Password</h2>
+        <h2 style={{color:"blue"}}>Change Password</h2>
         <br/>
         <div className="default" style={{backgroundColor:"",minHeight:"40vh",width:"40%"}}>
         <form onSubmit={handleSubmit}>
@@ -66,7 +71,7 @@ const AdminPasswordChange = () => {
            <label>New Password</label>
            <p></p>
             <input
-              type="password"
+              type={showPassword?"text":"password"}
               className="form-control"
               id="password"
               value={password}
@@ -83,7 +88,7 @@ const AdminPasswordChange = () => {
            <label>Confirm New Password</label>
            <p></p>
             <input
-              type="password"
+              type={showPassword?"text":"password"}
               className="form-control"
               id="cnpassword"
               value={cnpassword}
@@ -94,8 +99,11 @@ const AdminPasswordChange = () => {
               required
             />
           </div>
+          <br/>
+          <button type="button" style={{height:"40px",width:"60px",border: "2px solid #3498db",}} className='btn btn-' onClick={()=>setResponse(showPassword)}>{showPassword ? 'Hide':'Show'}</button>
           <br />
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <br/>
+          <button type="submit" style={{height:"50px",width:"100px"}} className="btn btn-primary">Submit</button>
         </form>
         <br/>
         </div>

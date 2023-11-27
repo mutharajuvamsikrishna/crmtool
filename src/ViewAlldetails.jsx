@@ -28,6 +28,7 @@ const ListEmployee = () => {
   const [lcall, setLcall] = useState("");
   const [emstate, setEmstate] = useState("");
   const [lres, Lres] = useState("");
+ 
 const[deleteresponse,setDeleteResponse]=useState(false);
   useEffect(() => {
     fetchEmployees();
@@ -39,7 +40,7 @@ const[deleteresponse,setDeleteResponse]=useState(false);
     getAdminView()
       .then((response) => {
         setEmployees(response.data);
-        
+       
       })
       .catch((error) => {
         console.log(error);
@@ -47,6 +48,7 @@ const[deleteresponse,setDeleteResponse]=useState(false);
   };
   const location = useLocation();
   const email = location.state.data.email;
+
   const handleSubmit2 = (id) => {
     const data = {
       id: id,
@@ -543,7 +545,7 @@ const[deleteresponse,setDeleteResponse]=useState(false);
     }
   };
   if(deleteresponse){
-    return <div style={{paddingTop:"10%"}}><h1 className='text-center'>Wait.....</h1></div>;
+    return <div style={{paddingTop:"25%"}}><h1 className='text-center'>Sending Details By Email.....</h1></div>;
   }
   return (
     <div className="id1">

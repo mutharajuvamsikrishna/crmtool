@@ -68,6 +68,7 @@ navigate("/regsavesucess", { state: { data: data } }); // Use navigate to change
 
 
   
+
   return (
     <div style={{ backgroundColor: '#f0f2f5', height: '100vh' }}>
       <center>
@@ -80,7 +81,7 @@ navigate("/regsavesucess", { state: { data: data } }); // Use navigate to change
           <br /><br />
           <button type="submit" className='btn btn-primary' style={{fontSize:"18px"}}>Submit</button>
         </form>
-        <br /><br />
+        <br />
         <a href="javascript:history.go(-1)">Go Back</a>
       </center>
     </div>

@@ -33,7 +33,7 @@ navigate("/regsucess", { state: { data: data } }); // Use navigate to change the
     }
   };
   if(load){
-    return <div style={{paddingTop:"10%"}}><h1 className='text-center'>Sending Details By Email.....</h1></div>;
+    return <div style={{paddingTop:"18%",color:"green"}}><h1 className='text-center'>Sending Details By Email.....</h1></div>;
   }
 
   return (
