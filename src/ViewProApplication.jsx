@@ -108,7 +108,7 @@ email:email
           </thead>
           <tbody>
             {employees.map((emp, index) => (
-              <React.Fragment key={emp.linkprof}>
+              <React.Fragment key={emp.id}>
                 
                 <tr>
                   <th>Application ID</th>
@@ -478,7 +478,7 @@ email:email
                       </td>
                     
                     </tr>
-                    <br/><br/>
+                   
                     <tr>
                      <td className="id2"></td>
                     </tr>
@@ -492,7 +492,7 @@ email:email
       <Link to="/loginsucess" state={{data}}>Go Back</Link>
       </center>
       </div>
-    
+    <br/>
     </div>
   );
 };

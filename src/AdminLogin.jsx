@@ -30,19 +30,23 @@ const AdminLogin = () => {
    // axios
     //  .post('http://localhost:1279/adminloginform', data)
     postAdminLogin(data)
-      .then((response) => {
-        if (response.data === "adminlogin") {
-          
-          navigate("/viewalldetails", { state: { data: data } }); // Use navigate to change the route
-        } else {
-          
-        alert("Invalid credentials")
-        }
-      })
-      .catch((error) => {
-        // Handle errors here
-        console.error(error);
-      });
+    .then((response) => {
+      if (response.status === 200) {
+        
+        // Save the token to localStorage
+        localStorage.setItem('jwtToken', response.data.jwt);
+      
+      
+        // Navigate to the success route
+        navigate("/viewalldetails", { state: { data: data } });
+      } else {
+        alert("Invalid credentials");
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      alert("Invalid credentials");
+    });
   };
 const handleSubmit1=()=>{
 navigate("/admin")

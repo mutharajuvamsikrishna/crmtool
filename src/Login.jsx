@@ -9,6 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
 const [showPassword,setShowPassword]=useState(false);
   const navigate = useNavigate(); // Use useNavigate to get the navigate function
+  
 const setResponse=(type)=>{
  if(showPassword===true){
   setShowPassword(false)
@@ -29,32 +30,37 @@ const setResponse=(type)=>{
       alert("Password Should Minimum 6 Digits,Should have at least one uppercase and  Lowercase,One Numeric And Special Symbols Like @,&,*,#")
       return false;
     }
-  //  axios
-     // .post('http://localhost:1279/loginform', data)
-     postUserLogin(data)
-      .then((response) => {
-        if (response.data === "personaldetails1") {
-          
-          navigate("/loginsucess", { state: { data: data } }); // Use navigate to change the route
-        } else {
-          
-        alert("Invalid credentials")
-        }
-      })
-      .catch((error) => {
-        // Handle errors here
-        console.error(error);
-      });
+    postUserLogin(data)
+    .then((response) => {
+    
+      if (response.status === 200) {
+        
+        // Save the token to localStorage
+        localStorage.setItem('jwtToken', response.data.jwt);
+     
+        // Navigate to the success route
+        navigate("/loginsucess", { state: { data: data } });
+      } 
+      else{
+       
+        alert("Invalid credentials");
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      alert("Invalid credentials");
+    });
   };
 const handleSubmit1=()=>{
 navigate("/register")
 }
+
 return (
   <div style={{backgroundColor:"#f0f2f5",minHeight:"99vh"}}>
     <center>
      
       <div style={{paddingTop:"8%"}}>
-      <h2 style={{color:"blue"}}>Login to CRM System</h2>
+      <h2 style={{color:"blue"}}>Login to CRM System </h2>
       <br/>  <br/>
       <form onSubmit={handleSubmit}>
        

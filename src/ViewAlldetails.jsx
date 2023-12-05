@@ -44,6 +44,7 @@ const[deleteresponse,setDeleteResponse]=useState(false);
       })
       .catch((error) => {
         console.log(error);
+        window.location.reload();
       });
   };
   const location = useLocation();
@@ -604,7 +605,7 @@ const[deleteresponse,setDeleteResponse]=useState(false);
             />
           </form>
           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          <form
+          {/* <form
             onSubmit={(event) => event.preventDefault()}
             style={{ display: "inline-block" }}
           >
@@ -626,9 +627,9 @@ const[deleteresponse,setDeleteResponse]=useState(false);
 
               <option value="Ramana">Ramana</option>
             </select>
-            {/* firstt */}
+           
             <button onClick={handleSubmit}>Search</button>
-          </form>
+          </form> */}
           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
           <form
             onSubmit={(event) => event.preventDefault()}
@@ -1076,7 +1077,10 @@ const[deleteresponse,setDeleteResponse]=useState(false);
       rows="1" // You can adjust this initial number of rows
       style={{ resize: "vertical", }} // This allows vertical resizing
     /></td>
-                    </tr>
+    </tr>
+    {emp.emdate1!==""&&(
+      <>
+                    
                     <tr>
                    <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"indigo"}}>2nd e-mail Details </h5>
@@ -1108,7 +1112,11 @@ const[deleteresponse,setDeleteResponse]=useState(false);
       rows="1" // You can adjust this initial number of rows
       style={{ resize: "vertical" }} // This allows vertical resizing
     /></td>
-                    </tr>
+                  </tr>
+                  </>
+    )}
+    {emp.emdate2!==""&&(
+      <>
                    <tr>
                    <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"indigo"}}>3rd e-mail Details </h5>
@@ -1138,6 +1146,10 @@ const[deleteresponse,setDeleteResponse]=useState(false);
       style={{ resize: "vertical" }} // This allows vertical resizing
     /></td>
                     </tr>
+                    </>
+    )}
+    {emp.cuscalldate!==""&&(
+      <>
                    <tr>
                    <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"green"}}>1st Call Details </h5>
@@ -1167,6 +1179,10 @@ const[deleteresponse,setDeleteResponse]=useState(false);
       style={{ resize: "vertical" }} // This allows vertical resizing
     /></td>
                     </tr>
+                    </>
+    )}
+    {emp.cuscalldate1!==""&&(
+      <>
                     <tr>
                    <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"green"}}>2nd Call Details </h5>
@@ -1196,6 +1212,10 @@ const[deleteresponse,setDeleteResponse]=useState(false);
       style={{ resize: "vertical" }} // This allows vertical resizing
     /></td>
                     </tr>
+                    </>
+    )}
+    {emp.cuscalldate2!==""&&(
+      <>
                    <tr>
                    <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"green"}}>3rd Call Details </h5>
@@ -1225,7 +1245,9 @@ const[deleteresponse,setDeleteResponse]=useState(false);
       style={{ resize: "vertical" }} // This allows vertical resizing
     /></td>
                     </tr>
-                   
+                    </>
+    )}
+    
                     <tr>
                       <th>Edit</th>
                      <td className="id2" colSpan={2}>

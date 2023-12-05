@@ -42,7 +42,7 @@ const AdminRegistersave = () => {
     <div className='default1'>
       <br /> <br /> <br /> 
       <center>
-      <h3 style={{ color: '',textDecoration:"underline" }}>Preview</h3>
+      <h3 style={{ color: 'blue',textDecoration:"underline" }}>Preview</h3>
       <br/>
         <table className="table table-striped table-bordered">
           <thead></thead>

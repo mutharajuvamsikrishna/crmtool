@@ -10,6 +10,7 @@ const Application = () => {
   const [load,setLoad]=useState(false);
    const email=location.state.data.email;
    const ename=location.state.data.ename;
+   
   const data={
     email:email
   }
@@ -29,7 +30,7 @@ bdmname:ename,
    linkprof:"",
    region:"Asia",
    coun:"",
-   time:"",
+   time:"00:00",
    cusbefore:"After",
    maincontact:"",
    mainlinkprof:"",
@@ -101,6 +102,7 @@ followup:""
       return false;
     }
     var v46= /^\d{10}$/;
+    
     if(formData.mainmob!==""&&!formData.mainmob.match(v46)){
       alert("Main Contact Mobile Number 10 Digits and Numeric Only")
 return false;
@@ -113,23 +115,23 @@ if(formData.emstate===""){
   alert("Please Select E-mail-1 State")
   return false;
 }
-if(formData!==""&&formData.emstate1===""){
+if(formData.email1==='yes'&&formData.emstate1===""){
   alert("Please Select E-mail-2 State")
   return false;
 }
-if(formData!==""&&formData.emstate2===""){
+if(formData.email2==='yes'&&formData.emstate2===""){
   alert("Please Select E-mail-3 State")
   return false;
 }
-if(formData!==""&&formData.callstatus===""){
+if(formData.call1=== 'Yes'==='yes'&&formData.callstatus===""){
   alert("Please Select Call-1 State")
   return false;
 }
-if(formData!==""&&formData.callstatus1===""){
+if(formData.call2=== 'Yes'&&formData.callstatus1===""){
   alert("Please Select Call-2 State")
   return false;
 }
-if(formData!==""&&formData.callstatus2===""){
+if(formData.call3=== 'Yes'&&formData.callstatus2===""){
   alert("Please Select Call-3 State")
   return false;
 }
@@ -238,7 +240,9 @@ if (type==="profile"){
               </label>
               <div className="col-sm-2 my-1">
                 <input
-                  type="date"
+                 type="date"
+                 min="2023-01-01" // Set the minimum date to today's date
+      max="2023-12-31"
                   name="firstres"
                   value={formData.firstres}
                   onChange={handleInputChange}
@@ -250,7 +254,7 @@ if (type==="profile"){
               </label>
               <div className="col-sm-2 my-1">
                 <input
-                  type="date"
+                 type="date"
                   name="lastres"
                   value={formData.lastres}
                   onChange={handleInputChange}
@@ -514,7 +518,7 @@ if (type==="profile"){
               </label>
               <div className="col-sm-2 my-1">
                 <input
-                  type="date"
+                type="date"
                   name="followup"
                   value={formData.followup}
                   onChange={handleInputChange}
@@ -598,6 +602,7 @@ if (type==="profile"){
                 <input
                   type="time"
                   name="time"
+                  
                   value={formData.clock}
                   onChange={handleInputChange}
                   className="form-control"
@@ -780,7 +785,7 @@ Full Name
               </label>
               <div className="col-sm-2 my-1">
                 <input
-                  type="date"
+                type="date"
                   name="emdate"
                   value={formData.emdate}
                   onChange={handleInputChange}
@@ -888,7 +893,7 @@ Full Name
               </label>
               <div className="col-sm-2 my-1">
                 <input
-                  type="date"
+                type="date"
                   name="emdate1"
                   value={formData.emdate1}
                   onChange={handleInputChange}
@@ -998,7 +1003,7 @@ Full Name
               </label>
               <div className="col-sm-2 my-1">
                 <input
-                  type="date"
+                 type="date"
                   name="emdate2"
                   value={formData.emdate2}
                   onChange={handleInputChange}
@@ -1106,7 +1111,7 @@ Full Name
               </label>
               <div className="col-sm-2 my-1">
                 <input
-                  type="date"
+                 type="date"
                   name="cuscalldate"
                   value={formData.cuscalldate}
                   onChange={handleInputChange}
@@ -1215,7 +1220,7 @@ Full Name
               </label>
               <div className="col-sm-2 my-1">
                 <input
-                  type="date"
+                 type="date"
                   name="cuscalldate1"
                   value={formData.cuscalldate1}
                   onChange={handleInputChange}
@@ -1323,7 +1328,7 @@ Full Name
               </label>
               <div className="col-sm-2 my-1">
                 <input
-                  type="date"
+                 type="date"
                   name="cuscalldate2"
                   value={formData.cuscalldate2}
                   onChange={handleInputChange}

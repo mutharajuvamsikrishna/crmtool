@@ -10,7 +10,7 @@ const data1=location.state.data;
     <div className='id15'>
       <br/><br/><br/><br/>
       <div style={{float:"right"}}>
-      <a href="/login">Login</a>
+      <a href="/adminlogin">Login</a>
         </div><br/><br/>
     <p>Dear {data1.ename},</p>
   

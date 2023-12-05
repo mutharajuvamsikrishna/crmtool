@@ -21,7 +21,7 @@ const AdminProfile = () => {
     fetchEmployeeData(email);
   }, [email]);
 
- 
+ localStorage
   
 
   const fetchEmployee = () => {
@@ -126,13 +126,14 @@ return (
           <div className="profile-info">
             <center>
               <br /><br />
-              <Link to="/login">
+              <Link to="/adminlogin">
                 <SlLogout
                   style={{
                     height: "30px",
                     width: "30px",
                     
                   }}
+                
                 />
                 <br />Log Out
               </Link>

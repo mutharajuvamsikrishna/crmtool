@@ -3,14 +3,14 @@ import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./ViewProApplication.css"; // Import your custom CSS file
 import "./ViweAll.css";
-import { CgProfile } from 'react-icons/cg';
-import { getProfessional,putUserEditDetailsUpdate} from './Services/Api';
+import { CgProfile } from "react-icons/cg";
+import { getProfessional, putUserEditDetailsUpdate } from "./Services/Api";
 
 const AdminEdit = () => {
   // State variables
- 
+
   const [loading, setLoading] = useState(true);
-  const [response,setResponse]=useState(false);
+  const [response, setResponse] = useState(false);
   const location = useLocation();
   const id = location.state.data.id;
   const navigate = useNavigate();
@@ -24,30 +24,25 @@ const AdminEdit = () => {
 
   const fetchEmployeeData = (id) => {
     getProfessional(id)
-    //axios
+      //axios
       //.get(`http://localhost:1279/viewprofessional?id=${id}`)
-    .then((response) => {
-       
-
+      .then((response) => {
         // Filter out keys with null values or empty strings
-      
 
-       
         setLoading(false);
 
         // Set the initial values of form fields from employeeData
         setFormData(response.data);
-      
       })
       .catch((error) => {
         console.log(error);
         setLoading(false);
       });
   };
-const email=formData.email;
-const data={
-  email:email
-}
+  const email = formData.email;
+  const data = {
+    email: email,
+  };
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({
@@ -55,15 +50,30 @@ const data={
       [name]: value,
     }));
   };
-  const confirmEdit = () => {
+
+  const confirmEdit = (event) => {
+    event.preventDefault();
+
+    var v46 = /^\d{10}$/;
+
+
+    if (formData.mainmob !== "" && !formData.mainmob.match(v46)) {
+      alert("Main Contact Mobile Number 10 Digits and Numeric Only");
+      return false;
+    }
+    if (formData.secondmob !== "" && !formData.secondmob.match(v46)) {
+      alert("Second Contact Mobile Number 10 Digits and Numeric Only");
+      return false;
+    }
+    
     if (window.confirm("Are you sure you want to Edit?")) {
       handleSubmit1();
     }
   };
-  const handleSubmit1 = (event) => {
-   setResponse(true);
+  const handleSubmit1 = () => {
+    setResponse(true);
     putUserEditDetailsUpdate(formData)
-   // axios
+      // axios
       //.post("http://localhost:1279/prosave", formData)
       .then((response) => {
         if (response.data === "updated successfullly") {
@@ -78,892 +88,924 @@ const data={
         console.error(error);
       });
   };
-  if(response){
-    return <div style={{paddingTop:"18%",color:"green"}}><h1 className='text-center'>Sending Details By Email.....</h1></div>;
+  if (response) {
+    return (
+      <div style={{ paddingTop: "18%", color: "green" }}>
+        <h1 className="text-center">Sending Details By Email.....</h1>
+      </div>
+    );
   }
   const handleSubmit2 = () => {
-   
     const data = {
       email: email,
-      
     };
     navigate("/profile", { state: { data: data } });
-  }
-  
+  };
+
   return (
     <div className="id1">
-       <div
-      style={{
-        position: "absolute",
-        top: "0",
-        right: "0",
-        padding: "10px",
-        cursor: "pointer",
-      }}
-      onClick={handleSubmit2}
-    >
-      <CgProfile
+      <div
         style={{
-          height: "50px",
-          width: "50px",
-          color:"blue"
-        }} />
-    </div>
+          position: "absolute",
+          top: "0",
+          right: "0",
+          padding: "10px",
+          cursor: "pointer",
+        }}
+        onClick={handleSubmit2}
+      >
+        <CgProfile
+          style={{
+            height: "50px",
+            width: "50px",
+            color: "blue",
+          }}
+        />
+      </div>
       <br />
       <br />
       <br />
       <br />
-      <h2 className="text-center" style={{color:"orange"}}>Update Client Details</h2>
-      <br/>
-<h4 className="text-center" style={{color:"blue"}}>Your Application ID: {id}</h4>
-<br/>
+      <h2 className="text-center" style={{ color: "orange" }}>
+        Update Client Details
+      </h2>
+      <br />
+      <h4 className="text-center" style={{ color: "blue" }}>
+        Your Application ID: {id}
+      </h4>
+      <br />
       <div className="text-center">
         {/* Render the form for editing data */}
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <form onSubmit={(e) => e.preventDefault()}>
+          <form onSubmit={confirmEdit}>
             <table className="table table-striped table-bordered">
               <tbody>
                 <tr>
                   <th>BDM Name</th>
                   <td className="id2">
-                  <input
-                  id="id"
-                  name="bdmname"
-                style={{ appearance: "auto",width:"230px" }}
-                  value={formData.bdmname}
-                  readOnly
-                  className="form-control"
-                  
-                />
-
+                    <input
+                      className="form-control"
+                      id="id"
+                      name="bdmname"
+                      value={formData.bdmname}
+                      readOnly
+                    />
                   </td>
 
-                 
-                    <th>1st Response Date</th>
-                  
+                  <th>1st Response Date</th>
+
                   <td className="id2">
                     <input
+                      className="form-control"
                       type="date"
                       name="firstres"
                       value={formData.firstres || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
-                 
-                    <th>Last Response Date</th>
-                 
+
+                  <th>Last Response Date</th>
+
                   <td className="id2">
                     <input
+                      className="form-control"
                       type="date"
                       name="lastres"
                       value={formData.lastres || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
                 </tr>
                 <tr>
                   <th>Company Name</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control label-ok"
                       type="text"
                       name="cmpname"
                       value={formData.cmpname || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
+                      required
                     />
                   </td>
                   <th>Latest Status</th>
                   <td className="id2">
-                  <select
-                  id="id"
-                  name="lfstatus"
-                style={{ appearance: "auto",width:"230px" }}
-                  value={formData.lfstatus}
-                  onChange={handleInputChange}
-                  className="form-control"
-                  
-                >
-                 
-                  <option value="Yet to Respond">Yet to Respond</option>
-                  <option value="Waiting for Reply">Waiting for Reply</option>
-                  <option value="Need to Follow-Up">Need to Follow-Up</option>
-                  <option value="1st /2nd /3rd - Call Scheduled">
-                    1st /2nd /3rd - Call Scheduled
-                  </option>
-                  <option value="POC Started">POC Started</option>
-                  <option value="Deal Done">Deal Done</option>
-                  <option value="No Deal">No Deal</option>
-                </select>
+                    <select
+                      className="form-control"
+                      style={{ appearance: "auto" }}
+                      id="id"
+                      name="lfstatus"
+                      value={formData.lfstatus}
+                      onChange={handleInputChange}
+                    >
+                      <option value="Yet to Respond">Yet to Respond</option>
+                      <option value="Waiting for Reply">
+                        Waiting for Reply
+                      </option>
+                      <option value="Need to Follow-Up">
+                        Need to Follow-Up
+                      </option>
+                      <option value="1st /2nd /3rd - Call Scheduled">
+                        1st /2nd /3rd - Call Scheduled
+                      </option>
+                      <option value="POC Started">POC Started</option>
+                      <option value="Deal Done">Deal Done</option>
+                      <option value="No Deal">No Deal</option>
+                    </select>
                   </td>
                   <th>POC Status</th>
                   <td className="id2">
-                 
-                <select
-                  id="id"
-                  name="pocstatus"
-                style={{ appearance: "auto",width:"230px" }}
-                  value={formData.pocstatus}
-                  onChange={handleInputChange}
-                  className="form-control"
-                  
-                >
-                 
-                  <option value="NA">NA</option>
-                  <option value="Planned">Planned</option>
-                  <option value="In-progress">In-progress</option>
-                  <option value="Success">Success</option>
-                  <option value="Faild">Faild</option>
-                  <option value="Deal Done">Deal Done</option>
-                  <option value="No Deal">No deal</option>
-                </select>
+                    <select
+                      className="form-control"
+                      style={{ appearance: "auto" }}
+                      id="id"
+                      name="pocstatus"
+                      value={formData.pocstatus}
+                      onChange={handleInputChange}
+                    >
+                      <option value="NA">NA</option>
+                      <option value="Planned">Planned</option>
+                      <option value="In-progress">In-progress</option>
+                      <option value="Success">Success</option>
+                      <option value="Faild">Faild</option>
+                      <option value="Deal Done">Deal Done</option>
+                      <option value="No Deal">No deal</option>
+                    </select>
                   </td>
-               </tr>
+                </tr>
 
-               <tr>
+                <tr>
                   <th>Industry/Domain</th>
                   <td className="id2">
-                  <select
-                  id="id"
-                  name="domain"
-               style={{ appearance: "auto",width:"230px" }}
-                  value={formData.domain}
-                  onChange={handleInputChange}
-                  className="form-control"
-                  
-                >
-                
-                  <option value="Banking">Banking</option>
-                  <option value="Insurence">Insurence</option>
-                  <option value="Manufacturing">Manufacturing</option>
-                  <option value="e-Commerce">e-Commerce</option>
-                  <option value="Digital Payments">Digital Payments</option>
-                  <option value="OTT">OTT</option>
-                  <option value="Health Care">Health Care</option>
-                  <option value="Automobile">Automobile</option>
-                  <option value="Networking">Networking</option>
-                  <option value="Cloud Services">Cloud Services </option>
-                  <option value="e-Learning/Entertainment">
-                    e-Learning/Entertainment
-                  </option>
-                </select>
+                    <select
+                      className="form-control"
+                      style={{ appearance: "auto" }}
+                      id="id"
+                      name="domain"
+                      value={formData.domain}
+                      onChange={handleInputChange}
+                    >
+                      <option value="Banking">Banking</option>
+                      <option value="Insurence">Insurence</option>
+                      <option value="Manufacturing">Manufacturing</option>
+                      <option value="e-Commerce">e-Commerce</option>
+                      <option value="Digital Payments">Digital Payments</option>
+                      <option value="OTT">OTT</option>
+                      <option value="Health Care">Health Care</option>
+                      <option value="Automobile">Automobile</option>
+                      <option value="Networking">Networking</option>
+                      <option value="Cloud Services">Cloud Services </option>
+                      <option value="e-Learning/Entertainment">
+                        e-Learning/Entertainment
+                      </option>
+                    </select>
                   </td>
                   <th>Interested Service/s </th>
                   <td className="id2">
-                  <select
-                  id="id"
-                  name="intrestserv"
-               style={{ appearance: "auto",width:"230px" }}
-                  value={formData.intrestserv}
-                  onChange={handleInputChange}
-                  className="form-control"
-                  
-                >
-                 
-                  <option value="">Select...</option>
+                    <select
+                      className="form-control"
+                      style={{ appearance: "auto" }}
+                      id="id"
+                      name="intrestserv"
+                      value={formData.intrestserv}
+                      onChange={handleInputChange}
+                    >
+                      <option value="">Select...</option>
 
-                  <optgroup label="Dev">
-                    <option value="FE">FE</option>
-                    <option value="BE">BE</option>
-                    <option value="DB">DB</option>
-                    <option value="Mobile">Mobile</option>
-                    <option value="TV">TV</option>
-                    <option value="Support">Support</option>
-                  </optgroup>
-                  <optgroup label="QA">
-                    <option value="Manual">Manual</option>
-                    <option value="Automation">Automation</option>
-                    <option value="Regression">Regression</option>
-                    <option value="PT">PT</option>
-                  </optgroup>
-                  <optgroup label="DevOps">
-                    <option value="On-premises">On-premises</option>
-                    <option value="AWS">AWS</option>
-                    <option value="Azure">Azure</option>
-                    <option value="GC">GC</option>
-                    <option value="Private">Private</option>
-                  </optgroup>
-                </select>
-              
+                      <optgroup label="Dev">
+                        <option value="FE">FE</option>
+                        <option value="BE">BE</option>
+                        <option value="DB">DB</option>
+                        <option value="Mobile">Mobile</option>
+                        <option value="TV">TV</option>
+                        <option value="Support">Support</option>
+                      </optgroup>
+                      <optgroup label="QA">
+                        <option value="Manual">Manual</option>
+                        <option value="Automation">Automation</option>
+                        <option value="Regression">Regression</option>
+                        <option value="PT">PT</option>
+                      </optgroup>
+                      <optgroup label="DevOps">
+                        <option value="On-premises">On-premises</option>
+                        <option value="AWS">AWS</option>
+                        <option value="Azure">Azure</option>
+                        <option value="GC">GC</option>
+                        <option value="Private">Private</option>
+                      </optgroup>
+                    </select>
                   </td>
                   <th>Summary </th>
                   <td className="id2">
-                  <textarea
-      name="moredetail"
-      value={formData.moredetail}
-      onChange={handleInputChange}
-      className="form-control"
-      autoComplete="moredetail"
-      rows="1" // You can adjust this initial number of rows
-      style={{ resize: "vertical" }} // This allows vertical resizing
-    />
+                    <textarea
+                      className="form-control"
+                      name="moredetail"
+                      value={formData.moredetail}
+                      onChange={handleInputChange}
+                      autoComplete="moredetail"
+                      required
+                      rows="1" // You can adjust this initial number of rows
+                      style={{ resize: "vertical" }} // This allows vertical resizing
+                    />
                   </td>
-               </tr>
+                </tr>
 
-
-               <tr>
+                <tr>
                   <th>Info Shared</th>
                   <td className="id2">
-                  <textarea
-                     
+                    <textarea
+                      className="form-control"
                       name="infoshared"
                       value={formData.infoshared}
                       rows="1" // You can adjust this initial number of rows
                       style={{ resize: "vertical" }} // This allows vertical resizing
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
                   <th>Details Asked</th>
                   <td className="id2">
-                  <textarea
-                     
+                    <textarea
+                      className="form-control"
                       name="detailask"
                       value={formData.detailask}
                       rows="1" // You can adjust this initial number of rows
                       style={{ resize: "vertical" }} // This allows vertical resizing
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
                   <th>Website</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="website"
                       value={formData.website || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                       required
                     />
                   </td>
-               </tr>
+                </tr>
 
-
-               <tr>
+                <tr>
                   <th>LinkedIn Profile </th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="linkprof"
                       value={formData.linkprof || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
                   <th>Continent/Region </th>
                   <td className="id2">
-                  <select
-      id="id"
-      name="region"
-      style={{ appearance: "auto",width:"230px" }}
-      value={formData.region}
-      onChange={handleInputChange}
-      className="form-control"
-      
-    >
-      
-      <option value="Asia">Asia</option>
-      <option value="North America">North America</option>
-      <option value="South America">South America</option>
-      <option value="Europe">Europe</option>
-      <option value="Australia">Australia</option>
-      <option value="Europe">Europe</option>
-      <option value="Antarctica">Antarctica</option>
-    </select>
+                    <select
+                      className="form-control"
+                      style={{ appearance: "auto" }}
+                      id="id"
+                      name="region"
+                      value={formData.region}
+                      onChange={handleInputChange}
+                    >
+                      <option value="Asia">Asia</option>
+                      <option value="North America">North America</option>
+                      <option value="South America">South America</option>
+                      <option value="Europe">Europe</option>
+                      <option value="Australia">Australia</option>
+                      <option value="Europe">Europe</option>
+                      <option value="Antarctica">Antarctica</option>
+                    </select>
                   </td>
                   <th>Country</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="coun"
                       value={formData.coun || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
+                      required
                     />
                   </td>
-               </tr>
+                </tr>
 
-               <tr>
-                  <th>W.r.t  IST  Time
-
-</th>
+                <tr>
+                  <th>W.r.t IST Time</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="time"
                       name="time"
                       value={formData.time || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
                   <th>Before/After</th>
                   <td className="id2">
-                  <select
-      id="id"
-      name="cusbefore"
-      style={{ width:"230px",appearance: "auto" }}
-      value={formData.cusbefore}
-      onChange={handleInputChange}
-      className="form-control"
-      
-    >
-      
-      <option value="After">After</option>
-      <option value="Before">Before</option>
-    </select>
+                    <select
+                      className="form-control"
+                      style={{ appearance: "auto" }}
+                      id="id"
+                      name="cusbefore"
+                      value={formData.cusbefore}
+                      onChange={handleInputChange}
+                    >
+                      <option value="After">After</option>
+                      <option value="Before">Before</option>
+                    </select>
                   </td>
-                  
+
                   <th>Current State</th>
                   <td className="id2">
-                  <select
-                  id="id"
-                  name="currentstate"
-                style={{ appearance: "auto",width:"230px" }}
-                  value={formData.currentstate}
-                  onChange={handleInputChange}
-                  className="form-control"
-                  
-                >
-                 
-                  <option value="Hot">Hot</option>
-                  <option value="Warm">Warm</option>
-                  <option value="Cold">Cold</option>
-                </select>
+                    <select
+                      className="form-control"
+                      style={{ appearance: "auto" }}
+                      id="id"
+                      name="currentstate"
+                      value={formData.currentstate}
+                      onChange={handleInputChange}
+                    >
+                      <option value="Hot">Hot</option>
+                      <option value="Warm">Warm</option>
+                      <option value="Cold">Cold</option>
+                    </select>
                   </td>
-                
-               </tr>
-               <tr>
-                <th style={{color:"orange"}}>
-                Follow-Up Date
-                </th>
-                <td>
-                  <input type="date"
-                  name="followup"
-                  value={formData.followup}
-                  onChange={handleInputChange} 
-                  />
-                </td>
-                <td colSpan={4}>
+                </tr>
+                <tr>
+                  <th style={{ color: "orange" }}>Follow-Up Date</th>
+                  <td>
+                    <input
+                      className="form-control"
+                      type="date"
+                      name="followup"
+                      value={formData.followup}
+                      onChange={handleInputChange}
+                    />
+                  </td>
+                  <td colSpan={4}></td>
+                </tr>
+                <tr>
+                  <td className="id2" colSpan={6}>
+                    <h5 className="text-center" style={{ color: "blue" }}>
+                      Main Contact Person Details
+                    </h5>
+                  </td>
+                </tr>
 
-                </td>
-               </tr>
-<tr>
-  
-  <td className="id2" colSpan={6}><h5 className="text-center" style={{color:"blue"}}>
-Main Contact Person Details
-</h5></td>
-</tr>
-
-               <tr>
+                <tr>
                   <th>Full Name</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="maincontact"
-                      value={formData.maincontact|| ""}
-                      onChange={handleInputChange} 
+                      value={formData.maincontact || ""}
+                      onChange={handleInputChange}
+                      required
                     />
                   </td>
                   <th>Email ID</th>
                   <td className="id2">
-                  <input
-                      type="text"
+                    <input
+                      className="form-control"
+                      type="email"
                       name="mainemail"
                       value={formData.mainemail || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
+                      required
                     />
                   </td>
                   <th>Phone No</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="mainmob"
                       value={formData.mainmob || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
-               </tr>
+                </tr>
 
-<tr>
-<th>LinkedIn Profile </th>
+                <tr>
+                  <th>LinkedIn Profile </th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="mainlinkprof"
                       value={formData.mainlinkprof || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
                   <td colSpan={5}></td>
-</tr>
+                </tr>
 
-<tr>
-  
-  <td className="id2" colSpan={6}><h5 className="text-center" style={{color:"blue"}}>
-Second Contact Person Details
-</h5></td>
-</tr>
+                <tr>
+                  <td className="id2" colSpan={6}>
+                    <h5 className="text-center" style={{ color: "blue" }}>
+                      Second Contact Person Details
+                    </h5>
+                  </td>
+                </tr>
 
-               <tr>
+                <tr>
                   <th>Full Name</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="secondcontact"
-                      value={formData.secondcontact|| ""}
-                      onChange={handleInputChange} 
+                      value={formData.secondcontact || ""}
+                      onChange={handleInputChange}
                     />
                   </td>
                   <th>Email ID</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="secondemail"
                       value={formData.secondemail || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
                   <th>Phone No</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="secondmob"
                       value={formData.secondmob || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
-               </tr>
+                </tr>
 
-<tr>
-<th>LinkedIn Profile </th>
+                <tr>
+                  <th>LinkedIn Profile </th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="secondlinkprof"
                       value={formData.secondlinkprof || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
                   <td colSpan={6}></td>
-</tr>
+                </tr>
 
-<tr>
-  
-  <td className="id2" colSpan={6}><h5 className="text-center" style={{color:"green"}}>1st e-mail Details </h5></td>
-</tr>
-<tr>
+                <tr>
+                  <td className="id2" colSpan={6}>
+                    <h5 className="text-center" style={{ color: "green" }}>
+                      1st e-mail Details{" "}
+                    </h5>
+                  </td>
+                </tr>
+                <tr>
                   <th>Date</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="date"
                       name="emdate"
                       value={formData.emdate || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
+                      required
                     />
                   </td>
                   <th>From Name</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="emname"
-                      value={formData.emname|| ""}
-                      onChange={handleInputChange} 
+                      value={formData.emname || ""}
+                      onChange={handleInputChange}
+                      required
                     />
                   </td>
                   <th>To Name</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="emtoname"
                       value={formData.emtoname || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
+                      required
                     />
                   </td>
-               </tr>
-   
-               <tr>
+                </tr>
+
+                <tr>
                   <th>E-mail-1 State</th>
                   <td className="id2">
-                  <select
-      id="id"
-      name="emstate"
-      style={{ width:"230px", appearance: "auto" }}
-      value={formData.emstate}
-      onChange={handleInputChange}
-      className="form-control"
-      
-    >
-      
-      <option value="Yet to Respond">Yet to Respond </option>
-      <option value="Waiting for Reply">Waiting for Reply</option>
-      <option value="To Follow-up">To Follow-up</option>
-    </select>
+                    <select
+                      className="form-control"
+                      style={{ appearance: "auto" }}
+                      id="id"
+                      name="emstate"
+                      value={formData.emstate}
+                      onChange={handleInputChange}
+                      required
+                    >
+                      <option value="Yet to Respond">Yet to Respond </option>
+                      <option value="Waiting for Reply">
+                        Waiting for Reply
+                      </option>
+                      <option value="To Follow-up">To Follow-up</option>
+                    </select>
                   </td>
                   <th>1st e-mail Summary </th>
                   <td className="id2" colSpan={3}>
-                  <textarea
-      name="emsummary"
-      value={formData.emsummary}
-      onChange={handleInputChange}
-      className="form-control"
-      autoComplete="emsummary"
-      rows="1" // You can adjust this initial number of rows
-      style={{ resize: "vertical" }} // This allows vertical resizing
-    />
+                    <textarea
+                      className="form-control"
+                      name="emsummary"
+                      value={formData.emsummary}
+                      onChange={handleInputChange}
+                      autoComplete="emsummary"
+                      rows="1" // You can adjust this initial number of rows
+                      style={{ resize: "vertical" }} // This allows vertical resizing
+                    required
+                    />
                   </td>
-                 
-               </tr>
+                </tr>
+                
 
-               
-               <tr>
-               
-  <td className="id2" colSpan={6}><h5 className="text-center" style={{color:"green"}}>2nd e-mail Details </h5></td>
-</tr>
-<tr>
+                <tr>
+                  <td className="id2" colSpan={6}>
+                    <h5 className="text-center" style={{ color: "green" }}>
+                      2nd e-mail Details{" "}
+                    </h5>
+                  </td>
+                </tr>
+                <tr>
                   <th>Date</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="date"
                       name="emdate1"
                       value={formData.emdate1 || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
                   <th>From Name</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="emname1"
-                      value={formData.emname1|| ""}
-                      onChange={handleInputChange} 
+                      value={formData.emname1 || ""}
+                      onChange={handleInputChange}
                     />
                   </td>
                   <th>To Name</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="emtoname1"
                       value={formData.emtoname1 || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
-               </tr>
-   
-               <tr>
+                </tr>
+
+                <tr>
                   <th>E-mail-2 State</th>
                   <td className="id2">
-                  <select
-      id="id"
-      name="emstate1"
-      style={{ width:"230px", appearance: "auto" }}
-      value={formData.emstate1}
-      onChange={handleInputChange}
-      className="form-control"
-      
-    >
-    
-      <option value="Yet to Respond">Yet to Respond </option>
-      <option value="Waiting for Reply">Waiting for Reply</option>
-      <option value="To Follow-up">To Follow-up</option>
-    </select>
+                    <select
+                      className="form-control"
+                      style={{ appearance: "auto" }}
+                      id="id"
+                      name="emstate1"
+                      value={formData.emstate1}
+                      onChange={handleInputChange}
+                    >
+                      <option value="Yet to Respond">Yet to Respond </option>
+                      <option value="Waiting for Reply">
+                        Waiting for Reply
+                      </option>
+                      <option value="To Follow-up">To Follow-up</option>
+                    </select>
                   </td>
-                  
+
                   <th>2nd e-mail Summary </th>
                   <td className="id2" colSpan={3}>
-                  <textarea
-      name="emsummary1"
-      value={formData.emsummary1}
-      onChange={handleInputChange}
-      className="form-control"
-      autoComplete="emsummary1"
-      rows="1" // You can adjust this initial number of rows
-      style={{ resize: "vertical" }} // This allows vertical resizing
-    />
+                    <textarea
+                      className="form-control"
+                      name="emsummary1"
+                      value={formData.emsummary1}
+                      onChange={handleInputChange}
+                      autoComplete="emsummary1"
+                      rows="1" // You can adjust this initial number of rows
+                      style={{ resize: "vertical" }} // This allows vertical resizing
+                    />
                   </td>
-                 
-               </tr>
+                </tr>
 
-               <tr>
-              
-  <td className="id2" colSpan={6}><h5 className="text-center" style={{color:"green"}}>3rd e-mail Details </h5></td>
-</tr>
-<tr>
+                <tr>
+                  <td className="id2" colSpan={6}>
+                    <h5 className="text-center" style={{ color: "green" }}>
+                      3rd e-mail Details{" "}
+                    </h5>
+                  </td>
+                </tr>
+                <tr>
                   <th>Date</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="date"
                       name="emdate2"
                       value={formData.emdate2 || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
                   <th>From Name</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="emname2"
-                      value={formData.emname2|| ""}
-                      onChange={handleInputChange} 
+                      value={formData.emname2 || ""}
+                      onChange={handleInputChange}
                     />
                   </td>
                   <th>To Name</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="emtoname2"
                       value={formData.emtoname2 || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
-               </tr>
-   
-               <tr>
+                </tr>
+
+                <tr>
                   <th>E-mail-3 State</th>
                   <td className="id2">
-                  <select
-      id="id"
-      name="emstate2"
-      style={{ width:"230px", appearance: "auto" }}
-      value={formData.emstate2}
-      onChange={handleInputChange}
-      className="form-control"
-      
-    >
-     
-      <option value="Yet to Respond">Yet to Respond </option>
-      <option value="Waiting for Reply">Waiting for Reply</option>
-      <option value="To Follow-up">To Follow-up</option>
-    </select>
+                    <select
+                      className="form-control"
+                      style={{ appearance: "auto" }}
+                      id="id"
+                      name="emstate2"
+                      value={formData.emstate2}
+                      onChange={handleInputChange}
+                    >
+                      <option value="Yet to Respond">Yet to Respond </option>
+                      <option value="Waiting for Reply">
+                        Waiting for Reply
+                      </option>
+                      <option value="To Follow-up">To Follow-up</option>
+                    </select>
                   </td>
-                 
+
                   <th>3rd e-mail Summary </th>
                   <td className="id2" colSpan={3}>
-                  <textarea
-      name="emsummary2"
-      value={formData.emsummary2}
-      onChange={handleInputChange}
-      className="form-control"
-     
-      rows="1" // You can adjust this initial number of rows
-      style={{ resize: "vertical" }} // This allows vertical resizing
-    />
+                    <textarea
+                      className="form-control"
+                      name="emsummary2"
+                      value={formData.emsummary2}
+                      onChange={handleInputChange}
+                      rows="1" // You can adjust this initial number of rows
+                      style={{ resize: "vertical" }} // This allows vertical resizing
+                    />
                   </td>
-               </tr>
-               <tr>
-                
-                    <td className="id2" colSpan={6}><h5 className="text-center" style={{color:"orange"}}>1st Call Details </h5></td>
-                  </tr>
-                 
-    <tr>
+                </tr>
+                <tr>
+                  <td className="id2" colSpan={6}>
+                    <h5 className="text-center" style={{ color: "orange" }}>
+                      1st Call Details{" "}
+                    </h5>
+                  </td>
+                </tr>
+
+                <tr>
                   <th>Date </th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="date"
                       name="cuscalldate"
                       value={formData.cuscalldate || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
                   <th>IST Time</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="time"
                       name="isttmime"
-                      value={formData.isttime || ""}
-                      onChange={handleInputChange} 
+                      value={formData.isttime}
+                      onChange={handleInputChange}
                     />
                   </td>
                   <th>From Name</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="fromname"
                       value={formData.fromname || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
-               </tr>
-               <tr>
+                </tr>
+                <tr>
                   <th>Call-1 State</th>
                   <td className="id2">
-                  <select
-      id="id"
-      name="callstatus"
-      style={{width:"230px", appearance: "auto" }}
-      value={formData.callstatus}
-      onChange={handleInputChange}
-      className="form-control"
-      required
-    >
-     
-       <option value="To Follow-up">To Follow-up</option>
-      <option value="Poc">Poc</option>
-      <option value="Deal">Deal</option>
-      <option value="NO Deal">No Deal</option>
-     
-    </select>
+                    <select
+                      className="form-control"
+                      style={{ appearance: "auto" }}
+                      id="id"
+                      name="callstatus"
+                      value={formData.callstatus}
+                      onChange={handleInputChange}
+                      required
+                    >
+                      <option value="To Follow-up">To Follow-up</option>
+                      <option value="Poc">Poc</option>
+                      <option value="Deal">Deal</option>
+                      <option value="NO Deal">No Deal</option>
+                    </select>
                   </td>
                   <th>MOM with Actions </th>
                   <td className="id2" colSpan={3}>
-                  <textarea
-      name="callsummery"
-      value={formData.callsummery}
-      onChange={handleInputChange}
-      className="form-control"
-     
-      rows="1" // You can adjust this initial number of rows
-      style={{ resize: "vertical" }} // This allows vertical resizing
-    />
+                    <textarea
+                      className="form-control"
+                      name="callsummery"
+                      value={formData.callsummery}
+                      onChange={handleInputChange}
+                      rows="1" // You can adjust this initial number of rows
+                      style={{ resize: "vertical" }} // This allows vertical resizing
+                    />
                   </td>
-               </tr>
+                </tr>
 
+                <tr>
+                  <td className="id2" colSpan={6}>
+                    <h5 className="text-center" style={{ color: "orange" }}>
+                      2nd Call Details{" "}
+                    </h5>
+                  </td>
+                </tr>
 
-
-
-
-               <tr>
-               
-                    <td className="id2" colSpan={6}><h5 className="text-center" style={{color:"orange"}}>2nd Call Details </h5></td>
-                  </tr>
-
-<tr>
+                <tr>
                   <th>Date </th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="date"
                       name="cuscalldate1"
                       value={formData.cuscalldate1 || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
                   <th>IST Time</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="time"
                       name="isttmime1"
                       value={formData.isttime1 || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
                   <th>From Name</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="fromname1"
                       value={formData.fromname1 || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
-               </tr>
-               <tr>
+                </tr>
+                <tr>
                   <th>Call-2 State</th>
                   <td className="id2">
-                  <select
-      id="id"
-      name="callstatus1"
-      style={{width:"230px", appearance: "auto" }}
-      value={formData.callstatus1}
-      onChange={handleInputChange}
-      className="form-control"
-      required
-    >
-      
-       <option value="To Follow-up">To Follow-up</option>
-      <option value="Poc">Poc</option>
-      <option value="Deal">Deal</option>
-      <option value="NO Deal">No Deal</option>
-     
-    </select>
+                    <select
+                      className="form-control"
+                      style={{ appearance: "auto" }}
+                      id="id"
+                      name="callstatus1"
+                      value={formData.callstatus1}
+                      onChange={handleInputChange}
+                      required
+                    >
+                      <option value="To Follow-up">To Follow-up</option>
+                      <option value="Poc">Poc</option>
+                      <option value="Deal">Deal</option>
+                      <option value="NO Deal">No Deal</option>
+                    </select>
                   </td>
                   <th>MOM with Actions </th>
                   <td className="id2" colSpan={3}>
-                  <textarea
-      name="callsummery1"
-      value={formData.callsummery1}
-      onChange={handleInputChange}
-      className="form-control"
-     
-      rows="1" // You can adjust this initial number of rows
-      style={{ resize: "vertical" }} // This allows vertical resizing
-    />
+                    <textarea
+                      className="form-control"
+                      name="callsummery1"
+                      value={formData.callsummery1}
+                      onChange={handleInputChange}
+                      rows="1" // You can adjust this initial number of rows
+                      style={{ resize: "vertical" }} // This allows vertical resizing
+                    />
                   </td>
-               </tr>
-               <tr>
-                
-                    <td className="id2" colSpan={6}><h5 className="text-center" style={{color:"orange"}}>3rd Call Details </h5></td>
-                  </tr>
-               <tr>
+                </tr>
+                <tr>
+                  <td className="id2" colSpan={6}>
+                    <h5 className="text-center" style={{ color: "orange" }}>
+                      3rd Call Details{" "}
+                    </h5>
+                  </td>
+                </tr>
+                <tr>
                   <th>Date </th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="date"
                       name="cuscalldate2"
                       value={formData.cuscalldate2 || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
                   <th>IST Time</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="time"
                       name="isttmime2"
                       value={formData.isttime2 || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
                   <th>From Name</th>
                   <td className="id2">
-                  <input
+                    <input
+                      className="form-control"
                       type="text"
                       name="fromname2"
                       value={formData.fromname2 || ""}
-                      onChange={handleInputChange} 
+                      onChange={handleInputChange}
                     />
                   </td>
-               </tr>
-               <tr>
+                </tr>
+                <tr>
                   <th>Call-3 State</th>
                   <td className="id2">
-                  <select
-      id="id"
-      name="callstatus2"
-      style={{width:"230px", appearance: "auto" }}
-      value={formData.callstatus2}
-      onChange={handleInputChange}
-      className="form-control"
-      required
-    >
-      
-       <option value="To Follow-up">To Follow-up</option>
-      <option value="Poc">Poc</option>
-      <option value="Deal">Deal</option>
-      <option value="NO Deal">No Deal</option>
-     
-    </select>
+                    <select
+                      className="form-control"
+                      style={{ appearance: "auto" }}
+                      id="id"
+                      name="callstatus2"
+                      value={formData.callstatus2}
+                      onChange={handleInputChange}
+                      required
+                    >
+                      <option value="To Follow-up">To Follow-up</option>
+                      <option value="Poc">Poc</option>
+                      <option value="Deal">Deal</option>
+                      <option value="NO Deal">No Deal</option>
+                    </select>
                   </td>
                   <th>MOM with Actions </th>
                   <td className="id2" colSpan={3}>
-                  <textarea
-      name="callsummery2"
-      value={formData.callsummery2}
-      onChange={handleInputChange}
-      className="form-control"
-     
-      rows="1" // You can adjust this initial number of rows
-      style={{ resize: "vertical" }} // This allows vertical resizing
-    />
+                    <textarea
+                      className="form-control"
+                      name="callsummery2"
+                      value={formData.callsummery2}
+                      onChange={handleInputChange}
+                      rows="1" // You can adjust this initial number of rows
+                      style={{ resize: "vertical" }} // This allows vertical resizing
+                    />
                   </td>
-               </tr>
-              
+                </tr>
               </tbody>
             </table>
-            <br/>
-            <button type="button" className="btn btn-primary" onClick={confirmEdit}>
-    Save
-  </button>
+            <br />
+            <button type="submit" className="btn btn-primary">
+              Save
+            </button>
           </form>
         )}
-       
       </div>
-      <br/>
+      <br />
       <center>
-      <Link to="/viewapplication" state={{data:data}}>Go Back</Link>
+        <Link to="/viewapplication" state={{ data: data }}>
+          Go Back
+        </Link>
       </center>
+      <br />
     </div>
   );
 };
