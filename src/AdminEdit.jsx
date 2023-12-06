@@ -14,6 +14,11 @@ const AdminEdit = () => {
   const id = location.state.data.id;
   const email=location.state.data.email;
   const [response,setResponse]=useState(false);
+  const [resstate,setResstate]=useState("");
+  const [resstate1,setResstate1]=useState("");
+  const [resstate2,setResstate2]=useState("");
+  const [resstate3,setResstate3]=useState("");
+  const [resstate4,setResstate4]=useState("");
 const data={
   email:email
 }
@@ -632,7 +637,29 @@ return false;
                   </td>
                 </tr>
                 
-
+                <tr>
+                  <td className="id2" colSpan={2}>
+                    <h5 className="text-center" style={{ color: "" }}>
+                      Do You Have  2nd e-mail Details?{" "}
+                    </h5>
+                  </td>
+                  <td className="id3">
+                    Yes &nbsp;&nbsp;<input type="radio"
+                    name="resstate1"
+                    value="yes"
+                     onChange={(e) => setResstate1(e.target.value)}
+                     />
+                  </td>
+                   <td className="id3">
+                    No &nbsp;&nbsp;<input type="radio"
+                    name="resstate1"
+                    value="no"
+                    onChange={(e) => setResstate1(e.target.value)}/>
+                  </td>
+                  <td colSpan={3}></td>
+                </tr>
+                {resstate1==="yes"&&(
+                  <>
                 <tr>
                   <td className="id2" colSpan={6}>
                     <h5 className="text-center" style={{ color: "green" }}>
@@ -649,6 +676,7 @@ return false;
                       name="emdate1"
                       value={formData.emdate1 || ""}
                       onChange={handleInputChange}
+                      required
                     />
                   </td>
                   <th>From Name</th>
@@ -659,6 +687,7 @@ return false;
                       name="emname1"
                       value={formData.emname1 || ""}
                       onChange={handleInputChange}
+                      required
                     />
                   </td>
                   <th>To Name</th>
@@ -669,6 +698,7 @@ return false;
                       name="emtoname1"
                       value={formData.emtoname1 || ""}
                       onChange={handleInputChange}
+                      required
                     />
                   </td>
                 </tr>
@@ -702,10 +732,35 @@ return false;
                       autoComplete="emsummary1"
                       rows="1" // You can adjust this initial number of rows
                       style={{ resize: "vertical" }} // This allows vertical resizing
+                      required
                     />
                   </td>
                 </tr>
-
+                </>
+                )}
+                 <tr>
+                  <td className="id2" colSpan={2}>
+                    <h5 className="text-center" style={{ color: "" }}>
+                      Do You Have  3rd e-mail Details{" "}
+                    </h5>
+                  </td>
+                  <td className="id3">
+                    Yes &nbsp;&nbsp;<input type="radio"
+                    name="resstate2"
+                    value="yes"
+                     onChange={(e) => setResstate2(e.target.value)}
+                     />
+                  </td>
+                   <td className="id3">
+                    No &nbsp;&nbsp;<input type="radio"
+                    name="resstate2"
+                    value="no"
+                    onChange={(e) => setResstate2(e.target.value)}/>
+                  </td>
+                  <td colSpan={3}></td>
+                </tr>
+                {resstate2==="yes"&&(
+                  <>
                 <tr>
                   <td className="id2" colSpan={6}>
                     <h5 className="text-center" style={{ color: "green" }}>
@@ -722,6 +777,7 @@ return false;
                       name="emdate2"
                       value={formData.emdate2 || ""}
                       onChange={handleInputChange}
+                      required
                     />
                   </td>
                   <th>From Name</th>
@@ -732,6 +788,7 @@ return false;
                       name="emname2"
                       value={formData.emname2 || ""}
                       onChange={handleInputChange}
+                      required
                     />
                   </td>
                   <th>To Name</th>
@@ -742,6 +799,7 @@ return false;
                       name="emtoname2"
                       value={formData.emtoname2 || ""}
                       onChange={handleInputChange}
+                      required
                     />
                   </td>
                 </tr>
@@ -756,6 +814,7 @@ return false;
                       name="emstate2"
                       value={formData.emstate2}
                       onChange={handleInputChange}
+                      
                     >
                       <option value="Yet to Respond">Yet to Respond </option>
                       <option value="Waiting for Reply">
@@ -774,17 +833,42 @@ return false;
                       onChange={handleInputChange}
                       rows="1" // You can adjust this initial number of rows
                       style={{ resize: "vertical" }} // This allows vertical resizing
+                      required
                     />
                   </td>
                 </tr>
+                </>
+                )}
+                <tr>
+                  <td className="id2" colSpan={2}>
+                    <h5 className="text-center" style={{ color: "" }}>
+                      Do You Have 1st Call Details{" "}
+                    </h5>
+                  </td>
+                  <td className="id3">
+                    Yes &nbsp;&nbsp;<input type="radio"
+                    name="resstate"
+                    value="yes"
+                     onChange={(e) => setResstate(e.target.value)}
+                     />
+                  </td>
+                   <td className="id3">
+                    No &nbsp;&nbsp;<input type="radio"
+                    name="resstate"
+                    value="no"
+                    onChange={(e) => setResstate(e.target.value)}/>
+                  </td>
+                  <td colSpan={3}></td>
+                </tr>
+                {resstate==="yes"&&(
+                  <>
                 <tr>
                   <td className="id2" colSpan={6}>
-                    <h5 className="text-center" style={{ color: "orange" }}>
-                      1st Call Details{" "}
+                    <h5 className="text-center" style={{ color: "" }}>
+                    1st Call Details{" "}
                     </h5>
                   </td>
                 </tr>
-
                 <tr>
                   <th>Date </th>
                   <td className="id2">
@@ -794,6 +878,7 @@ return false;
                       name="cuscalldate"
                       value={formData.cuscalldate || ""}
                       onChange={handleInputChange}
+                      required
                     />
                   </td>
                   <th>IST Time</th>
@@ -801,9 +886,10 @@ return false;
                     <input
                       className="form-control"
                       type="time"
-                      name="isttmime"
+                      name="isttime"
                       value={formData.isttime}
                       onChange={handleInputChange}
+                      required
                     />
                   </td>
                   <th>From Name</th>
@@ -814,6 +900,7 @@ return false;
                       name="fromname"
                       value={formData.fromname || ""}
                       onChange={handleInputChange}
+                      required
                     />
                   </td>
                 </tr>
@@ -844,10 +931,35 @@ return false;
                       onChange={handleInputChange}
                       rows="1" // You can adjust this initial number of rows
                       style={{ resize: "vertical" }} // This allows vertical resizing
+                      required
                     />
                   </td>
                 </tr>
-
+                </>
+                )}
+                 <tr>
+                  <td className="id2" colSpan={2}>
+                    <h5 className="text-center" style={{ color: "" }}>
+                      Do You Have  2nd Call Details{" "}
+                    </h5>
+                  </td>
+                  <td className="id3">
+                    Yes &nbsp;&nbsp;<input type="radio"
+                    name="resstate3"
+                    value="yes"
+                     onChange={(e) => setResstate3(e.target.value)}
+                     />
+                  </td>
+                   <td className="id3">
+                    No &nbsp;&nbsp;<input type="radio"
+                    name="resstate3"
+                    value="no"
+                    onChange={(e) => setResstate3(e.target.value)}/>
+                  </td>
+                  <td colSpan={3}></td>
+                </tr>
+                {resstate3==="yes"&&(
+                  <>
                 <tr>
                   <td className="id2" colSpan={6}>
                     <h5 className="text-center" style={{ color: "orange" }}>
@@ -865,6 +977,7 @@ return false;
                       name="cuscalldate1"
                       value={formData.cuscalldate1 || ""}
                       onChange={handleInputChange}
+                      required
                     />
                   </td>
                   <th>IST Time</th>
@@ -872,9 +985,10 @@ return false;
                     <input
                       className="form-control"
                       type="time"
-                      name="isttmime1"
+                      name="isttime1"
                       value={formData.isttime1 || ""}
                       onChange={handleInputChange}
+                      required
                     />
                   </td>
                   <th>From Name</th>
@@ -885,6 +999,7 @@ return false;
                       name="fromname1"
                       value={formData.fromname1 || ""}
                       onChange={handleInputChange}
+                      required
                     />
                   </td>
                 </tr>
@@ -915,9 +1030,35 @@ return false;
                       onChange={handleInputChange}
                       rows="1" // You can adjust this initial number of rows
                       style={{ resize: "vertical" }} // This allows vertical resizing
+                      required
                     />
                   </td>
                 </tr>
+                </>
+                )}
+                 <tr>
+                  <td className="id2" colSpan={2}>
+                    <h5 className="text-center" style={{ color: "" }}>
+                      Do You Have   3rd Call Details{" "}
+                    </h5>
+                  </td>
+                  <td className="id3">
+                    Yes &nbsp;&nbsp;<input type="radio"
+                    name="resstate4"
+                    value="yes"
+                     onChange={(e) => setResstate4(e.target.value)}
+                     />
+                  </td>
+                   <td className="id3">
+                    No &nbsp;&nbsp;<input type="radio"
+                    name="resstate4"
+                    value="no"
+                    onChange={(e) => setResstate4(e.target.value)}/>
+                  </td>
+                  <td colSpan={3}></td>
+                </tr>
+                {resstate4==="yes"&&(
+                  <>
                 <tr>
                   <td className="id2" colSpan={6}>
                     <h5 className="text-center" style={{ color: "orange" }}>
@@ -934,6 +1075,7 @@ return false;
                       name="cuscalldate2"
                       value={formData.cuscalldate2 || ""}
                       onChange={handleInputChange}
+                      required
                     />
                   </td>
                   <th>IST Time</th>
@@ -941,9 +1083,10 @@ return false;
                     <input
                       className="form-control"
                       type="time"
-                      name="isttmime2"
+                      name="isttime2"
                       value={formData.isttime2 || ""}
                       onChange={handleInputChange}
+                      required
                     />
                   </td>
                   <th>From Name</th>
@@ -954,6 +1097,7 @@ return false;
                       name="fromname2"
                       value={formData.fromname2 || ""}
                       onChange={handleInputChange}
+                      required
                     />
                   </td>
                 </tr>
@@ -984,9 +1128,12 @@ return false;
                       onChange={handleInputChange}
                       rows="1" // You can adjust this initial number of rows
                       style={{ resize: "vertical" }} // This allows vertical resizing
+                      required
                     />
                   </td>
                 </tr>
+                </>
+                )}
               </tbody>
             </table>
             <br />

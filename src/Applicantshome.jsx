@@ -29,7 +29,9 @@ const Applicantshome = () => {
       .catch((error) => {
         console.log(error);
         
-        window.location.reload();
+        if(localStorage.getItem('jwtToken')){
+          window.location.reload();
+         }
         console.error('AxiosError:', error.message);
         console.error('Error details:', error.response); 
       });

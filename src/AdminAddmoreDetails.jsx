@@ -48,7 +48,7 @@ const navigate=useNavigate();
    postUserAddmore(data1)
       .then((response) => {
         if (response.data === "addmoredone") {
-          alert("Details Changed SuccessFully")
+          navigate("/adminprofile", { state: { data: data } });
        
         
         } 

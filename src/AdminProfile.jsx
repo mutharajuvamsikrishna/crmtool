@@ -6,11 +6,12 @@ import "./ViweAll.css";
 import { SlLogout } from "react-icons/sl";
 import { BsPersonFillAdd } from "react-icons/bs";
 import { geAdminProfiles,getViewAddmore } from './Services/Api'
+import { useNavigate } from "react-router-dom";
 const AdminProfile = () => {
   const [employee, setEmployee] = useState(null);
   const [formData, setFormData] = useState([]);
   const location = useLocation();
-
+const navigate=useNavigate();
   const email = location.state.data.email;
   const data = {
     email: email,
@@ -20,9 +21,6 @@ const AdminProfile = () => {
     fetchEmployee();
     fetchEmployeeData(email);
   }, [email]);
-
- localStorage
-  
 
   const fetchEmployee = () => {
   //  axios
@@ -53,7 +51,10 @@ const data1={
   empid:empid
  
 }
-
+const handleLogOut=()=>{
+  localStorage.clear();
+  navigate("/adminlogin")
+}
 return (
   <div className="container6" style={{padding:"7%"}}>
    
@@ -120,23 +121,15 @@ return (
   </Link>
 )}
 </div>
-
           </center>
 
           <div className="profile-info">
             <center>
-              <br /><br />
-              <Link to="/adminlogin">
-                <SlLogout
-                  style={{
-                    height: "30px",
-                    width: "30px",
-                    
-                  }}
-                
-                />
-                <br />Log Out
-              </Link>
+             <button onClick={handleLogOut}>
+              <SlLogout
+              style={{height:"50px",width:"50px"}}/><br/>
+              LogOut
+             </button>
             </center>
           </div>
         </div>

@@ -44,7 +44,9 @@ const[deleteresponse,setDeleteResponse]=useState(false);
       })
       .catch((error) => {
         console.log(error);
+       if(localStorage.getItem('jwtToken')){
         window.location.reload();
+       }
       });
   };
   const location = useLocation();
