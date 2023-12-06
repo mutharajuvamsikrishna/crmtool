@@ -16,7 +16,9 @@ const navigate=useNavigate();
   const data = {
     email: email,
   };
-
+  if(!localStorage.getItem('jwtToken')){
+   navigate("/login")
+   }
   useEffect(() => {
     fetchEmployee();
     fetchEmployeeData(email);
@@ -35,7 +37,7 @@ const navigate=useNavigate();
       .then((response) => {
         setEmployee(response.data);
       })
-      .catch((error) => {
+      .catch((error) => {  
         console.log(error);
       });
   };
@@ -52,10 +54,8 @@ const navigate=useNavigate();
       });
   };
 const empid=formData.empid;
-
 const data1={
   empid:empid
- 
 }
 
 return (

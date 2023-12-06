@@ -16,7 +16,9 @@ const navigate=useNavigate();
   const data = {
     email: email,
   };
-
+  if(!localStorage.getItem('jwtToken')){
+    navigate("/adminlogin")
+    }
   useEffect(() => {
     fetchEmployee();
     fetchEmployeeData(email);
