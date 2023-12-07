@@ -241,8 +241,7 @@ if (type==="profile"){
               <div className="col-sm-2 my-1">
                 <input
                  type="date"
-                 min="2023-01-01" // Set the minimum date to today's date
-      max="2023-12-31"
+                
                   name="firstres"
                   value={formData.firstres}
                   onChange={handleInputChange}

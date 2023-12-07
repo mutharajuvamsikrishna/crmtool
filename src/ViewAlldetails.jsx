@@ -28,8 +28,10 @@ const ListEmployee = () => {
   const [lcall, setLcall] = useState("");
   const [emstate, setEmstate] = useState("");
   const [lres, Lres] = useState("");
- 
+ const [follow,setFollow]=useState("")
 const[deleteresponse,setDeleteResponse]=useState(false);
+const uniqueBdmNames = [...new Set(employees.map((employee) => employee.bdmname))];
+const uniqueCountries = [...new Set(employees.map((employee) => employee.coun))];
   useEffect(() => {
     fetchEmployees();
   }, []);
@@ -110,442 +112,107 @@ const[deleteresponse,setDeleteResponse]=useState(false);
   const expand1 = (id) => {
     setResponse1("");
   };
+  const handleBdmChange = (event) => {
+    setBdm(event.target.value);
+  };
   const handleSubmit = () => {
-    if (bdm === "Bharath") {
+    
       const filterData = employees.filter(
-        (employee) => employee.bdmname === "Bharath"
+        (employee) => employee.bdmname ===bdm
       );
       setEmployees(filterData);
-    }
-    if (bdm === "Prashanth") {
-      const filterData = employees.filter(
-        (employee) => employee.bdmname === "Prashanth"
-      );
-      setEmployees(filterData);
-    }
-    if (bdm === "Posu Babu") {
-      const filterData = employees.filter(
-        (employee) => employee.bdmname === "Posu Babu"
-      );
-      setEmployees(filterData);
-    }
-    if (bdm === "Murali") {
-      const filterData = employees.filter(
-        (employee) => employee.bdmname === "Murali"
-      );
-      setEmployees(filterData);
-    }
-    if (bdm === "Ramana") {
-      const filterData = employees.filter(
-        (employee) => employee.bdmname === "Ramana"
-      );
-      setEmployees(filterData);
-    }
   };
   const handleSubmit3 = () => {
-    if (current === "Hot") {
+   
       const filterData = employees.filter(
-        (employee) => employee.currentstate === "Hot"
+        (employee) => employee.currentstate === current
       );
       setEmployees(filterData);
-    }
-    if (current === "Warm") {
-      const filterData = employees.filter(
-        (employee) => employee.currentstate === "Warm"
-      );
-      setEmployees(filterData);
-    }
-    if (current === "Cold") {
-      const filterData = employees.filter(
-        (employee) => employee.currentstate === "Cold"
-      );
-      setEmployees(filterData);
-    }
+  
   };
   const handleSubmit4 = () => {
-    if (lfs === "Yet to Respond") {
+ 
       const filterData = employees.filter(
-        (employee) => employee.lfstatus === "Yet to Respond"
+        (employee) => employee.lfstatus === lfs
       );
       setEmployees(filterData);
-    }
-    if (lfs === "Waiting for Reply") {
-      const filterData = employees.filter(
-        (employee) => employee.lfstatus === "Waiting for Reply"
-      );
-      setEmployees(filterData);
-    }
-    if (lfs === "Need to Follow-Up") {
-      const filterData = employees.filter(
-        (employee) => employee.lfstatus === "Need to Follow-Up"
-      );
-      setEmployees(filterData);
-    }
-    if (lfs === "1st /2nd /3rd - Call Scheduled") {
-      const filterData = employees.filter(
-        (employee) => employee.lfstatus === "1st /2nd /3rd - Call Scheduled"
-      );
-      setEmployees(filterData);
-    }
-    if (lfs === "POC Started") {
-      const filterData = employees.filter(
-        (employee) => employee.lfstatus === "POC Started"
-      );
-      setEmployees(filterData);
-    }
-    if (lfs === "Deal Done") {
-      const filterData = employees.filter(
-        (employee) => employee.lfstatus === "Deal Done"
-      );
-      setEmployees(filterData);
-    }
-    if (lfs === "No Deal") {
-      const filterData = employees.filter(
-        (employee) => employee.lfstatus === "No Deal"
-      );
-      setEmployees(filterData);
-    }
-  };
+    
+      }
   const handleSubmit5 = () => {
-    if (ind === "Banking") {
+   
       const filterData = employees.filter(
-        (employee) => employee.domain === "Banking"
+        (employee) => employee.domain === ind
       );
       setEmployees(filterData);
-    }
-    if (ind === "Insurence") {
-      const filterData = employees.filter(
-        (employee) => employee.domain === "Insurence"
-      );
-      setEmployees(filterData);
-    }
-    if (ind === "Manufacturing") {
-      const filterData = employees.filter(
-        (employee) => employee.domain === "Manufacturing"
-      );
-      setEmployees(filterData);
-    }
-    if (ind === "e-Commerce") {
-      const filterData = employees.filter(
-        (employee) => employee.domain === "e-Commerce"
-      );
-      setEmployees(filterData);
-    }
-    if (ind === "Digital Payments") {
-      const filterData = employees.filter(
-        (employee) => employee.domain === "Digital Payments"
-      );
-      setEmployees(filterData);
-    }
-    if (ind === "OTT") {
-      const filterData = employees.filter(
-        (employee) => employee.domain === "OTT"
-      );
-      setEmployees(filterData);
-    }
-    if (ind === "Health Care") {
-      const filterData = employees.filter(
-        (employee) => employee.domain === "Health Care"
-      );
-      setEmployees(filterData);
-    }
-    if (ind === "Automobile") {
-      const filterData = employees.filter(
-        (employee) => employee.domain === "Automobile"
-      );
-      setEmployees(filterData);
-    }
-    if (ind === "Networking") {
-      const filterData = employees.filter(
-        (employee) => employee.domain === "Networking"
-      );
-      setEmployees(filterData);
-    }
-    if (ind === "Cloud Services") {
-      const filterData = employees.filter(
-        (employee) => employee.domain === "Cloud Services"
-      );
-      setEmployees(filterData);
-    }
-    if (ind === "e-Learning/Entertainment") {
-      const filterData = employees.filter(
-        (employee) => employee.domain === "e-Learning/Entertainment"
-      );
-      setEmployees(filterData);
-    }
   };
   const handleSubmit6 = () => {
-    if (int === "FE") {
+   
       const filterData = employees.filter(
-        (employee) => employee.intrestserv === "FE"
+        (employee) => employee.intrestserv ===int
       );
       setEmployees(filterData);
-    }
-    if (int === "BE") {
-      const filterData = employees.filter(
-        (employee) => employee.intrestserv === "BE"
-      );
-      setEmployees(filterData);
-    }
-    if (int === "DB") {
-      const filterData = employees.filter(
-        (employee) => employee.intrestserv === "DB"
-      );
-      setEmployees(filterData);
-    }
-    if (int === "Mobile") {
-      const filterData = employees.filter(
-        (employee) => employee.intrestserv === "Mobile"
-      );
-      setEmployees(filterData);
-    }
-    if (int === "TV") {
-      const filterData = employees.filter(
-        (employee) => employee.intrestserv === "TV"
-      );
-      setEmployees(filterData);
-    }
-    if (int === "Support") {
-      const filterData = employees.filter(
-        (employee) => employee.intrestserv === "Support"
-      );
-      setEmployees(filterData);
-    }
-    if (int === "Manual") {
-      const filterData = employees.filter(
-        (employee) => employee.intrestserv === "Manual"
-      );
-      setEmployees(filterData);
-    }
-    if (int === "QA") {
-      const filterData = employees.filter(
-        (employee) => employee.intrestserv === "QA"
-      );
-      setEmployees(filterData);
-    }
-    if (int === "Automation") {
-      const filterData = employees.filter(
-        (employee) => employee.intrestserv === "Automation"
-      );
-      setEmployees(filterData);
-    }
-    if (int === "Regression") {
-      const filterData = employees.filter(
-        (employee) => employee.intrestserv === "Regression"
-      );
-      setEmployees(filterData);
-    }
-    if (int === "PT") {
-      const filterData = employees.filter(
-        (employee) => employee.intrestserv === "PT"
-      );
-      setEmployees(filterData);
-    }
-    if (int === "DevOps") {
-      const filterData = employees.filter(
-        (employee) => employee.intrestserv === "DevOps"
-      );
-      setEmployees(filterData);
-    }
-    if (int === "On-premises") {
-      const filterData = employees.filter(
-        (employee) => employee.intrestserv === "On-premises"
-      );
-      setEmployees(filterData);
-    }
-    if (int === "AWS") {
-      const filterData = employees.filter(
-        (employee) => employee.intrestserv === "AWS"
-      );
-      setEmployees(filterData);
-    }
-    if (int === "Azure") {
-      const filterData = employees.filter(
-        (employee) => employee.intrestserv === "Azure"
-      );
-      setEmployees(filterData);
-    }
-    if (int === "GC") {
-      const filterData = employees.filter(
-        (employee) => employee.intrestserv === "GC"
-      );
-      setEmployees(filterData);
-    }
-    if (int === "Private") {
-      const filterData = employees.filter(
-        (employee) => employee.intrestserv === "Private"
-      );
-      setEmployees(filterData);
-    }
+    
+    
   };
+  const handleCountryChange = (event) => {
+    setCountry(event.target.value);
+  };
+
   const handleSubmit7 = () => {
-    if (country === "India") {
+   
       const filterData = employees.filter(
-        (employee) => employee.coun === "India"
+        (employee) => employee.coun === country
       );
       setEmployees(filterData);
-    }
+    
   };
   const handleSubmit8 = () => {
-    if (region === "Asia") {
+   
       const filterData = employees.filter(
-        (employee) => employee.region === "Asia"
+        (employee) => employee.region === region
       );
       setEmployees(filterData);
-    }
-    if (region === "North America") {
-      const filterData = employees.filter(
-        (employee) => employee.region === "North America"
-      );
-      setEmployees(filterData);
-    }
-    if (region === "South America") {
-      const filterData = employees.filter(
-        (employee) => employee.region === "South America"
-      );
-      setEmployees(filterData);
-    }
-    if (region === "Europe") {
-      const filterData = employees.filter(
-        (employee) => employee.region === "Europe"
-      );
-      setEmployees(filterData);
-    }
-    if (region === "Antarctica") {
-      const filterData = employees.filter(
-        (employee) => employee.region === "Antarctica"
-      );
-      setEmployees(filterData);
-    }
-    if (region === "Africa") {
-      const filterData = employees.filter(
-        (employee) => employee.region === "Africa"
-      );
-      setEmployees(filterData);
-    }
-    if (region === "Australia") {
-      const filterData = employees.filter(
-        (employee) => employee.region === "Australia"
-      );
-      setEmployees(filterData);
-    }
+    
   };
   const handleSubmit9 = () => {
-    if (tzone === "CT") {
+   
       const filterData = employees.filter(
-        (employee) => employee.timezone === "CT"
+        (employee) => employee.timezone === tzone
       );
       setEmployees(filterData);
-    }
-    if (tzone === "PT") {
-      const filterData = employees.filter(
-        (employee) => employee.timezone === "PT"
-      );
-      setEmployees(filterData);
-    }
-    if (tzone === "MT") {
-      const filterData = employees.filter(
-        (employee) => employee.timezone === "MT"
-      );
-      setEmployees(filterData);
-    }
-    if (tzone === "PST") {
-      const filterData = employees.filter(
-        (employee) => employee.timezone === "PST"
-      );
-      setEmployees(filterData);
-    }
+    
   };
   const handleSubmit10 = () => {
-    if (poc === "NA") {
+   
       const filterData = employees.filter(
-        (employee) => employee.pocstatus === "NA"
+        (employee) => employee.pocstatus ===poc
       );
       setEmployees(filterData);
-    }
-    if (poc === "Planned") {
-      const filterData = employees.filter(
-        (employee) => employee.pocstatus === "Planned"
-      );
-      setEmployees(filterData);
-    }
-    if (poc === "In-progress") {
-      const filterData = employees.filter(
-        (employee) => employee.pocstatus === "In-progress"
-      );
-      setEmployees(filterData);
-    }
-    if (poc === "Success") {
-      const filterData = employees.filter(
-        (employee) => employee.pocstatus === "Success"
-      );
-      setEmployees(filterData);
-    }
-    if (poc === "Faild") {
-      const filterData = employees.filter(
-        (employee) => employee.pocstatus === "Faild"
-      );
-      setEmployees(filterData);
-    }
-    if (poc === "Deal Done") {
-      const filterData = employees.filter(
-        (employee) => employee.pocstatus === "Deal Done"
-      );
-      setEmployees(filterData);
-    }
-    if (poc === "No Deal") {
-      const filterData = employees.filter(
-        (employee) => employee.pocstatus === "No Deal"
-      );
-      setEmployees(filterData);
-    }
+    
   };
   const handleSubmit11 = () => {
-    if (emstate === "Yet to Respond") {
+    
       const filterData = employees.filter(
-        (employee) => employee.emstate2 === "Yet to Respond"
+        (employee) => employee.emstate2 ===emstate
       );
       setEmployees(filterData);
-    }
-    if (emstate === "Waiting for Reply") {
-      const filterData = employees.filter(
-        (employee) => employee.emstate2 === "Waiting for Reply"
-      );
-      setEmployees(filterData);
-    }
-    if (emstate === "To Follow-up") {
-      const filterData = employees.filter(
-        (employee) => employee.emstate2 === "To Follow-up"
-      );
-      setEmployees(filterData);
-    }
+    
   };
   //last
   const handleSubmit12 = () => {
-    if (lcall === "To Follow-up") {
+   
       const filterData = employees.filter(
-        (employee) => employee.callstatus2 === "To Follow-up"
+        (employee) => employee.callstatus2 === lcall
       );
       setEmployees(filterData);
-    }
-    if (lcall === "Poc") {
-      const filterData = employees.filter(
-        (employee) => employee.callstatus2 === "Poc"
-      );
-      setEmployees(filterData);
-    }
-    if (lcall === "Deal") {
-      const filterData = employees.filter(
-        (employee) => employee.callstatus2 === "Deal"
-      );
-      setEmployees(filterData);
-    }
-    if (lcall === "No Deal") {
-      const filterData = employees.filter(
-        (employee) => employee.callstatus2 === "No Deal"
-      );
-      setEmployees(filterData);
-    }
+    
+  };
+  const handleSubmit13 = () => {
+    const filterData = employees.filter((employee) => {
+      const employeeMonth = employee.followup.split('-')[1]; // Extract month part
+      return employeeMonth === follow;
+    });
+    setEmployees(filterData);
   };
   if(deleteresponse){
     return <div style={{paddingTop:"25%"}}><h1 className='text-center'>Sending Details By Email.....</h1></div>;
@@ -632,7 +299,23 @@ const[deleteresponse,setDeleteResponse]=useState(false);
            
             <button onClick={handleSubmit}>Search</button>
           </form> */}
+            <form
+            onSubmit={(event) => event.preventDefault()}
+            style={{ display: "inline-block" }}
+          >
+            <label>BDM Name</label>
+            <br />
           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          <select value={bdm} onChange={handleBdmChange}>
+        <option value="">Select BDM</option>
+        {uniqueBdmNames.map((uniqueBdmName, index) => (
+          <option key={index} value={uniqueBdmName}>
+            {uniqueBdmName}
+          </option>
+        ))}
+      </select>
+  <button onClick={handleSubmit}>Search</button>
+  </form>  &nbsp; &nbsp; &nbsp;
           <form
             onSubmit={(event) => event.preventDefault()}
             style={{ display: "inline-block" }}
@@ -651,7 +334,7 @@ const[deleteresponse,setDeleteResponse]=useState(false);
             {/* third */}
             <button onClick={handleSubmit3}>Search</button>
           </form>
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          
           <form
             onSubmit={(event) => event.preventDefault()}
             style={{ display: "inline-block" }}
@@ -704,7 +387,7 @@ const[deleteresponse,setDeleteResponse]=useState(false);
             </select>
             <button onClick={handleSubmit5}>Search</button>
           </form>
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp; &nbsp;
           <form
             onSubmit={(event) => event.preventDefault()}
             style={{ display: "inline-block" }}
@@ -740,26 +423,24 @@ const[deleteresponse,setDeleteResponse]=useState(false);
             </select>
             <button onClick={handleSubmit6}>Search</button>
           </form>
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp; &nbsp; 
           <form
             onSubmit={(event) => event.preventDefault()}
             style={{ display: "inline-block" }}
           >
             <label>Country</label>
             <br />
-            <select
-              value={country}
-              onChange={(event) => setCountry(event.target.value)}
-            >
-              <option value="">Select an option</option>
-              <option value="India">India</option>
-              <option value="Australia">Australia</option>
-              <option value="US">US</option>
-              <option value="Bangkok">e-Commerce</option>
-            </select>
+            <select value={country} onChange={handleCountryChange}>
+        <option value="">Select Country</option>
+        {uniqueCountries.map((uniqueCountry, index) => (
+          <option key={index} value={uniqueCountry}>
+            {uniqueCountry}
+          </option>
+        ))}
+      </select>
             <button onClick={handleSubmit7}>Search</button>
           </form>
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp; &nbsp;
           <form
             onSubmit={(event) => event.preventDefault()}
             style={{ display: "inline-block" }}
@@ -781,6 +462,33 @@ const[deleteresponse,setDeleteResponse]=useState(false);
             </select>
             <button onClick={handleSubmit8}>Search</button>
           </form>
+         
+          <form
+  onSubmit={(event) => {
+    event.preventDefault();
+    handleSubmit13();
+  }}
+  style={{ display: "inline-block" }}
+>
+  <label>Follow-Up Date</label>
+  <br />
+  <select value={follow} onChange={(event) => setFollow(event.target.value)}>
+    <option value="">Select Follow-Up Date</option>
+    <option value="01">Jan</option>
+    <option value="02">Feb</option>
+    <option value="03">March</option>
+    <option value="04">April</option>
+    <option value="05">May</option>
+    <option value="06">June</option>
+    <option value="07">July</option>
+    <option value="08">Augest</option>
+    <option value="09">Sept</option>
+    <option value="10">Oct</option>
+    <option value="11">Nov</option>
+    <option value="12">Dec</option>
+  </select>
+  <button type="submit">Search</button>
+</form>
           <br />
           <br />
           <form
