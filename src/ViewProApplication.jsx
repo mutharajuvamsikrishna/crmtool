@@ -102,12 +102,12 @@ email:email
       <br />
 
       <div className="row">
-        <table className="table table-striped table-bordered">
+      <table className="table table-striped table-bordered">
           <thead>
             <tr></tr>
           </thead>
           <tbody>
-            {employees.map((emp, index) => (
+            {employees.map((emp, id) => (
               <React.Fragment key={emp.id}>
                 
                 <tr>
@@ -143,7 +143,7 @@ email:email
                   <th style={{color:"green"}}>Current State</th>
                  <td className="id2">{emp.currentstate}</td>
                  <th style={{color:"orange"}}>Follow-Up Date</th>
-                 <td className="id2">{emp.followup}</td>
+                 <td className="id2" >{emp.followup}</td>
                 </tr>
                <br/><br/>
                 {response1===emp.id && (
@@ -188,7 +188,8 @@ email:email
       className="form-control"
       autoComplete="moredetail"
       rows="1" // You can adjust this initial number of rows
-      style={{ resize: "vertical", }} // This allows vertical resizing
+      
+      style={{ resize: "vertical",}} // This allows vertical resizing
     /></td>
                     
                       <th>Info Shared</th>
@@ -316,7 +317,10 @@ email:email
       rows="1" // You can adjust this initial number of rows
       style={{ resize: "vertical", }} // This allows vertical resizing
     /></td>
-                    </tr>
+    </tr>
+    {emp.emdate1!==""&&(
+      <>
+                    
                     <tr>
                    <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"indigo"}}>2nd e-mail Details </h5>
@@ -348,7 +352,11 @@ email:email
       rows="1" // You can adjust this initial number of rows
       style={{ resize: "vertical" }} // This allows vertical resizing
     /></td>
-                    </tr>
+                  </tr>
+                  </>
+    )}
+    {emp.emdate2!==""&&(
+      <>
                    <tr>
                    <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"indigo"}}>3rd e-mail Details </h5>
@@ -378,6 +386,10 @@ email:email
       style={{ resize: "vertical" }} // This allows vertical resizing
     /></td>
                     </tr>
+                    </>
+    )}
+    {emp.cuscalldate!==""&&(
+      <>
                    <tr>
                    <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"green"}}>1st Call Details </h5>
@@ -407,6 +419,10 @@ email:email
       style={{ resize: "vertical" }} // This allows vertical resizing
     /></td>
                     </tr>
+                    </>
+    )}
+    {emp.cuscalldate1!==""&&(
+      <>
                     <tr>
                    <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"green"}}>2nd Call Details </h5>
@@ -436,6 +452,10 @@ email:email
       style={{ resize: "vertical" }} // This allows vertical resizing
     /></td>
                     </tr>
+                    </>
+    )}
+    {emp.cuscalldate2!==""&&(
+      <>
                    <tr>
                    <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"green"}}>3rd Call Details </h5>
@@ -465,10 +485,12 @@ email:email
       style={{ resize: "vertical" }} // This allows vertical resizing
     /></td>
                     </tr>
-                   
+                    </>
+    )}
+    
                     <tr>
                       <th>Edit</th>
-                     <td className="id2" colSpan={5}>
+                     <td className="id2" colSpan={2}>
                         <button
                           className="btn btn-primary"
                           onClick={() => handleSubmit2(emp.id)}
@@ -476,9 +498,9 @@ email:email
                           Edit
                         </button>
                       </td>
-                    
+                     
                     </tr>
-                   
+                    <br/><br/><br/>
                     <tr>
                      <td className="id2"></td>
                     </tr>

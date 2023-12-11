@@ -28,7 +28,9 @@ const navigate=useNavigate();
   localStorage.clear();
   navigate("/login")
  }
-  
+ const handleAddmore=()=>{
+  navigate("/addmore", { state: { data: data } });
+}
 
   const fetchEmployee = () => {
   // axios
@@ -112,16 +114,17 @@ return (
             <div className="profile-info">
             <br />
 {data1.empid === undefined && (
-  <Link to="/addmore" state={{ data: data }}>
-    <BsPersonFillAdd
-      style={{
-        height: "30px",
-        width: "30px",
-      }}
-    />
-    <br />
-    Add Info
-  </Link>
+  <button className="" onClick={handleAddmore}>
+  <BsPersonFillAdd
+    style={{
+      height: "30px",
+      width: "30px",
+      color:"blue"
+    }}
+  />
+  <br />
+  Add Info
+</button>
 )}
 </div>
 

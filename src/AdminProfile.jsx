@@ -57,6 +57,9 @@ const handleLogOut=()=>{
   localStorage.clear();
   navigate("/adminlogin")
 }
+const handleAddmore=()=>{
+  navigate("/adminaddmore", { state: { data: data } });
+}
 return (
   <div className="container6" style={{padding:"7%"}}>
    
@@ -111,16 +114,17 @@ return (
             <div className="profile-info">
             <br />
 {data1.empid === undefined && (
-  <Link to="/adminaddmore" state={{ data: data }}>
+  <button className="" onClick={handleAddmore}>
     <BsPersonFillAdd
       style={{
         height: "30px",
         width: "30px",
+        color:"blue"
       }}
     />
     <br />
     Add Info
-  </Link>
+  </button>
 )}
 </div>
           </center>

@@ -8,7 +8,7 @@ import {
   AiOutlineCompress,
 } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg"
-import { getAdminView,deleteUserById, getSearchQuery} from './Services/Api';
+import { getUserView,deleteUserById, getSearchQuery} from './Services/Api';
 ;
 
 const ListEmployee = () => {
@@ -39,16 +39,16 @@ const uniqueCountries = [...new Set(employees.map((employee) => employee.coun))]
   const fetchEmployees = () => {
    // axios
     //  .get("http://localhost:1279/req")
-    getAdminView()
+    getUserView()
       .then((response) => {
         setEmployees(response.data);
        
       })
       .catch((error) => {
         console.log(error);
-       if(localStorage.getItem('jwtToken')){
-        window.location.reload();
-       }
+        if(localStorage.getItem('jwtToken')){
+          window.location.reload();
+         }
       });
   };
   const location = useLocation();

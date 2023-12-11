@@ -37,9 +37,7 @@ export const geAdminProfiles = (email) => {
 export const getViewAddmore = (email) => {
   return Api.get(`/viewaddmore?email=${email}`, headers)
 }
-export const getAdminView = () => {
-  return Api.get(`/req`,headers)
-}
+
 export const getUserView = () => {
   return Api.get(`/req`,headers)
 }

@@ -92,6 +92,7 @@ const AdminEdit = () => {
         console.error(error);
       });
   };
+  
   if (response) {
     return (
       <div style={{ paddingTop: "18%", color: "green" }}>
@@ -638,7 +639,8 @@ const AdminEdit = () => {
                   />
                 </td>
               </tr>
-              
+              {formData.emdate1===""&&(
+                <>
               <tr>
                 <td className="id2" colSpan={2}>
                   <h5 className="text-center" style={{ color: "" }}>
@@ -660,7 +662,9 @@ const AdminEdit = () => {
                 </td>
                 <td colSpan={3}></td>
               </tr>
-              {resstate1==="yes"&&(
+              </>
+              )}
+              {(resstate1==="yes"||formData.emdate1!=="")&&(
                 <>
               <tr>
                 <td className="id2" colSpan={6}>
@@ -740,6 +744,7 @@ const AdminEdit = () => {
               </tr>
               </>
               )}
+                {formData.emdate2===""&&(
                <tr>
                 <td className="id2" colSpan={2}>
                   <h5 className="text-center" style={{ color: "" }}>
@@ -761,7 +766,9 @@ const AdminEdit = () => {
                 </td>
                 <td colSpan={3}></td>
               </tr>
-              {resstate2==="yes"&&(
+                )}
+
+{(resstate2==="yes"||formData.emdate2!=="")&&(
                 <>
               <tr>
                 <td className="id2" colSpan={6}>
@@ -841,6 +848,8 @@ const AdminEdit = () => {
               </tr>
               </>
               )}
+                {formData.cuscalldate===""&&(
+                  <>
               <tr>
                 <td className="id2" colSpan={2}>
                   <h5 className="text-center" style={{ color: "" }}>
@@ -862,11 +871,13 @@ const AdminEdit = () => {
                 </td>
                 <td colSpan={3}></td>
               </tr>
-              {resstate==="yes"&&(
+              </>
+                )}
+                 {(resstate==="yes"||formData.cuscalldate!=="")&&(
                 <>
               <tr>
                 <td className="id2" colSpan={6}>
-                  <h5 className="text-center" style={{ color: "" }}>
+                  <h5 className="text-center" style={{ color: "orange" }}>
                   1st Call Details{" "}
                   </h5>
                 </td>
@@ -939,6 +950,8 @@ const AdminEdit = () => {
               </tr>
               </>
               )}
+                {formData.cuscalldate1===""&&(
+                  <>
                <tr>
                 <td className="id2" colSpan={2}>
                   <h5 className="text-center" style={{ color: "" }}>
@@ -960,7 +973,9 @@ const AdminEdit = () => {
                 </td>
                 <td colSpan={3}></td>
               </tr>
-              {resstate3==="yes"&&(
+              </>
+                )}
+                {(resstate3==="yes"||formData.cuscalldate1!=="")&&(
                 <>
               <tr>
                 <td className="id2" colSpan={6}>
@@ -1038,6 +1053,8 @@ const AdminEdit = () => {
               </tr>
               </>
               )}
+                {formData.cuscalldate2===""&&(
+                  <>
                <tr>
                 <td className="id2" colSpan={2}>
                   <h5 className="text-center" style={{ color: "" }}>
@@ -1059,7 +1076,9 @@ const AdminEdit = () => {
                 </td>
                 <td colSpan={3}></td>
               </tr>
-              {resstate4==="yes"&&(
+              </>
+                )}
+                {(resstate4==="yes"||formData.cuscalldate2!=="")&&(
                 <>
               <tr>
                 <td className="id2" colSpan={6}>

@@ -6,6 +6,7 @@ import "./Application.css";
 import { getProfiles } from './Services/Api';
 
 const Applicantshome = () => {
+
   const [formdata, setFormData] = useState([]);
   const location = useLocation();
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Applicantshome = () => {
   // Access the data object passed from the previous route
   const data = location.state.data;
   const email = data.email;
- 
+
   useEffect(() => {
     fetchEmployeeData(email);
   }, [email]);
@@ -21,6 +22,7 @@ const Applicantshome = () => {
   const fetchEmployeeData = (email) => {
    // axios
    //   .get(`http://localhost:1279/reg?email=${email}`)
+   
    getProfiles(email)
       .then((response) => {
       
@@ -36,6 +38,7 @@ const Applicantshome = () => {
         console.error('Error details:', error.response); 
       });
   };
+ 
 
   const ename = formdata.ename;
 
@@ -59,6 +62,16 @@ email:email
   const handleSubmit2 = () => {
     navigate("/profile", { state: { data: data } });
   }
+  if(ename===undefined){
+    return   <div style={{paddingTop:"15%"}}>
+    <center>
+          <h1 style={{ color: 'red' }}>Invalid credentials</h1>
+          <br /> <br /> <br />
+          <a href="javascript:history.go(-1)">Go Back</a>
+        </center>
+      </div>
+      
+    }
 
   return (
     <>
