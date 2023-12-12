@@ -40,7 +40,7 @@ import Profile from './Profile';
 import AdminProfile from './AdminProfile';
 import AdminRegfail from './AdminRegfail';
 import Addmore from './Addmore';
-
+import AdminLoginInvalid from './AdminLoginInvalid';
 import AdminAddmoreDetails from './AdminAddmoreDetails';
 
 function App() {
@@ -86,6 +86,7 @@ function App() {
           <Route path="/adminregfail" element={<AdminRegfail/>} />
           
           <Route path="/adminaddmore" element={<AdminAddmoreDetails/>} />
+          <Route path="/loginfail" element={<AdminLoginInvalid/>} />
         
         </Routes>
       </Router>

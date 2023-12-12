@@ -63,13 +63,7 @@ email:email
     navigate("/profile", { state: { data: data } });
   }
   if(ename===undefined){
-    return   <div style={{paddingTop:"15%"}}>
-    <center>
-          <h1 style={{ color: 'red' }}>Invalid credentials</h1>
-          <br /> <br /> <br />
-          <a href="javascript:history.go(-1)">Go Back</a>
-        </center>
-      </div>
+    navigate("/loginfail")
       
     }
 
