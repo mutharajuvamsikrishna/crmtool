@@ -43,6 +43,15 @@ const AdminEdit = () => {
         setLoading(false);
       });
   };
+  let followupString;
+
+  const followupDate = formData.followup ? new Date(formData.followup) : null;
+  
+  if (followupDate) {
+    // Format the date in "yyyy-MM-dd" format
+    followupString = followupDate.toJSON().slice(0, 10);
+    
+  } 
   const email = formData.email;
   const data = {
     email: email,
@@ -445,7 +454,7 @@ const AdminEdit = () => {
                     className="form-control"
                     type="date"
                     name="followup"
-                    value={formData.followup}
+                    value={followupString}
                     onChange={handleInputChange}
                   />
                 </td>

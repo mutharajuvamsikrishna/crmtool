@@ -22,6 +22,7 @@ const AdminEdit = () => {
 const data={
   email:email
 }
+
   const navigate = useNavigate();
 
   // State object to store form field values
@@ -36,13 +37,8 @@ const data={
     //axios
     //  .get(`http://localhost:1279/viewprofessional?id=${id}`)
       .then((response) => {
-       
 
-
-       
         setLoading(false);
-
-       
         setFormData(response.data);
       
       })
@@ -51,7 +47,17 @@ const data={
         setLoading(false);
       });
   };
+  
+  let followupString;
 
+  const followupDate = formData.followup ? new Date(formData.followup) : null;
+  
+  if (followupDate) {
+    // Format the date in "yyyy-MM-dd" format
+    followupString = followupDate.toJSON().slice(0, 10);
+    
+  } 
+  
   const handleInputChange = (evant) => {
     evant.preventDefault();
     const { name, value } = event.target;
@@ -438,13 +444,13 @@ return false;
               <tr>
                 <th style={{ color: "orange" }}>Follow-Up Date</th>
                 <td>
-                  <input
-                    className="form-control"
-                    type="date"
-                    name="followup"
-                    value={formData.followup}
-                    onChange={handleInputChange}
-                  />
+                <input
+  className="form-control"
+  type="date"
+  name="followup"
+  value={followupString}
+  onChange={handleInputChange}
+/>
                 </td>
                 <td colSpan={4}></td>
               </tr>

@@ -209,7 +209,7 @@ const uniqueCountries = [...new Set(employees.map((employee) => employee.coun))]
   };
   const handleSubmit13 = () => {
     const filterData = employees.filter((employee) => {
-      const employeeMonth = employee.followup.split('-')[1]; // Extract month part
+      const employeeMonth = new Date(employee.followup).toJSON().split('-')[1]; // Extract month part
       return employeeMonth === follow;
     });
     setEmployees(filterData);
@@ -613,7 +613,7 @@ const uniqueCountries = [...new Set(employees.map((employee) => employee.coun))]
                   <th style={{color:"green"}}>Current State</th>
                  <td className="id2">{emp.currentstate}</td>
                  <th style={{color:"orange"}}>Follow-Up Date</th>
-                 <td className="id2" >{emp.followup}</td>
+                 <td className="id2" >{new Date(emp.followup).toJSON().slice(0,10)}</td>
                 </tr>
                <br/><br/>
                 {response1===emp.id && (

@@ -143,7 +143,7 @@ email:email
                   <th style={{color:"green"}}>Current State</th>
                  <td className="id2">{emp.currentstate}</td>
                  <th style={{color:"orange"}}>Follow-Up Date</th>
-                 <td className="id2" >{emp.followup}</td>
+                 <td className="id2" >{new Date(emp.followup).toJSON()}</td>
                 </tr>
                <br/><br/>
                 {response1===emp.id && (
