@@ -90,6 +90,7 @@ const navigate=useNavigate();
       </div>
       <div style={{paddingTop:"1%"}}>
         <center>
+         
           <form onSubmit={handleSubmit}>
           <table cellPadding={20}>
             <tbody>
