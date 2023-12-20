@@ -5,6 +5,8 @@ import "./ViweAll.css";
 import {  AiOutlineFullscreen,AiOutlineCompress } from "react-icons/ai";
 import { CgProfile } from 'react-icons/cg';
 import { getUserView } from "./Services/Api";
+import { MdEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 const ListEmployee = () => {
   const [employees, setEmployees] = useState([]);
   const navigate = useNavigate();
@@ -118,11 +120,22 @@ email:email
                   <th>Company Name</th>
                      <td className="id2">{emp.cmpname}</td>
                 </tr>
-                {response1 !== emp.id&& (
-                <tr className="text-center">
-                 <td className="id2"></td>
 
-                 <td className="id2" colSpan={3}>
+                <tr>
+                  <th>Latest Response Date</th>
+                 <td className="id2">{emp.lastres}</td>
+                  <th style={{color:"green"}}>Current State</th>
+                 <td className="id2">{emp.currentstate}</td>
+                 <th style={{color:"orange"}}>Follow-Up Date</th>
+                 <td className="id2" >{new Date(emp.followup).toJSON().slice(0,10)}</td>
+                </tr>
+                <tr>
+                     <th>ok</th>
+                     <td>ok</td>
+                     <th>ok</th>
+                     <td>ok</td>
+                     {response1 !== emp.id&& (
+                 <td>
                     <AiOutlineFullscreen
                       onClick={() => expand(emp.id)}
                      
@@ -132,26 +145,9 @@ email:email
                       }}
                     />
                   </td>
-                  <td></td>
-                  <td></td>
-                </tr>
                 )}
-
-                <tr>
-                  <th>Latest Response Date</th>
-                 <td className="id2">{emp.lastres}</td>
-                  <th style={{color:"green"}}>Current State</th>
-                 <td className="id2">{emp.currentstate}</td>
-                 <th style={{color:"orange"}}>Follow-Up Date</th>
-                 <td className="id2" >{new Date(emp.followup).toJSON()}</td>
-                </tr>
-               <br/><br/>
-                {response1===emp.id && (
-                  <>
-                  <tr className="text-center">
-                 <td className="id2"></td>
-
-                 <td className="id2" colSpan={4}>
+                 {response1 === emp.id&& (
+                 <td>
                     <AiOutlineCompress
                       onClick={() => expand1(emp.id)}
                      
@@ -161,8 +157,23 @@ email:email
                       }}
                     />
                   </td>
-                  <td></td>
-                </tr>
+                )}
+                     <td>
+                        <button
+                          
+                          onClick={() => handleSubmit2(emp.id)}
+                        >
+                        <MdEdit style={{height:'20px',width:'20px',color:'blue'}}/>
+                        </button>
+                        </td>
+                        </tr>
+              <br/><br/>
+              <tr>
+                <td></td>
+              </tr>
+                {response1===emp.id && (
+                  <>
+               
                     <tr>
                       <th>Latest Final Status</th>
 
@@ -263,6 +274,9 @@ email:email
 
                      <td className="id2" colSpan={5}>{emp.mainmob}</td>
                     </tr>
+                    {(emp.secondcontact!=="")&&(
+                      <>
+                    
                     <tr>
                    <td className="id2" colSpan={6}>
                       <h5 className="text-center"  style={{color:"orange"}}>
@@ -285,6 +299,8 @@ email:email
 
                      <td className="id2" colSpan={5}>{emp.secondmob}</td>
                     </tr>
+                    </>
+                    )}
                     <tr>
                    <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"indigo"}}>1st e-mail Details </h5>
@@ -488,18 +504,7 @@ email:email
                     </>
     )}
     
-                    <tr>
-                      <th>Edit</th>
-                     <td className="id2" colSpan={2}>
-                        <button
-                          className="btn btn-primary"
-                          onClick={() => handleSubmit2(emp.id)}
-                        >
-                          Edit
-                        </button>
-                      </td>
-                     
-                    </tr>
+                  
                     <br/><br/><br/>
                     <tr>
                      <td className="id2"></td>

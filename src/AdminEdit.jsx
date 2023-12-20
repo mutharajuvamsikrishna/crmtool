@@ -19,6 +19,7 @@ const AdminEdit = () => {
   const [resstate2,setResstate2]=useState("");
   const [resstate3,setResstate3]=useState("");
   const [resstate4,setResstate4]=useState("");
+  const [resstatesec,setResstatesec]=useState("");
 const data={
   email:email
 }
@@ -444,13 +445,13 @@ return false;
               <tr>
                 <th style={{ color: "orange" }}>Follow-Up Date</th>
                 <td>
-                <input
-  className="form-control"
-  type="date"
-  name="followup"
-  value={followupString}
-  onChange={handleInputChange}
-/>
+                  <input
+                    className="form-control"
+                    type="date"
+                    name="followup"
+                    value={followupString}
+                    onChange={handleInputChange}
+                  />
                 </td>
                 <td colSpan={4}></td>
               </tr>
@@ -499,7 +500,7 @@ return false;
 
               <tr>
                 <th>LinkedIn Profile </th>
-                <td className="id2">
+                <td className="id2" colSpan={2}>
                   <input
                     className="form-control"
                     type="text"
@@ -508,11 +509,38 @@ return false;
                     onChange={handleInputChange}
                   />
                 </td>
-                <td colSpan={5}></td>
+                <td colSpan={4}></td>
               </tr>
+              {formData.secondcontact===""&&(
 
+              <>
               <tr>
-                <td className="id2" colSpan={6}>
+                <td className="id2" colSpan={2}>
+                  <h5 className="text-center" style={{ color: "" }}>
+                 Do You Have 2nd Contact Person Details?{" "}
+                  </h5>
+                </td>
+                <td className="id3">
+                  Yes &nbsp;&nbsp;<input type="radio"
+                  name="resstatesec"
+                  value="yes"
+                   onChange={(e) => setResstatesec(e.target.value)}
+                   />
+                </td>
+                 <td className="id3">
+                  No &nbsp;&nbsp;<input type="radio"
+                  name="resstatesec"
+                  value="no"
+                  onChange={(e) => setResstatesec(e.target.value)}/>
+                </td>
+                <td colSpan={2}></td>
+              </tr>
+              </>
+              )}
+               {(resstatesec==="yes"||formData.secondcontact!=="")&&(
+                <>
+              <tr>
+                <td className="id2" colSpan={4}>
                   <h5 className="text-center" style={{ color: "blue" }}>
                     Second Contact Person Details
                   </h5>
@@ -551,10 +579,10 @@ return false;
                   />
                 </td>
               </tr>
-
+            
               <tr>
                 <th>LinkedIn Profile </th>
-                <td className="id2">
+                <td className="id2" colSpan={2}>
                   <input
                     className="form-control"
                     type="text"
@@ -563,9 +591,10 @@ return false;
                     onChange={handleInputChange}
                   />
                 </td>
-                <td colSpan={6}></td>
+                <td colSpan={3}></td>
               </tr>
-
+              </>
+              )}
               <tr>
                 <td className="id2" colSpan={6}>
                   <h5 className="text-center" style={{ color: "green" }}>
@@ -593,7 +622,6 @@ return false;
                     name="emname"
                     value={formData.emname || ""}
                     onChange={handleInputChange}
-                  
                     required
                   />
                 </td>

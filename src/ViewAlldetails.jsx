@@ -2,15 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import "./ViweAll.css";
-import {
-  
-  AiOutlineFullscreen,
-  AiOutlineCompress,
-} from "react-icons/ai";
+import { AiOutlineFullscreen, AiOutlineCompress,} from "react-icons/ai";
 import { CgProfile } from "react-icons/cg"
 import { getUserView,deleteUserById, getSearchQuery} from './Services/Api';
-;
-
+import { MdEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 const ListEmployee = () => {
   const [employees, setEmployees] = useState([]);
   const navigate = useNavigate();
@@ -46,9 +42,6 @@ const uniqueCountries = [...new Set(employees.map((employee) => employee.coun))]
       })
       .catch((error) => {
         console.log(error);
-        if(localStorage.getItem('jwtToken')){
-          window.location.reload();
-         }
       });
   };
   const location = useLocation();
@@ -588,24 +581,6 @@ const uniqueCountries = [...new Set(employees.map((employee) => employee.coun))]
                   <th>Company Name</th>
                      <td className="id2">{emp.cmpname}</td>
                 </tr>
-                {response1 !== emp.id&& (
-                <tr className="text-center">
-                 <td className="id2"></td>
-
-                 <td className="id2" colSpan={3}>
-                    <AiOutlineFullscreen
-                      onClick={() => expand(emp.id)}
-                     
-                      style={{
-                        height: "30px",
-                        width: "30px",
-                      }}
-                    />
-                  </td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                )}
 
                 <tr>
                   <th>Latest Response Date</th>
@@ -615,13 +590,25 @@ const uniqueCountries = [...new Set(employees.map((employee) => employee.coun))]
                  <th style={{color:"orange"}}>Follow-Up Date</th>
                  <td className="id2" >{new Date(emp.followup).toJSON().slice(0,10)}</td>
                 </tr>
-               <br/><br/>
-                {response1===emp.id && (
-                  <>
-                  <tr className="text-center">
-                 <td className="id2"></td>
-
-                 <td className="id2" colSpan={4}>
+                <tr>
+                     <th>ok</th>
+                     <td>ok</td>
+                     <th>ok</th>
+                     <td>ok</td>
+                     {response1 !== emp.id&& (
+                 <td>
+                    <AiOutlineFullscreen
+                      onClick={() => expand(emp.id)}
+                     
+                      style={{
+                        height: "30px",
+                        width: "30px",
+                      }}
+                    />
+                  </td>
+                )}
+                 {response1 === emp.id&& (
+                 <td>
                     <AiOutlineCompress
                       onClick={() => expand1(emp.id)}
                      
@@ -631,8 +618,23 @@ const uniqueCountries = [...new Set(employees.map((employee) => employee.coun))]
                       }}
                     />
                   </td>
-                  <td></td>
-                </tr>
+                )}
+                     <td>
+                        <button
+                          
+                          onClick={() => handleSubmit2(emp.id)}
+                        >
+                        <MdEdit style={{height:'20px',width:'20px',color:'blue'}}/>
+                        </button>
+                        </td>
+                        </tr>
+              <br/><br/>
+              <tr>
+                <td></td>
+              </tr>
+                {response1===emp.id && (
+                  <>
+               
                     <tr>
                       <th>Latest Final Status</th>
 
@@ -733,6 +735,9 @@ const uniqueCountries = [...new Set(employees.map((employee) => employee.coun))]
 
                      <td className="id2" colSpan={5}>{emp.mainmob}</td>
                     </tr>
+                    {(emp.secondcontact!=="")&&(
+                      <>
+                    
                     <tr>
                    <td className="id2" colSpan={6}>
                       <h5 className="text-center"  style={{color:"orange"}}>
@@ -755,6 +760,8 @@ const uniqueCountries = [...new Set(employees.map((employee) => employee.coun))]
 
                      <td className="id2" colSpan={5}>{emp.secondmob}</td>
                     </tr>
+                    </>
+                    )}
                     <tr>
                    <td className="id2" colSpan={6}>
                       <h5 className="text-center" style={{color:"indigo"}}>1st e-mail Details </h5>
@@ -959,22 +966,13 @@ const uniqueCountries = [...new Set(employees.map((employee) => employee.coun))]
     )}
     
                     <tr>
-                      <th>Edit</th>
-                     <td className="id2" colSpan={2}>
-                        <button
-                          className="btn btn-primary"
-                          onClick={() => handleSubmit2(emp.id)}
-                        >
-                          Edit
-                        </button>
-                      </td>
                       <th>Delete</th>
-                      <td className="id2" colSpan={3}>
+                      <td className="id2" colSpan={5}>
                         <button
-                          className="btn btn-primary"
+                          className=""
                           onClick={() => confirmDelete(emp.id)}
                         >
-                          Delete
+                         <MdDelete style={{height:'20px',width:'20px'}}/>
                         </button>
                       </td>
                     </tr>

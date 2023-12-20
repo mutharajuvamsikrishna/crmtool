@@ -21,7 +21,7 @@ const AdminEdit = () => {
   const [resstate4,setResstate4]=useState("");
   // State object to store form field values
   const [formData, setFormData] = useState({});
-
+const [resstatesec,setResstatesec]=useState("");
   useEffect(() => {
     fetchEmployeeData(id);
   }, [id]);
@@ -505,7 +505,7 @@ const AdminEdit = () => {
 
               <tr>
                 <th>LinkedIn Profile </th>
-                <td className="id2">
+                <td className="id2" colSpan={2}>
                   <input
                     className="form-control"
                     type="text"
@@ -514,9 +514,36 @@ const AdminEdit = () => {
                     onChange={handleInputChange}
                   />
                 </td>
-                <td colSpan={5}></td>
+                <td colSpan={4}></td>
               </tr>
+              {formData.secondcontact===""&&(
 
+              <>
+              <tr>
+                <td className="id2" colSpan={2}>
+                  <h5 className="text-center" style={{ color: "" }}>
+                 Do You Have 2nd Contact Person Details?{" "}
+                  </h5>
+                </td>
+                <td className="id3">
+                  Yes &nbsp;&nbsp;<input type="radio"
+                  name="resstatesec"
+                  value="yes"
+                   onChange={(e) => setResstatesec(e.target.value)}
+                   />
+                </td>
+                 <td className="id3">
+                  No &nbsp;&nbsp;<input type="radio"
+                  name="resstatesec"
+                  value="no"
+                  onChange={(e) => setResstatesec(e.target.value)}/>
+                </td>
+                <td colSpan={3}></td>
+              </tr>
+              </>
+              )}
+               {(resstatesec==="yes"||formData.secondcontact!=="")&&(
+                <>
               <tr>
                 <td className="id2" colSpan={6}>
                   <h5 className="text-center" style={{ color: "blue" }}>
@@ -557,10 +584,10 @@ const AdminEdit = () => {
                   />
                 </td>
               </tr>
-
+            
               <tr>
                 <th>LinkedIn Profile </th>
-                <td className="id2">
+                <td className="id2" colSpan={2}>
                   <input
                     className="form-control"
                     type="text"
@@ -569,9 +596,10 @@ const AdminEdit = () => {
                     onChange={handleInputChange}
                   />
                 </td>
-                <td colSpan={6}></td>
+                <td colSpan={4}></td>
               </tr>
-
+              </>
+              )}
               <tr>
                 <td className="id2" colSpan={6}>
                   <h5 className="text-center" style={{ color: "green" }}>

@@ -312,23 +312,28 @@ if (type==="profile"){
                 </select>
               </div>
 
-              
               <label htmlFor="rexpy" className="col-sm-2 col-form-label my-1 label-custom">
-              <span style={{ color: 'red' }}>*</span>Company 
-              </label>
-              <div className="col-sm-2 my-1">
-                <input
-                  type="text"
-                  name="cmpname"
-                  value={formData.cmpname}
-                  onChange={handleInputChange}
-                  className="form-control"
-                  id="rexpy"
-                  autoComplete="cmpname"
-                  
-                  required 
-                />
-              </div>
+  <span style={{ color: 'red' }}>*</span>Company
+</label>
+<div className="col-sm-2 my-1">
+  <input
+    type="text"
+    name="cmpname"
+    value={formData.cmpname}
+    onChange={handleInputChange}
+    
+    className="form-control"
+    id="rexpy"
+    autoComplete="cmpname"
+    required
+    pattern=".*\S+.*" // Requires at least one non-space character
+    title="Please provide company name"
+  />
+  {formData.cmpname === '' && (  // Show error message conditionally
+    <div style={{ color: 'red' }}>Please provide company name</div>
+  )}
+</div>
+
             </div>
 
             

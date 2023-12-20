@@ -38,7 +38,7 @@ const Register = () => {
       password: password,
       cnpassword: cnpassword,
     };
-    console.log(data)
+    
     var v46= /^\d{10}$/;
     var v45=/^[a-zA-Z\s]*$/;
     var v = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[*&@#]).{6,}/; 
