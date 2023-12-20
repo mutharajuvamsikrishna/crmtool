@@ -168,10 +168,6 @@ if(formData.call3=== 'Yes'&&formData.callstatus2===""){
   // Function to handle changes in form fields
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-
-      
-
-    
       setFormData({
         ...formData,
         [name]: value,
@@ -188,8 +184,8 @@ if(formData.call3=== 'Yes'&&formData.callstatus2===""){
 if (type==="profile"){
   navigate("/profile", { state: { data: data } });
 }
-
   }
+  const today=new Date().toJSON().slice(0,10);
   return (
   
     <div className="" style={{ minHeight: "100vh", backgroundColor:"blue" }}>
@@ -527,7 +523,8 @@ if (type==="profile"){
                   value={formData.followup}
                   onChange={handleInputChange}
                   className="form-control"
-                  autoComplete="linkprof"
+                  autoComplete=""
+                 min={today}
                   required
                 />
               </div>

@@ -574,27 +574,11 @@ const uniqueCountries = [...new Set(employees.map((employee) => employee.coun))]
               <React.Fragment key={emp.id}>
                 
                 <tr>
-                  <th>Application ID</th>
-                 <td className="id2">{emp.id}</td>
-                  <th>BDM Name</th>
-                  <td className="id2">{emp.bdmname}</td>
+                 
                   <th>Company Name</th>
                      <td className="id2">{emp.cmpname}</td>
-                </tr>
-
-                <tr>
-                  <th>Latest Response Date</th>
-                 <td className="id2">{emp.lastres}</td>
-                  <th style={{color:"green"}}>Current State</th>
-                 <td className="id2">{emp.currentstate}</td>
                  <th style={{color:"orange"}}>Follow-Up Date</th>
                  <td className="id2" >{new Date(emp.followup).toJSON().slice(0,10)}</td>
-                </tr>
-                <tr>
-                     <th>ok</th>
-                     <td>ok</td>
-                     <th>ok</th>
-                     <td>ok</td>
                      {response1 !== emp.id&& (
                  <td>
                     <AiOutlineFullscreen
@@ -634,9 +618,15 @@ const uniqueCountries = [...new Set(employees.map((employee) => employee.coun))]
               </tr>
                 {response1===emp.id && (
                   <>
-               
+                <th>Application ID</th>
+                 <td className="id2">{emp.id}</td>
+                  <th>BDM Name</th>
+                  <td className="id2">{emp.bdmname}</td>
+                  <th>Latest Response Date</th>
+                 <td className="id2">{emp.lastres}</td>
+                  
                     <tr>
-                      <th>Latest Final Status</th>
+                      <th>Latest  Status</th>
 
                      <td className="id2">{emp.lfstatus}</td>
                     
@@ -710,8 +700,8 @@ const uniqueCountries = [...new Set(employees.map((employee) => employee.coun))]
                         Time Zone
                       </th>
                      <td className="id2">{emp.timezone}</td>
-                     <th>1st Response Date</th>
-                 <td className="id2">{emp.firstres}</td>
+                     <th style={{color:"green"}}>Current State</th>
+                 <td className="id2">{emp.currentstate}</td>
                     </tr>
                     <tr>
                    <td className="id2" colSpan={6}>
@@ -972,7 +962,7 @@ const uniqueCountries = [...new Set(employees.map((employee) => employee.coun))]
                           className=""
                           onClick={() => confirmDelete(emp.id)}
                         >
-                         <MdDelete style={{height:'20px',width:'20px'}}/>
+                         <MdDelete style={{height:'20px',width:'20px',color:'red'}}/>
                         </button>
                       </td>
                     </tr>

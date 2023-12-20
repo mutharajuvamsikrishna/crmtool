@@ -114,7 +114,7 @@ return false;
     };
     navigate("/adminprofile", { state: { data: data } });
   }
-  
+  const today=new Date().toJSON().slice(0,10);
   return (
     <div className="id1">
   
@@ -451,6 +451,7 @@ return false;
                     name="followup"
                     value={followupString}
                     onChange={handleInputChange}
+                    min={today}
                   />
                 </td>
                 <td colSpan={4}></td>
@@ -540,7 +541,7 @@ return false;
                {(resstatesec==="yes"||formData.secondcontact!=="")&&(
                 <>
               <tr>
-                <td className="id2" colSpan={4}>
+                <td className="id2" colSpan={6}>
                   <h5 className="text-center" style={{ color: "blue" }}>
                     Second Contact Person Details
                   </h5>

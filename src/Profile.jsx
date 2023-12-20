@@ -16,9 +16,6 @@ const navigate=useNavigate();
   const data = {
     email: email,
   };
-  if(!localStorage.getItem('jwtToken')){
-   navigate("/login")
-   }
   useEffect(() => {
     fetchEmployee();
     fetchEmployeeData(email);
@@ -41,6 +38,9 @@ const navigate=useNavigate();
       })
       .catch((error) => {  
         console.log(error);
+        if(!localStorage.getItem('jwtToken')){
+          navigate("/login")
+          }
       });
   };
 

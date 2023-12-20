@@ -115,7 +115,7 @@ const [resstatesec,setResstatesec]=useState("");
     };
     navigate("/profile", { state: { data: data } });
   };
-
+  const today=new Date().toJSON().slice(0,10);
   return (
     <div className="id1">
       <div
@@ -456,6 +456,7 @@ const [resstatesec,setResstatesec]=useState("");
                     name="followup"
                     value={followupString}
                     onChange={handleInputChange}
+                    min={today}
                   />
                 </td>
                 <td colSpan={4}></td>

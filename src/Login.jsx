@@ -20,6 +20,11 @@ const Login = () => {
       password: Yup.string().required('Password is required'),
     }),
     onSubmit: async (values) => {
+      var v = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[*&@#]).{6,}/; 
+      if(!values.password.match(v)){
+        alert("Password Should Minimum 6 Digits,Should have at least one uppercase and  Lowercase,One Numeric And Special Symbols Like @,&,*,#")
+        return false;
+      }
       try {
         const response = await postUserLogin(values);
 
