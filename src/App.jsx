@@ -42,7 +42,15 @@ import AdminRegfail from './AdminRegfail';
 import Addmore from './Addmore';
 import AdminLoginInvalid from './AdminLoginInvalid';
 import AdminAddmoreDetails from './AdminAddmoreDetails';
-
+import SuperAdminLogin from './SuperAdminLogin';
+import Margin from './Margin';
+import SuperAdmingetOtp from './SuperAdmingetOtp';
+import SuperAdminChagpass from './SuperAdminChgpss';
+import SuperAdminOtpfield from './SuperAdminOtpfield';
+import SuperAdminPasswordChg from './SuperAdminPasswordchg';
+import SuperAdminEdit from './SupAdminEdit';
+import SpecUserReg from './SpecUserReg';
+import SpecSupAdmByAdm from './SpecSupAdmByAdm';
 function App() {
   return (
     <div className="maincontainer">
@@ -87,7 +95,15 @@ function App() {
           
           <Route path="/adminaddmore" element={<AdminAddmoreDetails/>} />
           <Route path="/loginfail" element={<AdminLoginInvalid/>} />
-        
+          <Route path="/superadminlogin" element={<SuperAdminLogin/>} />
+          <Route path="/superadminview" element={<Margin/>} />
+          <Route path="/superadmotp" element={<SuperAdmingetOtp/>} />{"ok"}
+          <Route path="/adminchangepasswordsucess" element={<SuperAdminChagpass/>} />
+          <Route path="/changesupadminpass" element={<SuperAdminOtpfield/>} />
+          <Route path="/supadminotp" element={<SuperAdminPasswordChg/>} />
+          <Route path="/supadminedit" element={<SuperAdminEdit/>} />
+          <Route path="/supadmedit" element={<SpecUserReg/>} />
+          <Route path="/supadmeditbyadmin" element={<SpecSupAdmByAdm/>} />
         </Routes>
       </Router>
     </div>

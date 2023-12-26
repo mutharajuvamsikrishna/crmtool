@@ -3,11 +3,11 @@ import axios from "axios";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import "./ViweAll.css";
 import { AiOutlineFullscreen, AiOutlineCompress } from "react-icons/ai";
-import { CgProfile } from "react-icons/cg";
-import { getUserView, deleteUserById, getSearchQuery } from "./Services/Api";
+
+import { getSuerAdmView, deleteSuperById, getAdminSearchQuery } from "./Services/Api";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
-const ListEmployee = () => {
+const SuperAdminApplicationView = () => {
   const [employees, setEmployees] = useState([]);
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
@@ -26,7 +26,7 @@ const ListEmployee = () => {
   const [lres, Lres] = useState("");
   const [follow, setFollow] = useState("");
   const [followyear, setFollowyear] = useState("");
-  const [deleteresponse, setDeleteResponse] = useState(false);
+  
   const uniqueBdmNames = [
     ...new Set(employees.map((employee) => employee.bdmname)),
   ];
@@ -40,7 +40,7 @@ const ListEmployee = () => {
   const fetchEmployees = () => {
     // axios
     //  .get("http://localhost:1279/req")
-    getUserView()
+    getSuerAdmView()
       .then((response) => {
         setEmployees(response.data);
       })
@@ -56,15 +56,9 @@ const ListEmployee = () => {
       id: id,
       email: email,
     };
-    navigate("/adminedit", { state: { data: data } });
+    navigate("/supadminedit", { state: { data: data } });
   };
-  const handleSubmitprofile = () => {
-    const data = {
-      email: email,
-    };
-
-    navigate("/adminprofile", { state: { data: data } });
-  };
+  
   const confirmDelete = (id) => {
     if (window.confirm("Are you sure you want to delete?")) {
       deleteUser(id);
@@ -72,10 +66,10 @@ const ListEmployee = () => {
   };
 
   const deleteUser = (id) => {
-    setDeleteResponse(true);
+    
     //  axios
     //    .delete(`http://localhost:1279/delete?id=${id}`)
-    deleteUserById(id)
+    deleteSuperById(id)
       .then((response) => {
         alert("Deleted SucessFully");
         window.location.reload();
@@ -88,7 +82,7 @@ const ListEmployee = () => {
   const handleSubmit1 = () => {
     // axios
     //   .get(`http://localhost:1279/search?query=${searchQuery}`)
-    getSearchQuery(searchQuery)
+    getAdminSearchQuery(searchQuery)
       .then((response) => {
         setEmployees(response.data);
       })
@@ -192,40 +186,11 @@ const ListEmployee = () => {
     setEmployees(filterData);
   };
   
-  if (deleteresponse) {
-    return (
-      <div style={{ paddingTop: "20%" }}>
-        <h1 className="text-center">Sending Details By Email.....</h1>
-      </div>
-    );
-  }
+  
   return (
     <div className="id1">
-      <div
-        style={{
-          position: "absolute",
-          top: "0",
-          right: "0",
-          padding: "10px",
-          cursor: "pointer",
-        }}
-        onClick={handleSubmitprofile}
-      >
-        <CgProfile
-          style={{
-            height: "50px",
-            width: "50px",
-            color: "blue",
-          }}
-        />
-      </div>
-      <div className="id6">
-        <br />
-        <br /> <br />
-        <Link to="/piechart" state={{ employees }}>
-          Show in Pie Charts
-        </Link>
-      </div>
+    
+     
       <br />
       <br />
       <br /> <br />
@@ -1033,4 +998,4 @@ const ListEmployee = () => {
   );
 };
 
-export default ListEmployee;
+export default SuperAdminApplicationView;

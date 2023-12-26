@@ -85,6 +85,7 @@ followup:""
   const navigate=useNavigate();
   
   const handleSubmit = (event) => {
+    event.preventDefault()
     if(formData.currentstate===""){
       alert("Please Select Current State")
       return false;
@@ -322,12 +323,7 @@ if (type==="profile"){
     id="rexpy"
     autoComplete="cmpname"
     required
-    pattern=".*\S+.*" // Requires at least one non-space character
-    title="Please provide company name"
   />
-  {formData.cmpname === '' && (  // Show error message conditionally
-    <div style={{ color: 'red' }}>Please provide company name</div>
-  )}
 </div>
 
             </div>

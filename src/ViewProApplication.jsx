@@ -111,392 +111,417 @@ email:email
           <tbody>
             {employees.map((emp, id) => (
               <React.Fragment key={emp.id}>
-                
                 <tr>
-                 
-                  <th>Company Name</th>
-                     <td className="id2">{emp.cmpname}</td>
-                 <th style={{color:"orange"}}>Follow-Up Date</th>
-                 <td className="id2" >{new Date(emp.followup).toJSON().slice(0,10)}</td>
-                     {response1 !== emp.id&& (
-                 <td>
-                    <AiOutlineFullscreen
-                      onClick={() => expand(emp.id)}
-                     
-                      style={{
-                        height: "30px",
-                        width: "30px",
-                      }}
-                    />
+                  <th className="id2">{emp.id}</th>
+                  <th className="id2">{emp.cmpname}</th>
+                  <th style={{ color: "orange" }}>Follow-Up Date</th>
+                  <td className="id2">
+                    {new Date(emp.followup).toJSON().slice(0, 10)}
                   </td>
-                )}
-                 {response1 === emp.id&& (
-                 <td>
-                    <AiOutlineCompress
-                      onClick={() => expand1(emp.id)}
-                     
-                      style={{
-                        height: "30px",
-                        width: "30px",
-                      }}
-                    />
-                  </td>
-                )}
-                     <td>
-                        <button
-                          
-                          onClick={() => handleSubmit2(emp.id)}
-                        >
-                        <MdEdit style={{height:'20px',width:'20px',color:'blue'}}/>
-                        </button>
-                        </td>
-                        </tr>
-              <br/><br/>
-              <tr>
-                <td></td>
-              </tr>
-                {response1===emp.id && (
-                  <>
-                <th>Application ID</th>
-                 <td className="id2">{emp.id}</td>
-                  <th>BDM Name</th>
-                  <td className="id2">{emp.bdmname}</td>
+                  <th style={{ color: "green" }}>Current State</th>
+                  <td className="id2">{emp.currentstate}</td>
+                </tr>
+                <tr>
                   <th>Latest Response Date</th>
-                 <td className="id2">{emp.lastres}</td>
-                  
-                    <tr>
-                      <th>Latest  Status</th>
+                  <td className="id2">{emp.lastres}</td>
+                  <th>Latest Status</th>
 
-                     <td className="id2">{emp.lfstatus}</td>
-                    
+                  <td className="id2">{emp.lfstatus}</td>
+                  {response1 !== emp.id && (
+                    <td>
+                      <AiOutlineFullscreen
+                        onClick={() => expand(emp.id)}
+                        style={{
+                          height: "30px",
+                          width: "30px",
+                        }}
+                      />
+                    </td>
+                  )}
+                  {response1 === emp.id && (
+                    <td>
+                      <AiOutlineCompress
+                        onClick={() => expand1(emp.id)}
+                        style={{
+                          height: "30px",
+                          width: "30px",
+                        }}
+                      />
+                    </td>
+                  )}
+                  <td>
+                    <button onClick={() => handleSubmit2(emp.id)}>
+                      <MdEdit
+                        style={{ height: "20px", width: "20px", color: "blue" }}
+                      />
+                    </button>
+                  </td>
+                </tr>
+                <br />
+                <br />
+               
+                {response1 === emp.id && (
+                  <>
+                    <tr>
+                      <th>BDM Name</th>
+                      <td className="id2">{emp.bdmname}</td>
+
                       <th>POC Status </th>
 
-                     <td className="id2">{emp.pocstatus}</td>
+                      <td className="id2">{emp.pocstatus}</td>
 
                       <th>Industry/Domain</th>
-                     <td className="id2">{emp.domain}</td>
+                      <td className="id2">{emp.domain}</td>
                     </tr>
 
                     <tr>
                       <th>Interested Service/s </th>
-                     <td className="id2">{emp.intrestserv}</td>
+                      <td className="id2">{emp.intrestserv}</td>
                       <th>Summary</th>
 
-                      <td className="id2" > <textarea
-      
-      value={emp.moredetail}
-     
-      className="form-control"
-      autoComplete="moredetail"
-      rows="1" // You can adjust this initial number of rows
-      
-      style={{ resize: "vertical",}} // This allows vertical resizing
-    /></td>
-                    
+                      <td className="id2">
+                        {" "}
+                        <textarea
+                          value={emp.moredetail}
+                          className="form-control"
+                          autoComplete="moredetail"
+                          rows="1" // You can adjust this initial number of rows
+                          style={{ resize: "vertical" }} // This allows vertical resizing
+                        />
+                      </td>
+
                       <th>Info Shared</th>
-                      <td className="id2" > <textarea
-      
-      value={emp.infoshared}
-     
-      className="form-control"
-      autoComplete="infoshared"
-      rows="1" // You can adjust this initial number of rows
-      style={{ resize: "vertical", }} // This allows vertical resizing
-    /></td>
-                       </tr>
-                       <tr>
+                      <td className="id2">
+                        {" "}
+                        <textarea
+                          value={emp.infoshared}
+                          className="form-control"
+                          autoComplete="infoshared"
+                          rows="1" // You can adjust this initial number of rows
+                          style={{ resize: "vertical" }} // This allows vertical resizing
+                        />
+                      </td>
+                    </tr>
+                    <tr>
                       <th>Details Asked</th>
-                      <td className="id2"  > <textarea
-      
-      value={emp.detailask}
-     
-      className="form-control"
-      autoComplete="detailask"
-      rows="1" // You can adjust this initial number of rows
-      style={{ resize: "vertical", }} // This allows vertical resizing
-    /></td>
-                    
+                      <td className="id2">
+                        {" "}
+                        <textarea
+                          value={emp.detailask}
+                          className="form-control"
+                          autoComplete="detailask"
+                          rows="1" // You can adjust this initial number of rows
+                          style={{ resize: "vertical" }} // This allows vertical resizing
+                        />
+                      </td>
+
                       <th>Website </th>
-                     <td className="id2">{emp.website}</td>
+                      <td className="id2">{emp.website}</td>
                       <th>LinkedIn Profile </th>
 
-                     <td className="id2">{emp.linkprof}</td>
+                      <td className="id2">{emp.linkprof}</td>
                     </tr>
 
                     <tr>
                       <th>Continent/Region </th>
-                     <td className="id2">{emp.region}</td>
+                      <td className="id2">{emp.region}</td>
                       <th>Country</th>
-                     <td className="id2">{emp.coun}</td>
+                      <td className="id2">{emp.coun}</td>
                       <th>W.r.t IST Time</th>
-                     <td className="id2">{emp.time}</td>
-            
+                      <td className="id2">{emp.time}</td>
                     </tr>
                     <tr>
-                    <th>Before/After</th>
-                     <td className="id2">{emp.cusbefore}</td>
-                      <th>
-                        Time Zone
-                      </th>
-                     <td className="id2">{emp.timezone}</td>
-                     <th style={{color:"green"}}>Current State</th>
-                 <td className="id2">{emp.currentstate}</td>
+                      <th>Before/After</th>
+                      <td className="id2">{emp.cusbefore}</td>
+                      <th>Time Zone</th>
+                      <td className="id2">{emp.timezone}</td>
                     </tr>
                     <tr>
-                   <td className="id2" colSpan={6}>
-                      <h5 className="text-center" style={{color:"orange"}}>
-                        Main Contact Person Details
-                      </h5>
-                    </td>
+                      <td className="id2" colSpan={6}>
+                        <h5 className="text-center" style={{ color: "orange" }}>
+                          Main Contact Person Details
+                        </h5>
+                      </td>
                     </tr>
                     <tr>
                       <th>Full Name </th>
-                     <td className="id2">{emp.maincontact}</td>
+                      <td className="id2">{emp.maincontact}</td>
 
                       <th>LinkedIn Profile</th>
-                     <td className="id2">{emp.mainlinkprof}</td>
+                      <td className="id2">{emp.mainlinkprof}</td>
                       <th>Email ID</th>
-                     <td className="id2">{emp.mainemail}</td>
+                      <td className="id2">{emp.mainemail}</td>
                     </tr>
                     <tr>
-                      
                       <th>Phone No</th>
 
-                     <td className="id2" colSpan={5}>{emp.mainmob}</td>
+                      <td className="id2" colSpan={5}>
+                        {emp.mainmob}
+                      </td>
                     </tr>
-                    {(emp.secondcontact!=="")&&(
+                    {emp.secondcontact !== "" && (
                       <>
-                    
-                    <tr>
-                   <td className="id2" colSpan={6}>
-                      <h5 className="text-center"  style={{color:"orange"}}>
-                        Second Contact Person Details
-                      </h5>
-                    </td>
-                    </tr>
-                    <tr>
-                      <th>Full Name </th>
-                     <td className="id2">{emp.secondcontact}</td>
+                        <tr>
+                          <td className="id2" colSpan={6}>
+                            <h5
+                              className="text-center"
+                              style={{ color: "orange" }}
+                            >
+                              Second Contact Person Details
+                            </h5>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Full Name </th>
+                          <td className="id2">{emp.secondcontact}</td>
 
-                      <th>LinkedIn Profile</th>
-                     <td className="id2">{emp.secondlinkprof}</td>
-                      <th>Email ID</th>
-                     <td className="id2">{emp.secondmainemail}</td>
-                    </tr>
-                    <tr>
-                     
-                      <th>Phone No</th>
+                          <th>LinkedIn Profile</th>
+                          <td className="id2">{emp.secondlinkprof}</td>
+                          <th>Email ID</th>
+                          <td className="id2">{emp.secondmainemail}</td>
+                        </tr>
+                        <tr>
+                          <th>Phone No</th>
 
-                     <td className="id2" colSpan={5}>{emp.secondmob}</td>
-                    </tr>
-                    </>
+                          <td className="id2" colSpan={5}>
+                            {emp.secondmob}
+                          </td>
+                        </tr>
+                      </>
                     )}
                     <tr>
-                   <td className="id2" colSpan={6}>
-                      <h5 className="text-center" style={{color:"indigo"}}>1st e-mail Details </h5>
-                    </td>
+                      <td className="id2" colSpan={6}>
+                        <h5 className="text-center" style={{ color: "indigo" }}>
+                          1st e-mail Details{" "}
+                        </h5>
+                      </td>
                     </tr>
                     <tr>
                       <th>Date</th>
-                     <td className="id2">{emp.emdate}</td>
+                      <td className="id2">{emp.emdate}</td>
                       <th>From Name</th>
-                     <td className="id2">{emp.emname}</td>
+                      <td className="id2">{emp.emname}</td>
                       <th>To Name</th>
-                     <td className="id2">{emp.emtoname}</td>
+                      <td className="id2">{emp.emtoname}</td>
                     </tr>
 
                     <tr>
-                     
                       <th>E-mail-1 State</th>
 
-                     <td className="id2">{emp.emstate}</td>
-                    
+                      <td className="id2">{emp.emstate}</td>
+
+                      <th style={{ color: "blue" }}>1st e-mail Summary </th>
+                      <td className="id2" colSpan={3}>
+                        {" "}
+                        <textarea
+                          value={emp.emsummary}
+                          className="form-control"
+                          autoComplete="emsummary"
+                          rows="1" // You can adjust this initial number of rows
+                          style={{ resize: "vertical" }} // This allows vertical resizing
+                        />
+                      </td>
+                    </tr>
+                    {emp.emdate1 !== "" && (
+                      <>
+                        <tr>
+                          <td className="id2" colSpan={6}>
+                            <h5
+                              className="text-center"
+                              style={{ color: "indigo" }}
+                            >
+                              2nd e-mail Details{" "}
+                            </h5>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Date</th>
+                          <td className="id2">{emp.emdate1}</td>
+                          <th>From Name</th>
+                          <td className="id2">{emp.emname1}</td>
+                          <th>To Name</th>
+                          <td className="id2">{emp.emtoname1}</td>
+                        </tr>
+
+                        <tr>
+                          <th>E-mail-2 State</th>
+
+                          <td className="id2">{emp.emstate1}</td>
+
+                          <th style={{ color: "blue" }}>2nd e-mail Summary </th>
+                          <td className="id2" colSpan={3}>
+                            {" "}
+                            <textarea
+                              value={emp.emsummary1}
+                              className="form-control"
+                              autoComplete="emsummary1"
+                              rows="1" // You can adjust this initial number of rows
+                              style={{ resize: "vertical" }} // This allows vertical resizing
+                            />
+                          </td>
+                        </tr>
+                      </>
+                    )}
+                    {emp.emdate2 !== "" && (
+                      <>
+                        <tr>
+                          <td className="id2" colSpan={6}>
+                            <h5
+                              className="text-center"
+                              style={{ color: "indigo" }}
+                            >
+                              3rd e-mail Details{" "}
+                            </h5>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Date</th>
+                          <td className="id2">{emp.emdate2}</td>
+                          <th>From Name</th>
+                          <td className="id2">{emp.emname2}</td>
+                          <th>To Name</th>
+                          <td className="id2">{emp.emtoname2}</td>
+                        </tr>
+                        <tr>
+                          <th>E-mail-3 State</th>
+
+                          <td className="id2">{emp.emstate2}</td>
+
+                          <th style={{ color: "blue" }}>3rd e-mail Summary </th>
+                          <td className="id2" colSpan={3}>
+                            {" "}
+                            <textarea
+                              value={emp.emsummary2}
+                              className="form-control"
+                              autoComplete="emsummary2"
+                              rows="1" // You can adjust this initial number of rows
+                              style={{ resize: "vertical" }} // This allows vertical resizing
+                            />
+                          </td>
+                        </tr>
+                      </>
+                    )}
+                    {emp.cuscalldate !== "" && (
+                      <>
+                        <tr>
+                          <td className="id2" colSpan={6}>
+                            <h5
+                              className="text-center"
+                              style={{ color: "green" }}
+                            >
+                              1st Call Details{" "}
+                            </h5>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Date</th>
+                          <td className="id2">{emp.cuscalldate}</td>
+                          <th>IST Time</th>
+                          <td className="id2">{emp.isttime}</td>
+                          <th>From Name</th>
+                          <td className="id2">{emp.fromname}</td>
+                        </tr>
+                        <tr>
+                          <th>Call-1 State</th>
+                          <td className="id2">{emp.callstatus}</td>
+
+                          <th>MOM with Actions </th>
+                          <td className="id2" colSpan={3}>
+                            {" "}
+                            <textarea
+                              value={emp.callsummery}
+                              className="form-control"
+                              autoComplete="callsummery"
+                              rows="1" // You can adjust this initial number of rows
+                              style={{ resize: "vertical" }} // This allows vertical resizing
+                            />
+                          </td>
+                        </tr>
+                      </>
+                    )}
+                    {emp.cuscalldate1 !== "" && (
+                      <>
+                        <tr>
+                          <td className="id2" colSpan={6}>
+                            <h5
+                              className="text-center"
+                              style={{ color: "green" }}
+                            >
+                              2nd Call Details{" "}
+                            </h5>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Date</th>
+                          <td className="id2">{emp.cuscalldate1}</td>
+                          <th>IST Time</th>
+                          <td className="id2">{emp.isttime1}</td>
+                          <th>From Name</th>
+                          <td className="id2">{emp.fromname1}</td>
+                        </tr>
+                        <tr>
+                          <th>Call-2 State</th>
+                          <td className="id2">{emp.callstatus1}</td>
+
+                          <th>MOM with Actions </th>
+                          <td className="id2" colSpan={3}>
+                            {" "}
+                            <textarea
+                              value={emp.callsummery1}
+                              className="form-control"
+                              autoComplete="callsummery1"
+                              rows="1" // You can adjust this initial number of rows
+                              style={{ resize: "vertical" }} // This allows vertical resizing
+                            />
+                          </td>
+                        </tr>
+                      </>
+                    )}
+                    {emp.cuscalldate2 !== "" && (
+                      <>
+                        <tr>
+                          <td className="id2" colSpan={6}>
+                            <h5
+                              className="text-center"
+                              style={{ color: "green" }}
+                            >
+                              3rd Call Details{" "}
+                            </h5>
+                          </td>
+                        </tr>
+                        <tr>
+                          <th>Date</th>
+                          <td className="id2">{emp.cuscalldate2}</td>
+                          <th>IST Time</th>
+                          <td className="id2">{emp.isttime2}</td>
+                          <th>From Name</th>
+                          <td className="id2">{emp.fromname2}</td>
+                        </tr>
+                        <tr>
+                          <th>Call-3 State</th>
+                          <td className="id2">{emp.callstatus2}</td>
+
+                          <th>MOM with Actions </th>
+                          <td className="id2" colSpan={3}>
+                            {" "}
+                            <textarea
+                              value={emp.callsummery2}
+                              className="form-control"
+                              autoComplete="callsummery2"
+                              rows="1" // You can adjust this initial number of rows
+                              style={{ resize: "vertical" }} // This allows vertical resizing
+                            />
+                          </td>
+                        </tr>
+                      </>
+                    )}
 
                     
-                      <th style={{color:"blue"}}>1st e-mail Summary </th>
-                      <td className="id2" colSpan={3} > <textarea
-      
-      value={emp.emsummary}
-     
-      className="form-control"
-      autoComplete="emsummary"
-      rows="1" // You can adjust this initial number of rows
-      style={{ resize: "vertical", }} // This allows vertical resizing
-    /></td>
-    </tr>
-    {emp.emdate1!==""&&(
-      <>
-                    
+                    <br />
+                    <br />
+                    <br />
                     <tr>
-                   <td className="id2" colSpan={6}>
-                      <h5 className="text-center" style={{color:"indigo"}}>2nd e-mail Details </h5>
-                    </td>
-                    </tr>
-                    <tr>
-                      <th>Date</th>
-                     <td className="id2">{emp.emdate1}</td>
-                      <th>From Name</th>
-                     <td className="id2">{emp.emname1}</td>
-                      <th>To Name</th>
-                     <td className="id2">{emp.emtoname1}</td>
-                    </tr>
-
-                    <tr>
-                    
-                     
-                      <th>E-mail-2 State</th>
-
-                     <td className="id2">{emp.emstate1}</td>
-                    
-                      <th style={{color:"blue"}}>2nd e-mail Summary </th>
-                     <td className="id2" colSpan={3}> <textarea
-      
-      value={emp.emsummary1}
-     
-      className="form-control"
-      autoComplete="emsummary1"
-      rows="1" // You can adjust this initial number of rows
-      style={{ resize: "vertical" }} // This allows vertical resizing
-    /></td>
-                  </tr>
-                  </>
-    )}
-    {emp.emdate2!==""&&(
-      <>
-                   <tr>
-                   <td className="id2" colSpan={6}>
-                      <h5 className="text-center" style={{color:"indigo"}}>3rd e-mail Details </h5>
-                    </td>
-                    </tr>
-                    <tr>
-                      <th>Date</th>
-                     <td className="id2">{emp.emdate2}</td>
-                      <th>From Name</th>
-                     <td className="id2">{emp.emname2}</td>
-                      <th>To Name</th>
-                     <td className="id2">{emp.emtoname2}</td>
-                  </tr>
-                     <tr>
-                      <th>E-mail-3 State</th>
-
-                     <td className="id2">{emp.emstate2}</td>
-                    
-                      <th style={{color:"blue"}}>3rd e-mail Summary </th>
-                      <td className="id2"colSpan={3}> <textarea
-      
-      value={emp.emsummary2}
-     
-      className="form-control"
-      autoComplete="emsummary2"
-      rows="1" // You can adjust this initial number of rows
-      style={{ resize: "vertical" }} // This allows vertical resizing
-    /></td>
-                    </tr>
-                    </>
-    )}
-    {emp.cuscalldate!==""&&(
-      <>
-                   <tr>
-                   <td className="id2" colSpan={6}>
-                      <h5 className="text-center" style={{color:"green"}}>1st Call Details </h5>
-                    </td>
-                    </tr>
-                    <tr>
-                      <th>Date</th>
-                     <td className="id2">{emp.cuscalldate}</td>
-                      <th>IST Time</th>
-                     <td className="id2">{emp.isttime}</td>
-                      <th>From Name</th>
-                     <td className="id2">{emp.fromname}</td>
-                    </tr>
-                    <tr>
-                      
-                      <th>Call-1 State</th>
-                     <td className="id2">{emp.callstatus}</td>
-                    
-                      <th>MOM with Actions </th>
-                      <td className="id2" colSpan={3}> <textarea
-      
-      value={emp.callsummery}
-     
-      className="form-control"
-      autoComplete="callsummery"
-      rows="1" // You can adjust this initial number of rows
-      style={{ resize: "vertical" }} // This allows vertical resizing
-    /></td>
-                    </tr>
-                    </>
-    )}
-    {emp.cuscalldate1!==""&&(
-      <>
-                    <tr>
-                   <td className="id2" colSpan={6}>
-                      <h5 className="text-center" style={{color:"green"}}>2nd Call Details </h5>
-                    </td>
-                    </tr>
-                    <tr>
-                      <th>Date</th>
-                     <td className="id2">{emp.cuscalldate1}</td>
-                      <th>IST Time</th>
-                     <td className="id2">{emp.isttime1}</td>
-                      <th>From Name</th>
-                     <td className="id2">{emp.fromname1}</td>
-                    </tr>
-                    <tr>
-                      
-                      <th>Call-2 State</th>
-                     <td className="id2">{emp.callstatus1}</td>
-                    
-                      <th>MOM with Actions </th>
-                      <td className="id2" colSpan={3}> <textarea
-      
-      value={emp.callsummery1}
-     
-      className="form-control"
-      autoComplete="callsummery1"
-      rows="1" // You can adjust this initial number of rows
-      style={{ resize: "vertical" }} // This allows vertical resizing
-    /></td>
-                    </tr>
-                    </>
-    )}
-    {emp.cuscalldate2!==""&&(
-      <>
-                   <tr>
-                   <td className="id2" colSpan={6}>
-                      <h5 className="text-center" style={{color:"green"}}>3rd Call Details </h5>
-                    </td>
-                    </tr>
-                    <tr>
-                      <th>Date</th>
-                     <td className="id2">{emp.cuscalldate2}</td>
-                      <th>IST Time</th>
-                     <td className="id2">{emp.isttime2}</td>
-                      <th>From Name</th>
-                     <td className="id2">{emp.fromname2}</td>
-                    </tr>
-                    <tr>
-                     
-                      <th>Call-3 State</th>
-                     <td className="id2">{emp.callstatus2}</td>
-                   
-                      <th>MOM with Actions </th>
-                      <td className="id2" colSpan={3}> <textarea
-      
-      value={emp.callsummery2}
-     
-      className="form-control"
-      autoComplete="callsummery2"
-      rows="1" // You can adjust this initial number of rows
-      style={{ resize: "vertical" }} // This allows vertical resizing
-    /></td>
-                    </tr>
-                    </>
-    )}
-    
-                    <br/><br/><br/>
-                    <tr>
-                     <td className="id2"></td>
+                      <td className="id2"></td>
                     </tr>
                   </>
                 )}
