@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 const WelcomePage = () => {
   const navigate=useNavigate();
-  localStorage.clear()
+  
   const bgStyle = {
     backgroundImage: 'url("https://oniesoft.com/images/oniesoft-final.png")',
     backgroundSize: 'cover',

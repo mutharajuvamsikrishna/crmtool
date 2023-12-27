@@ -160,7 +160,7 @@ export const putSupAdmEditDetailsUpdate = (formdata) => {
   
   return Api.put("/supreditupdate",formdata)
 }
-export const superAdminLogin= (data) => {
+export const superAdminLoginmethod= (data) => {
   
   return Api.post("/superadminlogin",data)
 }

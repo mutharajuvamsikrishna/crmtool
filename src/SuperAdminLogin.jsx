@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 import "./Application.css";
-import {superAdminLogin } from './Services/Api';
+import {superAdminLoginmethod } from './Services/Api';
 
 const SuperAdminLogin = () => {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const SuperAdminLogin = () => {
         return false;
       }
       try {
-        const response = await superAdminLogin(values);
+        const response = await superAdminLoginmethod(values);
 
         if (response.data === "success") {
          

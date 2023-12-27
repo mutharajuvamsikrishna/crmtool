@@ -35,14 +35,14 @@ const [loading,setLoading]=useState(false);
       [field]: value,
     });
   };
-  const confirmEditWindow = (email) => {
+  const confirmEditWindow = () => {
     if (window.confirm("Are you sure you want to Edit?")) {
-      confirmEdit(email);
+      confirmEdit();
     }
   };
-  const confirmEdit = (event) => {
+  const confirmEdit = () => {
     setLoading(true);
-    event.preventDefault();
+   
     superAdmRegisterbyAdmin(formData)
       .then((response) => {
         // Handle the response here if needed
@@ -63,7 +63,7 @@ const [loading,setLoading]=useState(false);
         Total No.of Clients: {formData.length}
       </h4>
       <div className="row">
-        <form onSubmit={confirmEditWindow}>
+      
           <table className="table table-striped table-bordered">
             <thead>
               <tr>
@@ -101,14 +101,15 @@ const [loading,setLoading]=useState(false);
                   />
                 </td>
                 <td className="id2">
-                  <button className="btn btn-primary" type="submit">
+                <button className="btn btn-primary" 
+                  onClick={confirmEditWindow}>
                     Save
                   </button>
                 </td>
               </tr>
             </tbody>
           </table>
-        </form>
+       
       </div>
      
      

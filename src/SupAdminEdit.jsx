@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./ViewProApplication.css"; // Import your custom CSS file
 import "./ViweAll.css";
-import { CgProfile } from 'react-icons/cg';
+
 import {getSuperProfessional, putSupAdmEditDetailsUpdate} from './Services/Api';
 
 const SuperAdminEdit = () => {
@@ -118,23 +118,7 @@ return false;
   return (
     <div className="id1">
   
-       <div
-      style={{
-        position: "absolute",
-        top: "0",
-        right: "0",
-        padding: "10px",
-        cursor: "pointer",
-      }}
-      onClick={handleSubmit2}
-    >
-      <CgProfile
-        style={{
-          height: "50px",
-          width: "50px",
-          color:"blue"
-        }} />
-    </div>
+      
       <br />
       <br />
       <br />

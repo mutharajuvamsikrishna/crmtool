@@ -30,8 +30,7 @@ const AdminLogin = () => {
         if (response.status === 200) {
           localStorage.setItem('jwtToken', response.data.jwt);
           navigate("/viewalldetails", { state: { data: values } });
-        } else {
-          alert("Invalid credentials");
+       
         }
       } catch (error) {
         console.error(error);
